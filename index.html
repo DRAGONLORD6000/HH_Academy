@@ -1,126 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Home Academy</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="nav-logo">
-        <img src="Images/HH_Academy_logo.png" alt="Happy Home Academy Logo" class="logo-shield" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Home Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Roboto', sans-serif; background: #fff; color: #414141; }
+  a { text-decoration: none; color: inherit; }
+ 
+  /* NAV */
+  nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: 102px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 134px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links li a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    position: relative;
+    padding-bottom: 4px;
+    display: inline-block;
+  }
+  .nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3EC2ED;
+    transform: translateX(-50%) scaleX(0);
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+  .nav-links li a.active::after,
+  .nav-links li a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+  }
+  .nav-links a:hover { color: black; }
+ 
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 709px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    padding: 222px 0 0 134px;
+  }
+  .hero-content h1 {
+    font-size: 40px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 47px;
+    margin-bottom: 8px;
+  }
+  .hero-content .tagline {
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .hero-content .desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    max-width: 490px;
+    line-height: 21px;
+    margin-bottom: 28px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: #3EC2ED;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0 32px;
+    height: 56px;
+    line-height: 56px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-primary:hover { background: #2db0db; }
+ 
+  /* SECTION: SHAPING TOMORROW */
+  .section-about {
+    padding: 80px 134px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .section-about .about-text { flex: 1; max-width: 541px; }
+  .section-about .about-text h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3EC2ED;
+    margin-bottom: 20px;
+    line-height: 42px;
+  }
+  .section-about .about-text p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #414141;
+    line-height: 21px;
+    max-width: 541px;
+  }
+  .section-about .about-image {
+    flex: 1;
+    max-width: 521px;
+  }
+  .section-about .about-image img {
+    width: 100%;
+    height: 305px;
+    object-fit: cover;
+  }
+ 
+  /* MISSION / VISION CARDS */
+  .mission-vision {
+    padding: 0 126px 80px;
+    display: flex;
+    gap: 21px;
+  }
+  .mv-card {
+    flex: 1;
+    background: #F2F2F2;
+    border: 1px solid #E1E1E1;
+    border-radius: 20px;
+    padding: 50px 60px;
+    min-height: 332px;
+  }
+  .mv-card .mv-icon {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 18px;
+  }
+  .mv-card h3 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #3EC2ED;
+    margin-bottom: 12px;
+    line-height: 42px;
+  }
+  .mv-card p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #929292;
+    line-height: 21px;
+    max-width: 464px;
+  }
+ 
+  /* APPLY SECTION */
+  .section-apply {
+    display: flex;
+    align-items: center;
+    min-height: 578px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 134px;
+    max-width: 1400px;
+  }
+  .apply-image {
+    flex: 0 0 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .apply-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .apply-content {
+    flex: 1;
+    padding: 60px 80px 60px 40px;
+  }
+  .apply-content .sub-label {
+    font-size: 22px;
+    font-weight: 400;
+    color: #7A7A7A;
+    margin-bottom: 8px;
+    line-height: 26px;
+  }
+  .apply-content h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3EC2ED;
+    line-height: 42px;
+    max-width: 535px;
+    margin-bottom: 20px;
+  }
+  .apply-content p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #414141;
+    line-height: 21px;
+    max-width: 438px;
+    margin-bottom: 40px;
+  }
+ 
+  /* KPI SECTION */
+  .section-kpi {
+    padding: 80px 134px;
+    text-align: center;
+  }
+  .section-kpi .sub-label {
+    font-size: 22px;
+    font-weight: 400;
+    color: #7A7A7A;
+    margin-bottom: 8px;
+  }
+  .section-kpi h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3EC2ED;
+    margin-bottom: 20px;
+  }
+  .section-kpi .kpi-desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: #414141;
+    max-width: 992px;
+    margin: 0 auto 60px;
+    line-height: 21px;
+  }
+  .kpi-circles {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+  .kpi-item { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .donut-ring {
+    position: relative;
+    width: 234px;
+    height: 234px;
+  }
+  .donut-ring svg { width: 234px; height: 234px; transform: rotate(-90deg); }
+  .donut-ring .donut-bg { fill: none; stroke: #D9D9D9; stroke-width: 35; }
+  .donut-ring .donut-fill { fill: none; stroke: #3EC2ED; stroke-width: 35; stroke-linecap: butt; transition: stroke-dasharray 1s ease; }
+  .donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #414141;
+  }
+  .kpi-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #414141;
+    text-align: center;
+  }
+ 
+  /* CURRICULUM SECTION */
+  .section-curriculum {
+    padding: 60px 134px 40px;
+    text-align: center;
+  }
+  .section-curriculum .sub-label {
+    font-size: 22px;
+    font-weight: 400;
+    color: #7A7A7A;
+    margin-bottom: 8px;
+  }
+  .section-curriculum h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3EC2ED;
+    margin-bottom: 30px;
+  }
+  .curriculum-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .curriculum-logos img {
+    height: 100px;
+    object-fit: contain;
+    filter: grayscale(20%);
+  }
+ 
+  /* FOOTER */
+  footer {
+    background: #F2F2F2;
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  footer .copy {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+  footer .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  footer .footer-links li a {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+  footer .footer-links li a:hover { color: #3EC2ED; }
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="enrollment.html">Enrollment</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="#">More</a></li>
+  </ul>
+</nav>
+ 
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg" src="Images/HH_Academy_Image_Landing_Page.png" alt="Happy Home Academy">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Happy Home Academy</h1>
+    <p class="tagline">The Official School Website</p>
+    <p class="desc">An English school with grades from Grade R - 12 and is registered with the Eastern Cape Department of Education.</p>
+    <a href="#section-apply" class="btn-primary">Learn More</a>
+  </div>
+</section>
+ 
+<!-- SHAPING TOMORROW -->
+<section class="section-about">
+  <div class="about-text">
+    <h2>Shaping Tomorrow's Learners</h2>
+    <p>At the heart of our school lies a clear mission that inspire learning and empower every student to thrive both inside and beyond the classroom.</p>
+  </div>
+  <div class="about-image">
+    <img src="Images/HH_Academy_Image_1.png" alt="Students">
+  </div>
+</section>
+ 
+<!-- MISSION / VISION -->
+<div class="mission-vision">
+  <div class="mv-card">
+    <img class="mv-icon" src="Images/HH_Academy_Image_Our_Mission.png" alt="Mission icon" onerror="this.style.display='none'">
+    <h3>Our Mission</h3>
+    <p>At the heart of our school lies a clear mission that inspire learning and empower every student to thrive both inside and beyond the classroom.</p>
+  </div>
+  <div class="mv-card">
+    <img class="mv-icon" src="Images/HH_Academy_Image_Our_Vision.png" alt="Vision icon" onerror="this.style.display='none'">
+    <h3>Our Vision</h3>
+    <p>At the heart of our school lies a clear mission that inspire learning and empower every student to thrive both inside and beyond the classroom.</p>
+  </div>
+</div>
+ 
+<!-- APPLY SECTION -->
+<section class="section-apply" id="section-apply">
+  <div class="apply-image">
+    <img src="Images/HH_Academy_Image_3.png" alt="Students in uniform">
+  </div>
+  <div class="apply-content">
+    <p class="sub-label">Admission Opportunities</p>
+    <h2>Apply to Our School</h2>
+    <p>At our institution, we believe in nurturing the next generation of leaders and innovators. Each year we welcome a diverse group of talented students from all walks of life as part of our admissions process. Our team of experts, if you're passionate about academics and eager to learn, we'd love to hear from you!</p>
+    <a href="#" class="btn-primary">Apply Now</a>
+  </div>
+</section>
+ 
+<!-- KPI SECTION -->
+<section class="section-kpi">
+  <p class="sub-label">School Statistics</p>
+  <h2>Key Performance Indicators</h2>
+  <p class="kpi-desc">A snapshot of our school's recent performance and enrollment figures. Updated for 2024 to highlight achievement, growth, and student success.</p>
+  <div class="kpi-circles">
+ 
+    <div class="kpi-item">
+      <div class="donut-ring">
+        <svg viewBox="0 0 234 234">
+          <circle class="donut-bg" cx="117" cy="117" r="99.5"/>
+          <circle class="donut-fill" cx="117" cy="117" r="99.5" id="donut1"/>
+        </svg>
+        <div class="donut-center">80%</div>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="enrollment.html">Enrollment</a></li>
-        <li><a href="activities.html">Activities</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="#">More</a></li>
-      </ul>
-    </nav>
-
-    <main class="hero">
-      <section class="hero-copy">
-        <h1>Happy Home Academy</h1>
-        <p class="lead">The Official School Website</p>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore.</p>
-        <p class="subtext">Find out more about us below</p>
-        <a class="cta-button" href="#">Learn More</a>
-      </section>
-
-      <section class="hero-visual">
-        <div>
-          <img src="Images/HH_Academy_Image_1.png" alt="Happy Home Academy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 56px;">
-        </div>
-      </section>
-    </main>
-
-    <section class="who-section">
-      <div class="who-card">
-        <h2>Who are we?</h2>
-        <p>Happy Home Academy is a nurturing, future-focused school dedicated to helping every child thrive. We combine academic excellence, character development, and community spirit to build confident learners.</p>
-        <p>Our teachers are committed to delivering inspiring lessons in a supportive environment that encourages creativity, curiosity, and meaningful growth.</p>
+      <span class="kpi-label">2024 Matric Pass Rate</span>
+    </div>
+ 
+    <div class="kpi-item">
+      <div class="donut-ring">
+        <svg viewBox="0 0 234 234">
+          <circle class="donut-bg" cx="117" cy="117" r="99.5"/>
+          <circle class="donut-fill" cx="117" cy="117" r="99.5" id="donut2"/>
+        </svg>
+        <div class="donut-center">823</div>
       </div>
-      <div class="who-image-wrap">
-        <div class="img-frame">
-          <img src="Images/HH_Academy_Image_2.png" alt="School community" />
-        </div>
+      <span class="kpi-label">Students Enrolled</span>
+    </div>
+ 
+    <div class="kpi-item">
+      <div class="donut-ring">
+        <svg viewBox="0 0 234 234">
+          <circle class="donut-bg" cx="117" cy="117" r="99.5"/>
+          <circle class="donut-fill" cx="117" cy="117" r="99.5" id="donut3"/>
+        </svg>
+        <div class="donut-center">86.3%</div>
       </div>
-    </section>
-
-    <section class="mission-section">
-      <span class="section-meta">Our Mission & Vision</span>
-      <h2>Shaping Tomorrow’s Learners</h2>
-      <p class="section-sub">At the heart of our school lies a clear mission that inspires learning and empowers every student to thrive both inside and beyond the classroom.</p>
-      <div class="mission-grid">
-        <div class="mission-card">
-          <h3>Our Mission</h3>
-          <p>We provide a caring and structured learning environment where students gain the knowledge, skills, and confidence to succeed. Every learner receives personalised attention and guidance to reach their full potential.</p>
-        </div>
-        <div class="mission-card">
-          <h3>Our Vision</h3>
-          <p>To become a leading community school known for excellence, integrity, and transformational learning. We aim to prepare young people who are curious, capable, and ready for a changing world.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="admission-section">
-      <div class="admission-image-wrap">
-        <div class="img-frame">
-          <img src="Images/School Kids 1.jpg" alt="School students" />
-        </div>
-      </div>
-      <div class="admission-copy">
-        <span class="section-meta">Admission Opportunities</span>
-        <h2>Apply to Our School</h2>
-        <p>At our institution, we believe in nurturing the next generation of leaders and innovators. Each year we welcome a diverse group of talented students from all walks of life as part of our admissions process.</p>
-        <a class="btn" href="#">Apply Now</a>
-      </div>
-    </section>
-
-    <section class="stats-section">
-      <span class="section-meta">School Statistics</span>
-      <h2>Key Performance Indicators</h2>
-      <p class="section-sub">A snapshot of our school's recent performance and enrollment figures. Updated for 2024 to highlight achievement, growth, and student success.</p>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-ring stat-ring--80"><span>80%</span></div>
-          <p>2024 Matric Pass Rate</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-ring stat-ring--full"><span>823</span></div>
-          <p>Students Enrolled</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-ring stat-ring--86"><span>86.3%</span></div>
-          <p>School Overall Pass Rate</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="standards-section">
-      <span class="section-meta">Curriculum Standards</span>
-      <h2>Learning That Builds Futures</h2>
-      <div class="standards-logos">
-        <div class="logo-pill">DBE</div>
-        <div class="logo-pill">CAPS</div>
-        <div class="logo-pill">NCS</div>
-        <div class="logo-pill">Umalusi</div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p>© Happy Home Academy - Sydnam. All Rights Reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Sitemap</a>
-      </div>
-    </footer>
-
-  </body>
+      <span class="kpi-label">School Overall Pass Rate</span>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- CURRICULUM SECTION -->
+<section class="section-curriculum">
+  <p class="sub-label">Curriculum Standards</p>
+  <h2>Learning That Builds Futures</h2>
+  <div class="curriculum-logos">
+    <img src="Images/HH_Academy_Image_4.png" alt="Curriculum standards logos">
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Sitemap</a></li>
+  </ul>
+</footer>
+ 
+<script>
+  const circumference = 2 * Math.PI * 99.5;
+ 
+  function setDonut(id, pct) {
+    const el = document.getElementById(id);
+    const filled = (pct / 100) * circumference;
+    el.style.strokeDasharray = `${filled} ${circumference}`;
+  }
+ 
+  setDonut('donut1', 80);
+  setDonut('donut2', 82);
+  setDonut('donut3', 86.3);
+</script>
+</body>
 </html>

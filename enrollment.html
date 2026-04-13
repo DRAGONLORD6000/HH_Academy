@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrollment – HH Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Roboto', sans-serif; background: #ffffff; color: #171717; }
+ 
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 102px;
+    background: rgba(242,242,242,0.75);
+    backdrop-filter: blur(25px);
+    display: flex;
+    align-items: center;
+    padding: 0 134px;
+    justify-content: space-between;
+  }
+  .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #171717;
+    text-decoration: none;
+    padding-bottom: 4px;
+    position: relative;
+    display: inline-block;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3EC2ED;
+    transform: translateX(-50%) scaleX(0);
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+  .nav-links a.active { color: #000; }
+  .nav-links a.active::after,
+  .nav-links a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+  }
+ 
+  /* HERO SECTION */
+  .hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 75px 134px 60px;
+    gap: 40px;
+  }
+  .hero-left { max-width: 520px; }
+  .hero-left h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 42px;
+    color: #3EC2ED;
+    margin-bottom: 12px;
+  }
+  .hero-left .subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFC107;
+    margin-bottom: 20px;
+  }
+  .hero-left p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #929292;
+    margin-bottom: 32px;
+  }
+  .btn-group { display: flex; gap: 20px; }
+  .btn {
+    width: 169px;
+    height: 56px;
+    background: #3EC2ED;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #29b0da; }
+ 
+  .hero-image {
+    width: 554px;
+    height: 298px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+ 
+  /* FEES TABLE */
+  .fees-section { padding: 0 134px 60px; }
+  .table-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .table-header {
+    background: #D9F6FF;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 300px repeat(5, 1fr);
+    align-items: center;
+    padding: 0 15px;
+  }
+  .table-header span {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+  }
+  .table-body {
+    background: #F2F2F2;
+    border-radius: 0 0 10px 10px;
+  }
+  .table-row {
+    display: grid;
+    grid-template-columns: 300px repeat(5, 1fr);
+    padding: 14px 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .table-row:last-child { border-bottom: none; }
+  .table-row span {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+  }
+  .table-row span.row-label { color: #000; }
+ 
+  /* DOCUMENTS SECTION */
+  .documents-section { padding: 0 134px 60px; }
+  .documents-section h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 42px;
+    color: #3EC2ED;
+    margin-bottom: 20px;
+  }
+  .documents-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .documents-section ul li {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #929292;
+    padding: 6px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+  .documents-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #929292;
+  }
+ 
+  /* FOOTER */
+  footer {
+    background: #F2F2F2;
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  footer .copyright {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1E1E1E;
+  }
+  footer .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+  footer .footer-links a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1E1E1E;
+    text-decoration: none;
+  }
+  footer .footer-links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+ 
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">
+    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" onerror="this.style.display='none'">
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="enrollment.html" class="active">Enrollment</a>
+    <a href="activities.html">Activities</a>
+    <a href="resources.html">Resources</a>
+    <a href="#">More</a>
+  </div>
+</nav>
+ 
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>SCHOOL FEES AND REQUIRED DOCUMENTS</h1>
+    <p class="subtitle">Enrollment and Fees</p>
+    <p>Thank you for taking the time to visit our website. Please find below the required documentation as well as the fees involved. To apply to Happy Home Academy, please click on the link enrolment to download the application form or click Download on the table below.</p>
+    <div class="btn-group">
+      <a href="#" class="btn">Learn More</a>
+      <a href="#" class="btn">Apply Now</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="Images/HH_Academy_Image_Enrollement.png" alt="Students studying together">
+  </div>
+</section>
+ 
+<!-- FEES TABLE -->
+<section class="fees-section">
+  <div class="table-wrapper">
+    <div class="table-header">
+      <span></span>
+      <span>Grade R</span>
+      <span>Grade 1-3</span>
+      <span>Grade 4-6</span>
+      <span>Grade 7</span>
+      <span>Grade 8-11</span>
+    </div>
+    <div class="table-body">
+      <div class="table-row">
+        <span class="row-label">Registration Fee</span>
+        <span>R 500.00</span>
+        <span>R 1 000.00</span>
+        <span>R 1 200.00</span>
+        <span>R 1500.00</span>
+        <span>R 1500.00</span>
+      </div>
+      <div class="table-row">
+        <span class="row-label">Monthly Fee</span>
+        <span>R 1 650.00</span>
+        <span>R 1 900.00</span>
+        <span>R 1 900.00</span>
+        <span>R 2 050.00</span>
+        <span>R 2 200.00</span>
+      </div>
+      <div class="table-row">
+        <span class="row-label">Once off Annual Fee</span>
+        <span>R 450.00</span>
+        <span>R 450.00</span>
+        <span>R 450.00</span>
+        <span>R 450.00</span>
+        <span>R 600.00</span>
+      </div>
+      <div class="table-row">
+        <span class="row-label">Total Payable before learners start</span>
+        <span>R 2 600.00</span>
+        <span>R 3 350.00</span>
+        <span>R 3 350.00</span>
+        <span>R 4 000.00</span>
+        <span>R 4 300.00</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- DOCUMENTS SECTION -->
+<section class="documents-section">
+  <h2>Documents for Eligibility</h2>
+  <ul>
+    <li>A copy of the learner's latest report</li>
+    <li>A copy of both biological parents' identity documents</li>
+    <li>A copy of the death certificate if either parent is deceased.</li>
+    <li>A copy of the learner's identity document and or birth certificate</li>
+    <li>A copy of proof of residential address. N.B. Offer to purchase is not acceptable</li>
+    <li>A copy of the learner's UNABRIDGED CERTIFICATE if biological parents' identity documents are not available</li>
+  </ul>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <span class="copyright">© Happy Home Academy - Sydnam. All Rights Reserved.</span>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Sitemap</a>
+  </div>
+</footer>
+ 
+</body>
+</html>
