@@ -10,7 +10,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Roboto', sans-serif; background: #fff; color: #414141; }
   a { text-decoration: none; color: inherit; }
- 
+
   /* NAV */
   nav {
     position: absolute;
@@ -57,8 +57,67 @@
     width: 100%;
     transform: translateX(-50%) scaleX(1);
   }
-  .nav-links a:hover { color: black; }
- 
+  .nav-links a:hover { color: #e0e0e0; }
+
+  /* HAMBURGER BUTTON */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    padding: 4px;
+    z-index: 200;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* MOBILE DROPDOWN MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-menu a {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .mobile-menu a.active,
+  .mobile-menu a:hover { color: #3EC2ED; }
+
   /* HERO */
   .hero {
     position: relative;
@@ -120,7 +179,7 @@
     text-align: center;
   }
   .btn-primary:hover { background: #2db0db; }
- 
+
   /* SECTION: SHAPING TOMORROW */
   .section-about {
     padding: 80px 134px;
@@ -153,7 +212,7 @@
     height: 305px;
     object-fit: cover;
   }
- 
+
   /* MISSION / VISION CARDS */
   .mission-vision {
     padding: 0 126px 80px;
@@ -187,7 +246,7 @@
     line-height: 21px;
     max-width: 464px;
   }
- 
+
   /* APPLY SECTION */
   .section-apply {
     display: flex;
@@ -238,7 +297,7 @@
     max-width: 438px;
     margin-bottom: 40px;
   }
- 
+
   /* KPI SECTION */
   .section-kpi {
     padding: 80px 134px;
@@ -295,7 +354,7 @@
     color: #414141;
     text-align: center;
   }
- 
+
   /* CURRICULUM SECTION */
   .section-curriculum {
     padding: 60px 134px 40px;
@@ -325,7 +384,7 @@
     object-fit: contain;
     filter: grayscale(20%);
   }
- 
+
   /* FOOTER */
   footer {
     background: #F2F2F2;
@@ -352,10 +411,125 @@
     color: #1E1E1E;
   }
   footer .footer-links li a:hover { color: #3EC2ED; }
+
+  /* =====================
+     MOBILE RESPONSIVE
+     ===================== */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+      position: fixed;
+      height: 70px;
+      padding: 0 20px;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo img { width: 56px; height: 52px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    /* MOBILE MENU */
+    .mobile-menu { display: flex; }
+
+    /* HERO */
+    .hero { height: 100svh; min-height: 500px; }
+    .hero-content {
+      padding: 140px 20px 0;
+    }
+    .hero-content h1 { font-size: 28px; line-height: 34px; }
+    .hero-content .tagline { font-size: 16px; }
+    .hero-content .desc { font-size: 15px; max-width: 100%; }
+    .btn-primary { font-size: 16px; height: 48px; line-height: 48px; padding: 0 24px; }
+
+    /* ABOUT */
+    .section-about {
+      flex-direction: column;
+      padding: 50px 20px;
+      gap: 28px;
+    }
+    .section-about .about-text { max-width: 100%; }
+    .section-about .about-text h2 { font-size: 26px; line-height: 32px; }
+    .section-about .about-text p { font-size: 15px; }
+    .section-about .about-image { max-width: 100%; width: 100%; }
+    .section-about .about-image img { height: 220px; border-radius: 12px; }
+
+    /* MISSION/VISION */
+    .mission-vision {
+      flex-direction: column;
+      padding: 0 20px 50px;
+      gap: 16px;
+    }
+    .mv-card {
+      padding: 30px 24px;
+      min-height: unset;
+      border-radius: 16px;
+    }
+    .mv-card h3 { font-size: 24px; }
+    .mv-card p { font-size: 15px; max-width: 100%; }
+
+    /* APPLY SECTION */
+    .section-apply {
+      flex-direction: column;
+      padding: 0;
+      min-height: unset;
+      max-width: 100%;
+    }
+    .apply-image {
+      flex: none;
+      width: 100%;
+      height: 240px;
+    }
+    .apply-image img { border-radius: 0; }
+    .apply-content {
+      padding: 32px 20px 40px;
+    }
+    .apply-content .sub-label { font-size: 16px; }
+    .apply-content h2 { font-size: 26px; line-height: 32px; max-width: 100%; }
+    .apply-content p { font-size: 15px; max-width: 100%; margin-bottom: 28px; }
+
+    /* KPI */
+    .section-kpi {
+      padding: 50px 20px;
+    }
+    .section-kpi h2 { font-size: 26px; }
+    .section-kpi .sub-label { font-size: 16px; }
+    .section-kpi .kpi-desc { font-size: 15px; margin-bottom: 40px; }
+    .kpi-circles { gap: 40px; }
+    .donut-ring { width: 160px; height: 160px; }
+    .donut-ring svg { width: 160px; height: 160px; }
+    .donut-ring .donut-bg,
+    .donut-ring .donut-fill { stroke-width: 24; }
+    .donut-center { font-size: 15px; }
+    .kpi-label { font-size: 15px; }
+
+    /* CURRICULUM */
+    .section-curriculum {
+      padding: 40px 20px 30px;
+    }
+    .section-curriculum h2 { font-size: 26px; }
+    .section-curriculum .sub-label { font-size: 16px; }
+    .curriculum-logos img { height: 70px; }
+
+    /* FOOTER */
+    footer {
+      height: auto;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    footer .copy { font-size: 12px; }
+    footer .footer-links li a { font-size: 12px; }
+    footer .footer-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content h1 { font-size: 24px; line-height: 30px; }
+    .kpi-circles { flex-direction: column; align-items: center; gap: 32px; }
+  }
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
@@ -369,8 +543,23 @@
     <li><a href="resources.html">Resources</a></li>
     <li><a href="#">More</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
- 
+
+<!-- MOBILE DROPDOWN MENU -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About</a>
+  <a href="enrollment.html">Enrollment</a>
+  <a href="activities.html">Activities</a>
+  <a href="resources.html">Resources</a>
+  <a href="#">More</a>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <img class="hero-bg" src="Images/HH_Academy_Image_Landing_Page.png" alt="Happy Home Academy">
@@ -382,7 +571,7 @@
     <a href="#section-apply" class="btn-primary">Learn More</a>
   </div>
 </section>
- 
+
 <!-- SHAPING TOMORROW -->
 <section class="section-about">
   <div class="about-text">
@@ -393,7 +582,7 @@
     <img src="Images/HH_Academy_Image_1.png" alt="Students">
   </div>
 </section>
- 
+
 <!-- MISSION / VISION -->
 <div class="mission-vision">
   <div class="mv-card">
@@ -407,7 +596,7 @@
     <p>At the heart of our school lies a clear mission that inspire learning and empower every student to thrive both inside and beyond the classroom.</p>
   </div>
 </div>
- 
+
 <!-- APPLY SECTION -->
 <section class="section-apply" id="section-apply">
   <div class="apply-image">
@@ -420,14 +609,14 @@
     <a href="#" class="btn-primary">Apply Now</a>
   </div>
 </section>
- 
+
 <!-- KPI SECTION -->
 <section class="section-kpi">
   <p class="sub-label">School Statistics</p>
   <h2>Key Performance Indicators</h2>
   <p class="kpi-desc">A snapshot of our school's recent performance and enrollment figures. Updated for 2024 to highlight achievement, growth, and student success.</p>
   <div class="kpi-circles">
- 
+
     <div class="kpi-item">
       <div class="donut-ring">
         <svg viewBox="0 0 234 234">
@@ -438,7 +627,7 @@
       </div>
       <span class="kpi-label">2024 Matric Pass Rate</span>
     </div>
- 
+
     <div class="kpi-item">
       <div class="donut-ring">
         <svg viewBox="0 0 234 234">
@@ -449,7 +638,7 @@
       </div>
       <span class="kpi-label">Students Enrolled</span>
     </div>
- 
+
     <div class="kpi-item">
       <div class="donut-ring">
         <svg viewBox="0 0 234 234">
@@ -460,10 +649,10 @@
       </div>
       <span class="kpi-label">School Overall Pass Rate</span>
     </div>
- 
+
   </div>
 </section>
- 
+
 <!-- CURRICULUM SECTION -->
 <section class="section-curriculum">
   <p class="sub-label">Curriculum Standards</p>
@@ -472,7 +661,7 @@
     <img src="Images/HH_Academy_Image_4.png" alt="Curriculum standards logos">
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
@@ -482,19 +671,41 @@
     <li><a href="#">Sitemap</a></li>
   </ul>
 </footer>
- 
+
 <script>
+  // Donut charts
   const circumference = 2 * Math.PI * 99.5;
- 
+
   function setDonut(id, pct) {
     const el = document.getElementById(id);
     const filled = (pct / 100) * circumference;
     el.style.strokeDasharray = `${filled} ${circumference}`;
   }
- 
+
   setDonut('donut1', 80);
   setDonut('donut2', 82);
   setDonut('donut3', 86.3);
+
+  // Hamburger / mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close menu when a link is tapped
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 </body>
 </html>
