@@ -113,10 +113,43 @@
     font-weight: 600;
     color: #fff;
     letter-spacing: 0.5px;
+    text-decoration: none;
+    padding-bottom: 4px;
+    position: relative;
+    display: inline-block;
     transition: color 0.2s;
   }
+  .mobile-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%;
+    width: 0; height: 2px;
+    background: #3EC2ED;
+    transform: translateX(-50%) scaleX(0);
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+  .mobile-menu a.active::after,
+  .mobile-menu a:hover::after { width: 100%; transform: translateX(-50%) scaleX(1); }
   .mobile-menu a.active,
   .mobile-menu a:hover { color: #3EC2ED; }
+  
+  .mobile-menu-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 201;
+    transition: transform 0.2s;
+  }
+  .mobile-menu-close:hover { transform: rotate(90deg); }
 
   /* HERO */
   .hero {
@@ -552,6 +585,7 @@
 
 <!-- MOBILE DROPDOWN MENU -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
   <a href="index.html" class="active">Home</a>
   <a href="about.html">About</a>
   <a href="enrollment.html">Enrollment</a>
@@ -689,12 +723,21 @@
   // Hamburger / mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
 
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close menu when close button is clicked
+  mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   });
 
   // Close menu when a link is tapped
