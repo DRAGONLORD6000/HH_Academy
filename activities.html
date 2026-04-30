@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activities - HH Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Roboto', sans-serif; background: #ffffff; color: #171717; }
+  a { text-decoration: none; color: inherit; }
+
+  :root {
+    --cyan: #3EC2ED;
+    --cyan-dark: #2db0db;
+    --gold: #FFC107;
+    --text: #414141;
+    --muted: #7A7A7A;
+    --card: #F2F2F2;
+    --line: #E1E1E1;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 102px;
+    background: rgba(242,242,242,0.75);
+    backdrop-filter: blur(25px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 134px;
+  }
+  .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #171717;
+    padding-bottom: 4px;
+    position: relative;
+    display: inline-block;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    transform: translateX(-50%) scaleX(0);
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+  .nav-links a.active::after,
+  .nav-links a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    padding: 4px;
+    z-index: 200;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #171717;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.97);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-menu a {
+    font-size: 26px;
+    font-weight: 600;
+    color: #171717;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .mobile-menu a.active,
+  .mobile-menu a:hover { color: var(--cyan); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 554px;
+    align-items: center;
+    gap: 40px;
+    padding: 75px 134px 60px;
+  }
+  .hero-copy h1 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 42px;
+    color: var(--cyan);
+    max-width: 520px;
+    margin-bottom: 20px;
+  }
+  .hero-copy p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #929292;
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+  .btn-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    min-width: 169px;
+    height: 56px;
+    padding: 0 32px;
+    border-radius: 25px;
+    background: var(--cyan);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+  .btn:hover { background: var(--cyan-dark); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
+  }
+  .btn-secondary:hover {
+    background: rgba(62, 194, 237, 0.08);
+  }
+
+  .hero-image {
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .stats-section {
+    padding: 0 134px 60px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 21px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 34px 32px;
+  }
+  .stat-card .stat-number {
+    display: block;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .stat-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1E1E1E;
+    margin-bottom: 10px;
+  }
+  .stat-card p {
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--muted);
+  }
+
+  .activities-section {
+    padding: 0 134px 80px;
+  }
+  .section-header {
+    margin-bottom: 28px;
+  }
+  .section-header .kicker {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 23px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 42px;
+    color: var(--cyan);
+    margin-bottom: 16px;
+  }
+  .section-header p {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--text);
+    max-width: 900px;
+  }
+
+  .table-shell {
+    background: #fcfcfc;
+    border-radius: 24px;
+    padding: 12px 0;
+  }
+  .activity-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .activity-table thead {
+    background: transparent;
+  }
+  .activity-table th,
+  .activity-table td {
+    padding: 22px 24px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .activity-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6f6f6f;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .activity-table td {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #2D2D2D;
+    border-top: 1px solid rgba(225, 225, 225, 0.6);
+  }
+  .activity-table tbody tr:first-child td {
+    border-top: none;
+  }
+  .activity-table tbody tr {
+    background: transparent;
+  }
+  .activity-table td:first-child,
+  .activity-table th:first-child {
+    width: 56px;
+    text-align: center;
+  }
+  .topic-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--cyan);
+  }
+  .topic-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .activity-cards {
+    display: none;
+    gap: 18px;
+  }
+  .activity-card {
+    background: #fafafa;
+    border-radius: 20px;
+    padding: 24px 22px;
+  }
+  .activity-card .row-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--cyan);
+    margin-bottom: 16px;
+  }
+  .activity-card .row-number svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .activity-card .item {
+    margin-bottom: 18px;
+  }
+  .activity-card .item:last-child {
+    margin-bottom: 0;
+  }
+  .activity-card .label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7a7a7a;
+    margin-bottom: 8px;
+  }
+  .activity-card .value {
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--text);
+  }
+
+  footer {
+    background: #F2F2F2;
+    min-height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  footer .copyright {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+  footer .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  footer .footer-links a {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+
+  @media (max-width: 1100px) {
+    .hero,
+    .stats-section,
+    .activities-section,
+    nav {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+      height: 320px;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      height: 70px;
+      padding: 0 20px;
+    }
+    .nav-logo img { width: 56px; height: 52px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+
+    .hero,
+    .stats-section,
+    .activities-section,
+    .hero {
+      padding-top: 30px;
+      padding-bottom: 40px;
+      gap: 28px;
+    }
+    .section-header .kicker {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .hero-copy h1,
+    .section-header h2 {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    .hero-copy p,
+    .section-header p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+    .btn-group {
+      gap: 12px;
+    }
+    .btn {
+      min-width: 140px;
+      height: 48px;
+      padding: 0 24px;
+      font-size: 16px;
+    }
+    .hero-image {
+      height: 240px;
+      border-radius: 16px;
+    }
+
+    .stats-section {
+      padding-bottom: 40px;
+    }
+    .stat-card {
+      padding: 26px 22px;
+    }
+    .stat-card .stat-number {
+      font-size: 32px;
+    }
+    .stat-card h2 {
+      font-size: 21px;
+    }
+    .stat-card p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    .activities-section {
+      padding-bottom: 50px;
+    }
+    .table-shell {
+      display: none;
+    }
+    .activity-cards {
+      display: grid;
+      gap: 20px;
+    }
+
+    footer .copyright,
+    footer .footer-links a {
+      font-size: 12px;
+    }
+    footer .footer-links {
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="enrollment.html">Enrollment</a></li>
+    <li><a href="activities.html" class="active">Activities</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="#">More</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="enrollment.html">Enrollment</a>
+  <a href="activities.html" class="active">Activities</a>
+  <a href="resources.html">Resources</a>
+  <a href="#">More</a>
+</div>
+
+<section class="hero">
+  <div class="hero-copy">
+    <h1>Extra Curriculum Activities</h1>
+    <p>The school offers a balanced programme of sport, creative opportunities, and leadership experiences so learners can grow in skill, character, teamwork, and responsibility beyond the classroom.</p>
+    <div class="btn-group">
+      <a href="#activity-list" class="btn">View Highlights</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="Images/Image Activity.jpg" alt="Happy Home Academy learners taking part in activities">
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="stats-grid">
+    <article class="stat-card">
+      <span class="stat-number">7</span>
+      <h2>Sports Offered</h2>
+      <p>From soccer and rugby to chess, swimming, and road running, learners can participate in a wide range of competitive and developmental sport.</p>
+    </article>
+    <article class="stat-card">
+      <span class="stat-number">7</span>
+      <h2>Creative and Club Activities</h2>
+      <p>Adventure club, choir, drama, the school newspaper, dancing, and other activities help students find out what they like and gain confidence.</p>
+    </article>
+    <article class="stat-card">
+      <span class="stat-number">3</span>
+      <h2>Leadership Pathways</h2>
+      <p>Student leadership roles promote service, responsibility, and active participation in both school and community life.</p>
+    </article>
+  </div>
+</section>
+
+<section class="activities-section" id="activity-list">
+  <div class="section-header">
+    <p class="kicker">Extra Curriculum Activities</p>
+    <h2>Extra Curriculum Activities</h2>
+    <p>The school offers the following Extra-Curriculum Activities:</p>
+  </div>
+
+  <div class="table-shell">
+    <table class="activity-table">
+      <thead>
+        <tr>
+          <th aria-label="Activity icon"></th>
+          <th>Sport</th>
+          <th>Other</th>
+          <th>Leadership</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Soccer icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 8.5l2.5 1.8-.9 3h-3.2l-.9-3L12 8.5z"></path>
+                <path d="M8.2 10l-2.1.6-.9 2.5 1.5 2.3 2.2.2"></path>
+                <path d="M15.8 10l2.1.6.9 2.5-1.5 2.3-2.2.2"></path>
+                <path d="M10 16.6L12 18l2-1.4"></path>
+              </svg>
+            </span>
+          </td>
+          <td>Soccer (boys and girls)</td>
+          <td>Adventure club</td>
+          <td>SC (Student Council)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Rugby icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 9c2.5-2.5 7.5-2.5 10 0s2.5 6.5 0 9-7.5 2.5-10 0-2.5-6.5 0-9z"></path>
+                <path d="M9.5 10.5l5 5"></path>
+                <path d="M14.5 10.5l-5 5"></path>
+                <path d="M10.2 12h3.6"></path>
+                <path d="M12 10.2v3.6"></path>
+              </svg>
+            </span>
+          </td>
+          <td>Rugby (boys)</td>
+          <td>SCO (School Christian Organization)</td>
+          <td>JCC (Junior City Council)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Cricket icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5l7 7"></path>
+                <path d="M7 6l2-2 9 9-2 2z"></path>
+                <circle cx="16.5" cy="16.5" r="2.5"></circle>
+                <path d="M5 19l4-4"></path>
+              </svg>
+            </span>
+          </td>
+          <td>Cricket (boys)</td>
+          <td>Ballroom and Latin American dancing</td>
+          <td>Prefects</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Chess icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 18h6"></path>
+                <path d="M8 20h8"></path>
+                <path d="M10 18c0-2 1-3 2-4 1-1 2-2 2-4 0-1.7-1.3-3-3-3S8 8.3 8 10c0 1.5 1 2.6 2 3.4"></path>
+                <circle cx="13.5" cy="7.5" r="1.5"></circle>
+              </svg>
+            </span>
+          </td>
+          <td>Chess (boys and girls)</td>
+          <td>Choir</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Road running icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="15.5" cy="5.5" r="1.5"></circle>
+                <path d="M12 9l2.5-1 1.5 2"></path>
+                <path d="M9 13l3-4 2 2 3 1"></path>
+                <path d="M8 18l3-3 2 1 3 3"></path>
+                <path d="M6 12h3"></path>
+              </svg>
+            </span>
+          </td>
+          <td>Road running (boys and girls)</td>
+          <td>Public speaking</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Swimming icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="9" cy="7" r="1.5"></circle>
+                <path d="M11 9l2 1 2.5-.5"></path>
+                <path d="M8 11l3-1 2 3"></path>
+                <path d="M4 16c1 .8 2 .8 3 0s2-.8 3 0 2 .8 3 0 2-.8 3 0 2 .8 3 0"></path>
+                <path d="M6 19c1 .8 2 .8 3 0s2-.8 3 0 2 .8 3 0 2-.8 3 0"></path>
+              </svg>
+            </span>
+          </td>
+          <td>Swimming (boys and girls)</td>
+          <td>Drama club</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="topic-icon" aria-label="Netball icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10" cy="12" r="5"></circle>
+                <path d="M6.5 8.5c2 2 5 5 7 7"></path>
+                <path d="M6.5 15.5c2-2 5-5 7-7"></path>
+                <path d="M15 7h4"></path>
+                <path d="M17 7v8"></path>
+                <path d="M14.5 15h5"></path>
+              </svg>
+            </span>
+          </td>
+          <td>Netball (girls)</td>
+          <td>School newspaper</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="activity-cards">
+    <article class="activity-card">
+      <span class="row-number" aria-label="Soccer icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 8.5l2.5 1.8-.9 3h-3.2l-.9-3L12 8.5z"></path>
+          <path d="M8.2 10l-2.1.6-.9 2.5 1.5 2.3 2.2.2"></path>
+          <path d="M15.8 10l2.1.6.9 2.5-1.5 2.3-2.2.2"></path>
+          <path d="M10 16.6L12 18l2-1.4"></path>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Soccer (boys and girls)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">Adventure club</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">SC (Student Council)</span></div>
+    </article>
+    <article class="activity-card">
+      <span class="row-number" aria-label="Rugby icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 9c2.5-2.5 7.5-2.5 10 0s2.5 6.5 0 9-7.5 2.5-10 0-2.5-6.5 0-9z"></path>
+          <path d="M9.5 10.5l5 5"></path>
+          <path d="M14.5 10.5l-5 5"></path>
+          <path d="M10.2 12h3.6"></path>
+          <path d="M12 10.2v3.6"></path>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Rugby (boys)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">SCO (School Christian Organization)</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">JCC (Junior City Council)</span></div>
+    </article>
+    <article class="activity-card">
+      <span class="row-number" aria-label="Cricket icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5l7 7"></path>
+          <path d="M7 6l2-2 9 9-2 2z"></path>
+          <circle cx="16.5" cy="16.5" r="2.5"></circle>
+          <path d="M5 19l4-4"></path>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Cricket (boys)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">Ballroom and Latin American dancing</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">Prefects</span></div>
+    </article>
+    <article class="activity-card">
+      <span class="row-number" aria-label="Chess icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 18h6"></path>
+          <path d="M8 20h8"></path>
+          <path d="M10 18c0-2 1-3 2-4 1-1 2-2 2-4 0-1.7-1.3-3-3-3S8 8.3 8 10c0 1.5 1 2.6 2 3.4"></path>
+          <circle cx="13.5" cy="7.5" r="1.5"></circle>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Chess (boys and girls)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">Choir</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">No leadership item listed</span></div>
+    </article>
+    <article class="activity-card">
+      <span class="row-number" aria-label="Road running icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="15.5" cy="5.5" r="1.5"></circle>
+          <path d="M12 9l2.5-1 1.5 2"></path>
+          <path d="M9 13l3-4 2 2 3 1"></path>
+          <path d="M8 18l3-3 2 1 3 3"></path>
+          <path d="M6 12h3"></path>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Road running (boys and girls)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">Public speaking</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">No leadership item listed</span></div>
+    </article>
+    <article class="activity-card">
+      <span class="row-number" aria-label="Swimming icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="9" cy="7" r="1.5"></circle>
+          <path d="M11 9l2 1 2.5-.5"></path>
+          <path d="M8 11l3-1 2 3"></path>
+          <path d="M4 16c1 .8 2 .8 3 0s2-.8 3 0 2 .8 3 0 2-.8 3 0 2 .8 3 0"></path>
+          <path d="M6 19c1 .8 2 .8 3 0s2-.8 3 0 2 .8 3 0 2-.8 3 0"></path>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Swimming (boys and girls)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">Drama club</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">No leadership item listed</span></div>
+    </article>
+    <article class="activity-card">
+      <span class="row-number" aria-label="Netball icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10" cy="12" r="5"></circle>
+          <path d="M6.5 8.5c2 2 5 5 7 7"></path>
+          <path d="M6.5 15.5c2-2 5-5 7-7"></path>
+          <path d="M15 7h4"></path>
+          <path d="M17 7v8"></path>
+          <path d="M14.5 15h5"></path>
+        </svg>
+      </span>
+      <div class="item"><span class="label">Sport</span><span class="value">Netball (girls)</span></div>
+      <div class="item"><span class="label">Other</span><span class="value">School newspaper</span></div>
+      <div class="item"><span class="label">Leadership</span><span class="value">No leadership item listed</span></div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <span class="copyright">Copyright &copy; 2026 Happy Home Academy. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Sitemap</a>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>
