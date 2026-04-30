@@ -6,14 +6,19 @@
   <title>About – HH Academy</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="about-page">
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-logo">
       <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" class="logo-shield" />
     </div>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="site-nav">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="enrollment.html">Enrollment</a></li>
@@ -22,6 +27,15 @@
       <li><a href="#">More</a></li>
     </ul>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="enrollment.html">Enrollment</a>
+    <a href="activities.html">Activities</a>
+    <a href="resources.html">Resources</a>
+    <a href="#">More</a>
+  </div>
 
   <!--- HERO SECTION --->
   <section class="hero">
@@ -147,5 +161,35 @@
     </div>
   </footer>
 
+  <script>
+    const aboutNavToggle = document.querySelector('.nav-toggle');
+    const aboutMobileMenu = document.getElementById('mobileMenu');
+
+    if (aboutNavToggle && aboutMobileMenu) {
+      const closeAboutMenu = () => {
+        aboutMobileMenu.classList.remove('open');
+        aboutNavToggle.classList.remove('open');
+        aboutNavToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      };
+
+      aboutNavToggle.addEventListener('click', () => {
+        const isOpen = aboutMobileMenu.classList.toggle('open');
+        aboutNavToggle.classList.toggle('open', isOpen);
+        aboutNavToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('menu-open', isOpen);
+      });
+
+      aboutMobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeAboutMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeAboutMenu();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
