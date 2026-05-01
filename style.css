@@ -138,8 +138,6 @@ body {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-
 /* ------------------
    About Page Styles
 --------------------- */
@@ -191,7 +189,7 @@ img {
  
 /* --- NAVBAR --- */
 .navbar {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -201,6 +199,8 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 14px 134px;
+  background: rgba(242, 242, 242, 0.75);
+  backdrop-filter: blur(25px);
 }
 
 .nav-logo {
@@ -335,7 +335,7 @@ img {
   max-width: var(--page-width);
   margin: 0 auto;
   min-height: 567px;
-  padding: 201px var(--page-gutter) 85px;
+  padding: 120px var(--page-gutter) 85px;
   display: grid;
   grid-template-columns: 514px 530px;
   align-items: start;
@@ -1227,6 +1227,7 @@ img {
 /* ------------------
    About Page Styles End
 --------------------- */
+
 
 
 
