@@ -138,6 +138,8 @@ body {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 /* ------------------
    About Page Styles
 --------------------- */
@@ -556,7 +558,7 @@ img {
  
 /* ---OUR VALUES --- */
 .values-section {
-  padding: 48px 104px 80px;
+  padding: 48px 72px 80px;
   background: #fff;
   max-width: var(--page-width);
   margin: 0 auto;
@@ -577,8 +579,12 @@ img {
  
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 411px));
   gap: 24px;
+  justify-content: center;
+  max-width: 1281px;
+  margin: 0 auto;
+  transform: translateX(-10px);
 }
  
 .value-card {
@@ -767,6 +773,7 @@ img {
     grid-template-columns: 1fr;
     max-width: 720px;
     margin: 0 auto;
+    transform: none;
   }
 
   .school-section,
@@ -1189,6 +1196,16 @@ img {
     margin-right: 0;
   }
 
+  .values-grid,
+  .values-header {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .values-grid {
+    justify-items: center;
+  }
+
   .school-img-wrap,
   .quality-img-wrap,
   .school-card,
@@ -1210,6 +1227,7 @@ img {
 /* ------------------
    About Page Styles End
 --------------------- */
+
 
 
 
