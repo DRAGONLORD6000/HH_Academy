@@ -173,7 +173,7 @@
     line-height: 1.3;
   }
   .tab-btn:last-child { border-bottom: none; }
-  .tab-btn.active { background: #FFC107; color: #fff; }
+  .tab-btn.active { background: #3EC2ED; color: #fff; }
   .tab-btn:hover:not(.active) { background: #E8F9FF; color: #3EC2ED; }
 
   .tab-content { flex: 1; }
@@ -303,18 +303,22 @@
 
   /* ── FOOTER ── */
   footer {
-    background: #F2F2F2; height: 92px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 8px;
+    background: #F2F2F2;
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
-  footer .copyright {
+  footer .copy {
     font-weight: 700; font-size: 15px; color: #1E1E1E;
   }
-  footer .footer-links { display: flex; gap: 24px; }
-  footer .footer-links a {
+  footer .footer-links { display: flex; gap: 24px; list-style: none; }
+  footer .footer-links li a {
     font-weight: 700; font-size: 15px; color: #1E1E1E; text-decoration: none;
   }
-  footer .footer-links a:hover { text-decoration: underline; }
+  footer .footer-links li a:hover { color: #3EC2ED; }
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
@@ -348,12 +352,17 @@
     .band-section { padding: 40px 20px; }
     .band-cards { grid-template-columns: 1fr; gap: 14px; }
 
-    footer { height: auto; padding: 20px 16px; text-align: center; }
-    footer .copyright { font-size: 12px; }
-    footer .footer-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
-    footer .footer-links a { font-size: 12px; }
+    footer { height: auto; padding: 24px 20px; text-align: center; }
+    footer .copy { font-size: 13px; margin-bottom: 12px; }
+    footer .footer-links { flex-direction: column; gap: 8px; }
+    footer .footer-links li a { font-size: 12px; }
   }
+
   @media (max-width: 480px) {
+    footer { padding: 20px 16px; }
+    footer .copy { font-size: 12px; margin-bottom: 10px; }
+    footer .footer-links { gap: 6px; }
+    footer .footer-links li a { font-size: 11px; }
     .btn-group { gap: 12px; }
     .btn { width: 130px; font-size: 15px; }
   }
@@ -372,7 +381,7 @@
     <a href="enrollment.html">Enrollment</a>
     <a href="activities.html">Activities</a>
     <a href="resources.html" class="active">Resources</a>
-    <a href="#">More</a>
+    <a href="contact.html">Contact</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -387,7 +396,7 @@
   <a href="enrollment.html">Enrollment</a>
   <a href="activities.html">Activities</a>
   <a href="resources.html" class="active">Resources</a>
-  <a href="#">More</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -562,12 +571,12 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="copyright">© Happy Home Academy - Sydnam. All Rights Reserved.</span>
-  <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Use</a>
-    <a href="#">Sitemap</a>
-  </div>
+  <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Sitemap</a></li>
+  </ul>
 </footer>
 
 <script>

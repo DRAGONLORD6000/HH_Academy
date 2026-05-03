@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – HH Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Roboto', sans-serif; background: #fff; color: #414141; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: 102px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 134px;
+    transition: background 0.3s ease;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links li a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    position: relative;
+    padding-bottom: 4px;
+    display: inline-block;
+  }
+  .nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3EC2ED;
+    transform: translateX(-50%) scaleX(0);
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+  .nav-links li a.active::after,
+  .nav-links li a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+  }
+  .nav-links a:hover { color: #e0e0e0; }
+  nav.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+  }
+
+  /* HAMBURGER BUTTON */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    padding: 4px;
+    z-index: 200;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* MOBILE DROPDOWN MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding-bottom: 4px;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+  .mobile-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%;
+    width: 0; height: 2px;
+    background: #3EC2ED;
+    transform: translateX(-50%) scaleX(0);
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+  .mobile-menu a.active::after,
+  .mobile-menu a:hover::after { width: 100%; transform: translateX(-50%) scaleX(1); }
+  .mobile-menu a.active,
+  .mobile-menu a:hover { color: #3EC2ED; }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 30px; right: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 201;
+    transition: transform 0.2s;
+  }
+  .mobile-menu-close:hover { transform: rotate(90deg); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    padding: 0 134px 48px;
+  }
+  .hero-content .breadcrumb {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+  }
+  .hero-content .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .hero-content .breadcrumb span { color: #3EC2ED; }
+  .hero-content h1 {
+    font-size: 40px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 47px;
+  }
+
+  /* CONTACT SECTION */
+  .contact-section {
+    padding: 80px 134px;
+  }
+
+  .contact-intro {
+    font-size: 22px;
+    font-weight: 400;
+    color: #7A7A7A;
+    margin-bottom: 40px;
+  }
+
+  /* INFO CARDS */
+  .info-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+  }
+  .info-card {
+    flex: 1;
+    min-width: 200px;
+    background: #F2F2F2;
+    border: 1px solid #E1E1E1;
+    border-radius: 16px;
+    padding: 28px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .info-card-icon {
+    width: 46px;
+    height: 46px;
+    background: #3EC2ED;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-card-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: #fff;
+  }
+  .info-card-text h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #414141;
+    margin-bottom: 6px;
+  }
+  .info-card-text p, .info-card-text a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #929292;
+    line-height: 22px;
+    text-decoration: none;
+  }
+  .info-card-text a:hover { color: #3EC2ED; }
+
+  /* FORM + MAP GRID */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* FORM */
+  .contact-form-wrap h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3EC2ED;
+    margin-bottom: 8px;
+    line-height: 42px;
+  }
+  .contact-form-wrap .form-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: #929292;
+    margin-bottom: 30px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #414141;
+    margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: #F2F2F2;
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #414141;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #3EC2ED;
+    box-shadow: 0 0 0 3px rgba(62,194,237,0.12);
+  }
+  .form-group textarea { height: 140px; }
+  .btn-primary {
+    display: inline-block;
+    background: #3EC2ED;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0 32px;
+    height: 56px;
+    line-height: 56px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #2db0db; }
+
+  /* MAP */
+  .map-wrap h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3EC2ED;
+    margin-bottom: 8px;
+    line-height: 42px;
+  }
+  .map-wrap .map-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: #929292;
+    margin-bottom: 30px;
+  }
+  .map-container {
+    width: 100%;
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #E1E1E1;
+  }
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #F2F2F2;
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  footer .copy {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+  footer .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  footer .footer-links li a {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+  footer .footer-links li a:hover { color: #3EC2ED; }
+
+  /* =====================
+     MOBILE RESPONSIVE
+     ===================== */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+      position: fixed;
+      height: 70px;
+      padding: 0 20px;
+    }
+    .nav-logo img { width: 56px; height: 52px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+
+    /* HERO */
+    .hero { height: 240px; }
+    .hero-content {
+      padding: 0 20px 32px;
+    }
+    .hero-content h1 { font-size: 28px; line-height: 34px; }
+
+    /* CONTACT SECTION */
+    .contact-section { padding: 40px 20px; }
+    .contact-intro { font-size: 16px; margin-bottom: 28px; }
+
+    /* INFO CARDS */
+    .info-cards { flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .info-card { padding: 20px; }
+    .info-card-text h3 { font-size: 15px; }
+    .info-card-text p, .info-card-text a { font-size: 14px; }
+
+    /* GRID */
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    /* FORM */
+    .contact-form-wrap h2 { font-size: 26px; line-height: 32px; }
+    .btn-primary { font-size: 16px; height: 48px; line-height: 48px; padding: 0 24px; }
+
+    /* MAP */
+    .map-wrap h2 { font-size: 26px; line-height: 32px; }
+    .map-container { height: 300px; border-radius: 12px; }
+
+    /* FOOTER */
+    footer {
+      height: auto;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    footer .copy { font-size: 13px; margin-bottom: 12px; }
+    footer .footer-links { flex-direction: column; gap: 8px; }
+    footer .footer-links li a { font-size: 12px; }
+  }
+
+  @media (max-width: 480px) {
+    /* FOOTER */
+    footer {
+      padding: 20px 16px;
+    }
+    footer .copy { font-size: 12px; margin-bottom: 10px; }
+    footer .footer-links { gap: 6px; }
+    footer .footer-links li a { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="enrollment.html">Enrollment</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DROPDOWN MENU -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="enrollment.html">Enrollment</a>
+  <a href="activities.html">Activities</a>
+  <a href="resources.html">Resources</a>
+  <a href="contact.html" class="active">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg" src="Images/HH_Academy_Image_Landing_Page.png" alt="HH Academy Contact">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="breadcrumb"><a href="index.html">Home</a> › <span>Contact Us</span></p>
+    <h1>Contact Us</h1>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <p class="contact-intro">Contact us or visit our school</p>
+
+  <!-- INFO CARDS -->
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-icon">
+        <!-- Location pin icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+      </div>
+      <div class="info-card-text">
+        <h3>Visit Us:</h3>
+        <p>2 Gibaud Road, Sydenham, Port Elizabeth</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">
+        <!-- Phone icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+      </div>
+      <div class="info-card-text">
+        <h3>Call Us:</h3>
+        <a href="tel:0414511243">041 451 1243</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">
+        <!-- Mail icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </div>
+      <div class="info-card-text">
+        <h3>Mail Us:</h3>
+        <a href="mailto:admin@hhacademy.co.za">admin@hhacademy.co.za</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM + MAP -->
+  <div class="contact-grid">
+    <!-- FORM -->
+    <div class="contact-form-wrap">
+      <h2>Get in Touch</h2>
+      <p class="form-sub">Write us a message and we'll get back to you as soon as possible.</p>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name">
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address">
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter subject">
+      </div>
+      <div class="form-group">
+        <label for="message">Write Message</label>
+        <textarea id="message" name="message" placeholder="Type your message here..."></textarea>
+      </div>
+      <button type="button" class="btn-primary">Submit Form</button>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-wrap">
+      <h2>Find Us</h2>
+      <p class="map-sub">2 Gibaud Road, Holland Park, Gqeberha, 6001</p>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.4223250436958!2d25.591458499999998!3d-33.9302644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad3c07e87bfab%3A0xf8e1f44b368cf4e0!2s2%20Gibaud%20Rd%2C%20Holland%20Park%2C%20Gqeberha%2C%206001!5e0!3m2!1sen!2sza!4v1777822428556!5m2!1sen!2sza"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Sitemap</a></li>
+  </ul>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Scroll event to darken nav background
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

@@ -294,24 +294,23 @@
     justify-content: center;
     gap: 8px;
   }
-  footer .copyright {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
+  footer .copy {
     font-size: 15px;
+    font-weight: 700;
     color: #1E1E1E;
   }
   footer .footer-links {
     display: flex;
     gap: 24px;
+    list-style: none;
   }
-  footer .footer-links a {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
+  footer .footer-links li a {
     font-size: 15px;
+    font-weight: 700;
     color: #1E1E1E;
     text-decoration: none;
   }
-  footer .footer-links a:hover { text-decoration: underline; }
+  footer .footer-links li a:hover { color: #3EC2ED; }
 
   /* =====================
      MOBILE RESPONSIVE
@@ -369,16 +368,22 @@
     /* FOOTER */
     footer {
       height: auto;
-      padding: 20px 16px;
+      padding: 24px 20px;
       text-align: center;
     }
-    footer .copyright { font-size: 12px; }
-    footer .footer-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
-    footer .footer-links a { font-size: 12px; }
+    footer .copy { font-size: 13px; margin-bottom: 12px; }
+    footer .footer-links { flex-direction: column; gap: 8px; }
+    footer .footer-links li a { font-size: 12px; }
   }
 
   @media (max-width: 480px) {
-    .btn-group { gap: 12px; }
+    /* FOOTER */
+    footer {
+      padding: 20px 16px;
+    }
+    footer .copy { font-size: 12px; margin-bottom: 10px; }
+    footer .footer-links { gap: 6px; }
+    footer .footer-links li a { font-size: 11px; }
     .btn { width: 130px; font-size: 15px; }
   }
 </style>
@@ -396,7 +401,7 @@
     <a href="enrollment.html" class="active">Enrollment</a>
     <a href="activities.html">Activities</a>
     <a href="resources.html">Resources</a>
-    <a href="#">More</a>
+    <a href="contact.html">Contact</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span>
@@ -413,7 +418,7 @@
   <a href="enrollment.html" class="active">Enrollment</a>
   <a href="activities.html">Activities</a>
   <a href="resources.html">Resources</a>
-  <a href="#">More</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <!-- HERO SECTION -->
@@ -497,12 +502,12 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="copyright">© Happy Home Academy - Sydnam. All Rights Reserved.</span>
-  <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Use</a>
-    <a href="#">Sitemap</a>
-  </div>
+  <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Sitemap</a></li>
+  </ul>
 </footer>
 
 <script>
