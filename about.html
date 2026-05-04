@@ -9,32 +9,32 @@
 <body class="about-page">
 
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav>
     <div class="nav-logo">
-      <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" class="logo-shield" />
+      <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" onerror="this.style.display='none'">
     </div>
-    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="enrollment.html">Enrollment</a>
+      <a href="activities.html">Activities</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="site-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="enrollment.html">Enrollment</a></li>
-      <li><a href="activities.html">Activities</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="#">More</a></li>
-    </ul>
   </nav>
 
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
     <a href="index.html">Home</a>
     <a href="about.html" class="active">About</a>
     <a href="enrollment.html">Enrollment</a>
     <a href="activities.html">Activities</a>
     <a href="resources.html">Resources</a>
-    <a href="#">More</a>
+    <a href="contact.html">Contact</a>
   </div>
 
   <!--- HERO SECTION --->
@@ -43,7 +43,7 @@
       <h1>Built to Shaping The Future<br>of our Children</h1>
       <p class="hero-subtitle">About Us</p>
       <div class="hero-card">
-        <p>Welcome to Taxar Academy, where academic excellence meets a vibrant community! With dedicated educators and a supportive environment, we empower students to thrive academically and personally.</p>
+        <p>Welcome to Happy Home Academy, where academic excellence&nbsp;meets a vibrant community! With dedicated educators and a supportive environment, we empower students to thrive academically and personally.</p>
         <a href="#school" class="btn">Let's Learn</a> 
       </div>
     </div>
@@ -73,8 +73,8 @@
       <div class="school-card left-card">
         <p>This ensures that each student's potential is discovered and developed. Our educators are trained and encouraged how to teach with Christ in the Centre as departure point of every curriculum. The school adopts the National Curriculum (CAPS). Government ANA exams are also written by Grades 3, 6 and 9.</p>
         <div class="btn-group">
-          <a href="#" class="btn">Code of Conduct</a>
-          <a href="#" class="btn">Drug Policy</a>
+          <a href="https://www.hhacademy.co.za/HH%20Academy%20Code%20of%20Conduct.pdf" class="btn">Code of Conduct</a>
+          <a href="https://www.hhacademy.co.za/HH%20Academy%20drug%20policy.pdf" class="btn">Drug Policy</a>
         </div>
       </div>
       <div class="school-img-wrap right">
@@ -162,34 +162,31 @@
   </footer>
 
   <script>
-    const aboutNavToggle = document.querySelector('.nav-toggle');
-    const aboutMobileMenu = document.getElementById('mobileMenu');
-
-    if (aboutNavToggle && aboutMobileMenu) {
-      const closeAboutMenu = () => {
-        aboutMobileMenu.classList.remove('open');
-        aboutNavToggle.classList.remove('open');
-        aboutNavToggle.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('menu-open');
-      };
-
-      aboutNavToggle.addEventListener('click', () => {
-        const isOpen = aboutMobileMenu.classList.toggle('open');
-        aboutNavToggle.classList.toggle('open', isOpen);
-        aboutNavToggle.setAttribute('aria-expanded', String(isOpen));
-        document.body.classList.toggle('menu-open', isOpen);
+    // Hamburger / mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    // Close menu when close button is clicked
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
-
-      aboutMobileMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeAboutMenu);
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-          closeAboutMenu();
-        }
-      });
-    }
+    });
   </script>
 </body>
 </html>
