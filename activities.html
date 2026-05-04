@@ -123,6 +123,15 @@
   .mobile-menu a.active,
   .mobile-menu a:hover { color: var(--cyan); }
 
+  .mobile-menu-close {
+    position: absolute; top: 30px; right: 30px;
+    background: none; border: none; color: #171717;
+    font-size: 32px; cursor: pointer; padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 201; transition: transform 0.2s;
+  }
+  .mobile-menu-close:hover { transform: rotate(90deg); }
+
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 554px;
@@ -176,15 +185,30 @@
   }
 
   .hero-image {
+    position: relative;
     height: 350px;
     border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08);
+    overflow: visible;
+    z-index: 2;
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #3EC2ED;
+    border-radius: 20px;
+    z-index: -1;
+    bottom: -20px;
+    right: -20px;
   }
   .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
   }
 
   .stats-section {
@@ -267,11 +291,14 @@
     text-align: left;
     vertical-align: top;
   }
+  .activity-table thead {
+    background: var(--cyan);
+  }
   .activity-table th {
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 600;
-    color: #6f6f6f;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
@@ -508,30 +535,30 @@
 
 <nav>
   <div class="nav-logo">
-    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo">
+    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" onerror="this.style.display='none'">
   </div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="enrollment.html">Enrollment</a></li>
-    <li><a href="activities.html" class="active">Activities</a></li>
-    <li><a href="resources.html">Resources</a></li>
-    <li><a href="#">More</a></li>
-  </ul>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="enrollment.html">Enrollment</a>
+    <a href="activities.html" class="active">Activities</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="enrollment.html">Enrollment</a>
   <a href="activities.html" class="active">Activities</a>
   <a href="resources.html">Resources</a>
-  <a href="#">More</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <section class="hero">
@@ -539,7 +566,7 @@
     <h1>Extra Curriculum Activities</h1>
     <p>The school offers a balanced programme of sport, creative opportunities, and leadership experiences so learners can grow in skill, character, teamwork, and responsibility beyond the classroom.</p>
     <div class="btn-group">
-      <a href="#activity-list" class="btn">View Highlights</a>
+      <a href="https://www.facebook.com/hhacademyprimaryschool" class="btn">View Highlights</a>
     </div>
   </div>
   <div class="hero-image">
@@ -811,16 +838,23 @@
 </footer>
 
 <script>
+  // Hamburger / mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-
+  // Close menu when close button is clicked
+  mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
@@ -832,3 +866,4 @@
 </script>
 </body>
 </html>
+
