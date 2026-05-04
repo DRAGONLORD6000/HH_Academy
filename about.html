@@ -523,35 +523,33 @@ nav {
 }
  
 /* --- FOOTER --- */
-.footer {
-  background: #e8e8e8;
-  text-align: center;
-  padding: 24px 48px 22px;
-  font-size: 11px;
-  color: #444;
-}
- 
-.footer p {
-  margin: 0 0 16px;
-  font-weight: 500;
-}
- 
-.footer-links {
+footer {
+  background: #F2F2F2;
+  height: 92px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 8px;
 }
- 
-.footer-links a {
-  color: #444;
-  font-weight: 500;
-  font-size: 11px;
-  transition: color 0.2s;
+footer .copyright {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1E1E1E;
 }
- 
-.footer-links a:hover {
-  color: var(--cyan);
+footer .footer-links {
+  display: flex;
+  gap: 24px;
 }
+footer .footer-links a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1E1E1E;
+  text-decoration: none;
+}
+footer .footer-links a:hover { text-decoration: underline; }
  
 
 @media (max-width: 980px) {
@@ -1247,9 +1245,9 @@ nav {
     </div>
   </section>
 
-  <!--- FOOTER  --->
-  <footer class="footer">
-    <p>© Happy Home Academy - Sydnam. All Rights Reserved.</p>
+  <!-- FOOTER -->
+  <footer>
+    <span class="copyright">© Happy Home Academy - Sydnam. All Rights Reserved.</span>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Use</a>
