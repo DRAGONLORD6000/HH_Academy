@@ -251,10 +251,10 @@ nav {
 }
  
 .hero-card p {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 100%;
+  line-height: 26px;
   letter-spacing: 0;
   color: var(--text);
   margin: 0 0 28px;
@@ -345,9 +345,9 @@ nav {
   border-radius: 16px;
   min-height: 176px;
   padding: 46px 48px; 
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 100%;
+  line-height: 26px;
   letter-spacing: 0;
   color: var(--text);
   position: relative;
@@ -404,9 +404,9 @@ nav {
   border-radius: 16px;
   min-height: 430px;
   padding: 48px 84px 40px 48px; 
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 100%;
+  line-height: 26px;
   letter-spacing: 0;
   color: var(--text);
   margin-right: -30px;
@@ -513,12 +513,12 @@ nav {
   width: 314px;
   max-width: 100%;
   font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 26px;
   letter-spacing: 0;
   color: var(--text);
-  text-align: right;
+  text-align: center;
   margin: 0;
 }
  
@@ -669,7 +669,7 @@ footer .footer-links a:hover { text-decoration: underline; }
 @media (max-width: 768px) {
   html,
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   nav {
@@ -938,7 +938,7 @@ footer .footer-links a:hover { text-decoration: underline; }
 
   .values-header {
     margin-bottom: 28px;
-    text-align: left;
+    text-align: center;
   }
 
   .values-grid {
@@ -966,15 +966,25 @@ footer .footer-links a:hover { text-decoration: underline; }
     width: 100%;
     font-size: 1rem;
     line-height: 1.35;
+    text-align: center;
   }
 
-  .footer {
-    padding: 28px 20px;
+  footer {
+    height: auto;
+    padding: 20px 16px;
+    text-align: center;
   }
 
-  .footer-links {
+  footer .copyright,
+  footer .footer-links a {
+    font-size: 12px;
+  }
+
+  footer .footer-links {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -996,10 +1006,6 @@ footer .footer-links a:hover { text-decoration: underline; }
 
   .mobile-menu {
     gap: 28px;
-  }
-
-  .mobile-menu a {
-    font-size: 22px;
   }
 
   .hero {
@@ -1093,6 +1099,11 @@ footer .footer-links a:hover { text-decoration: underline; }
 
   .value-card h3 {
     font-size: 1.2rem;
+  }
+
+  footer .footer-links {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 /* ------------------
@@ -1284,3 +1295,4 @@ footer .footer-links a:hover { text-decoration: underline; }
   </script>
 </body>
 </html>
+
