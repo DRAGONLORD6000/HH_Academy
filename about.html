@@ -673,53 +673,15 @@ footer .footer-links a:hover { text-decoration: underline; }
   }
 
   nav {
-    position: fixed;
     height: 70px;
     padding: 0 20px;
-    background: rgba(242,242,242,0.75);
-    backdrop-filter: blur(12px);
   }
-
-  nav .logo-shield {
-    width: 56px;
-    height: 52px;
-  }
-
-  .nav-logo img {
-    width: 60px;
-    height: 56px;
-  }
-
-  .hamburger {
-    display: flex;
-    position: relative;
-  }
-
-  .nav-links {
-    display: none;
-  }
+  .nav-logo img { width: 56px; height: 52px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
 
   .mobile-menu {
     display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,0.97);
-    z-index: 150;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 36px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .mobile-menu.open {
-    opacity: 1;
-    pointer-events: all;
   }
 
   .mobile-menu a {
@@ -727,6 +689,7 @@ footer .footer-links a:hover { text-decoration: underline; }
     font-weight: 600;
     color: #171717;
     letter-spacing: 0.5px;
+    text-decoration: none;
     transition: color 0.2s;
   }
 
@@ -739,17 +702,17 @@ footer .footer-links a:hover { text-decoration: underline; }
     width: 100%;
     grid-template-columns: minmax(0, 1fr);
     justify-items: stretch;
-    padding: 96px 16px 34px;
-    gap: 22px;
+    padding: 30px 20px 40px;
+    gap: 28px;
   }
 
   .about-page .hero {
-    padding-bottom: 34px;
-    gap: 22px;
+    padding-bottom: 40px;
+    gap: 28px;
   }
 
   .hero-text {
-    width: calc(100vw - 32px);
+    width: calc(100vw - 40px);
     max-width: none;
     margin-left: 0;
     margin-right: 0;
@@ -757,7 +720,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   }
 
   .hero-image-wrap {
-    width: calc(100vw - 32px);
+    width: calc(100vw - 40px);
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -990,18 +953,12 @@ footer .footer-links a:hover { text-decoration: underline; }
 
 @media (max-width: 480px) {
   nav {
-    height: 64px;
-    padding: 0 16px;
-  }
-
-  nav .logo-shield {
-    width: 50px;
-    height: 47px;
+    padding: 0 20px;
   }
 
   .hamburger {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .mobile-menu {
@@ -1010,7 +967,7 @@ footer .footer-links a:hover { text-decoration: underline; }
 
   .hero {
     justify-items: start;
-    padding: 86px 20px 30px;
+    padding: 30px 20px 40px;
   }
 
   .hero-text,
@@ -1295,4 +1252,5 @@ footer .footer-links a:hover { text-decoration: underline; }
   </script>
 </body>
 </html>
+
 
