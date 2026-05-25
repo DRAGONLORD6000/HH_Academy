@@ -552,7 +552,7 @@ footer .footer-links a {
 footer .footer-links a:hover { text-decoration: underline; }
  
 
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   :root {
     --page-gutter: 24px;
   }
@@ -591,6 +591,14 @@ footer .footer-links a:hover { text-decoration: underline; }
     flex: none;
     max-width: 100%;
     width: 100%;
+  }
+
+  .hero-image-wrap,
+  .school-img-wrap,
+  .quality-img-wrap {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-image-wrap {
@@ -966,7 +974,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   }
 
   .hero {
-    justify-items: start;
+    justify-items: center;
     padding: 30px 20px 40px;
   }
 
@@ -974,9 +982,9 @@ footer .footer-links a:hover { text-decoration: underline; }
   .hero-image-wrap {
     width: calc(100vw - 40px);
     max-width: 350px;
-    margin-left: 0;
-    margin-right: 0;
-    justify-self: start;
+    margin-left: auto;
+    margin-right: auto;
+    justify-self: center;
   }
 
   .hero-text h1 {
@@ -1027,12 +1035,6 @@ footer .footer-links a:hover { text-decoration: underline; }
   .section-title {
     width: calc(100vw - 40px);
     max-width: 350px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .values-grid,
-  .values-header {
     margin-left: auto;
     margin-right: auto;
   }
@@ -1253,4 +1255,5 @@ footer .footer-links a:hover { text-decoration: underline; }
   </script>
 </body>
 </html>
+
 
