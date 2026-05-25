@@ -444,10 +444,40 @@
 
     .hero {
       grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-image {
-      height: 320px;
+      width: 100%;
+      max-width: 720px;
+      height: clamp(260px, 34vw, 340px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-image::after {
+      bottom: -14px;
+      right: -14px;
+    }
+
+    .hero-image img {
+      object-position: center 28%;
+    }
+
+    .stats-section,
+    .activities-section {
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-copy,
+    .section-header {
+      max-width: 720px;
     }
 
     .stats-grid {
