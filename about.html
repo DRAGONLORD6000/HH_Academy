@@ -72,6 +72,9 @@ nav {
 }
 .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-item {
+  position: relative;
+}
 .nav-links a {
   font-size: 18px;
   font-weight: 400;
@@ -92,6 +95,49 @@ nav {
 }
 .nav-links a.active::after,
 .nav-links a:hover::after { width: 100%; transform: translateX(-50%) scaleX(1); }
+.dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  min-width: 210px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #E1E1E1;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  transform: translate(-50%, 8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.dropdown a {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #414141;
+  white-space: nowrap;
+}
+.dropdown a::after { display: none; }
+.dropdown::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
+.dropdown a:hover {
+  background: #E8F9FF;
+  color: #3EC2ED;
+}
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, 0);
+}
 
 /* ── HAMBURGER ── */
 .hamburger {
@@ -1076,11 +1122,17 @@ footer .footer-links a:hover { text-decoration: underline; }
   <!-- Navbar -->
   <nav>
     <div class="nav-logo">
-      <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" onerror="this.style.display='none'">
+      <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" loading="lazy" onerror="this.style.display='none'">
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
+      <div class="nav-item">
+        <a href="about.html" class="active">About</a>
+        <div class="dropdown" aria-label="About sub pages">
+          <a href="https://www.hhacademy.co.za/HH%20Academy%20Code%20of%20Conduct.pdf">Code of Conduct</a>
+          <a href="drug-policy.html">Drug Policy</a>
+        </div>
+      </div>
       <a href="enrollment.html">Enrollment</a>
       <a href="activities.html">Activities</a>
       <a href="resources.html">Resources</a>
@@ -1096,6 +1148,8 @@ footer .footer-links a:hover { text-decoration: underline; }
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
     <a href="index.html">Home</a>
     <a href="about.html" class="active">About</a>
+    <a href="https://www.hhacademy.co.za/HH%20Academy%20Code%20of%20Conduct.pdf">Code of Conduct</a>
+    <a href="drug-policy.html">Drug Policy</a>
     <a href="enrollment.html">Enrollment</a>
     <a href="activities.html">Activities</a>
     <a href="resources.html">Resources</a>
@@ -1114,7 +1168,7 @@ footer .footer-links a:hover { text-decoration: underline; }
     </div>
     <div class="hero-image-wrap">
       <div class="img-frame">
-        <img src="Images/image 2.png" alt="School assembly" />
+        <img src="Images/image 2.png" alt="School assembly" loading="lazy" />
       </div>
     </div>
   </section>
@@ -1126,7 +1180,7 @@ footer .footer-links a:hover { text-decoration: underline; }
     <div class="school-row top">
       <div class="school-img-wrap left">
         <div class="img-frame">
-          <img src="Images/image 4.png" alt="Students outside" />
+          <img src="Images/image 4.png" alt="Students outside" loading="lazy" />
         </div>
       </div>
       <div class="school-card right-card">
@@ -1139,12 +1193,12 @@ footer .footer-links a:hover { text-decoration: underline; }
         <p>This ensures that each student's potential is discovered and developed. Our educators are trained and encouraged how to teach with Christ in the Centre as departure point of every curriculum. The school adopts the National Curriculum (CAPS). Government ANA exams are also written by Grades 3, 6 and 9.</p>
         <div class="btn-group">
           <a href="https://www.hhacademy.co.za/HH%20Academy%20Code%20of%20Conduct.pdf" class="btn">Code of Conduct</a>
-          <a href="https://www.hhacademy.co.za/HH%20Academy%20drug%20policy.pdf" class="btn">Drug Policy</a>
+          <a href="drug-policy.html" class="btn">Drug Policy</a>
         </div>
       </div>
       <div class="school-img-wrap right">
         <div class="img-frame">
-          <img src="Images/image 3.png" alt="Students in class" />
+          <img src="Images/image 3.png" alt="Students in class" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1162,7 +1216,7 @@ footer .footer-links a:hover { text-decoration: underline; }
       </div>
       <div class="quality-img-wrap">
         <div class="img-frame">
-          <img src="Images/image 5.png" alt="Staff photo" />
+          <img src="Images/image 5.png" alt="Staff photo" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1255,5 +1309,6 @@ footer .footer-links a:hover { text-decoration: underline; }
   </script>
 </body>
 </html>
+
 
 
