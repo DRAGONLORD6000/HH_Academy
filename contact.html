@@ -95,45 +95,50 @@
 
   /* DROPDOWN */
   .dropdown {
-    display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 16px);
     left: 50%;
-    transform: translateX(-50%);
+    min-width: 210px;
+    padding: 10px;
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-    padding: 15px;
-    min-width: 180px;
+    border: 1px solid #E1E1E1;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    transform: translate(-50%, 8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 200;
-    flex-direction: column;
-    gap: 2px;
   }
   .nav-item:hover .dropdown,
   .nav-item:focus-within .dropdown {
-    display: flex;
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, 0);
   }
   .dropdown a {
     display: block;
-    font-size: 14px;
-    font-weight: 400;
-    color: #000;
     padding: 11px 12px;
     border-radius: 10px;
-    white-space: nowrap;
-    transition: background 0.2s, color 0.2s;
+    font-size: 14px;
     line-height: 18px;
+    color: #414141;
+    white-space: nowrap;
   }
   .dropdown a:hover {
     background: #E8F9FF;
     color: #3EC2ED;
   }
-  .dropdown a.active {
-    background: #E8F9FF;
-    color: #3EC2ED;
-  }
   .dropdown a::after {
     display: none;
+  }
+  .dropdown::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -14px;
+    height: 14px;
   }
 
   /* HAMBURGER BUTTON */
@@ -546,7 +551,7 @@
       <a href="about.html">About</a>
       <div class="dropdown" aria-label="About sub pages">
         <a href="code_of_conduct.html">Code of Conduct</a>
-        <a href="drug-policy.html">Drug Policy</a>
+        <a href="drug_policy.html">Drug Policy</a>
       </div>
     </li>
     <li><a href="enrollment.html">Enrollment</a></li>
@@ -567,7 +572,7 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="code_of_conduct.html">Code of Conduct</a>
-  <a href="drug-policy.html">Drug Policy</a>
+  <a href="drug_policy.html">Drug Policy</a>
   <a href="enrollment.html">Enrollment</a>
   <a href="activities.html">Activities</a>
   <a href="resources.html">Resources</a>
