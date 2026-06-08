@@ -35,7 +35,16 @@
     gap: 32px;
     list-style: none;
   }
-  .nav-links li a {
+
+  /* NAV ITEM — wraps the link + dropdown together */
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links li a,
+  .nav-item > a {
     font-size: 18px;
     font-weight: 400;
     color: #fff;
@@ -44,7 +53,8 @@
     display: inline-block;
     transition: color 0.3s ease;
   }
-  .nav-links li a::after {
+  .nav-links li a::after,
+  .nav-item > a::after {
     content: '';
     position: absolute;
     bottom: 0; left: 50%;
@@ -55,20 +65,74 @@
     transition: width 0.3s ease, transform 0.3s ease;
   }
   .nav-links li a.active::after,
-  .nav-links li a:hover::after {
+  .nav-links li a:hover::after,
+  .nav-item > a.active::after,
+  .nav-item > a:hover::after {
     width: 100%;
     transform: translateX(-50%) scaleX(1);
   }
-  .nav-links a:hover { color: #e0e0e0; }
+  .nav-links a:hover,
+  .nav-item > a:hover { color: #e0e0e0; }
   nav.scrolled {
     background: rgba(242,242,242,0.75);
     backdrop-filter: blur(25px);
   }
-  nav.scrolled .nav-links li a {
+  nav.scrolled .nav-links li a,
+  nav.scrolled .nav-item > a {
     color: #171717;
   }
-  nav.scrolled .nav-links a:hover {
+  nav.scrolled .nav-links a:hover,
+  nav.scrolled .nav-item > a:hover {
     color: #3EC2ED;
+  }
+  .dropdown a {
+    color: #000 !important;
+  }
+  nav.scrolled .dropdown a {
+    color: #000 !important;
+  }
+
+  /* DROPDOWN */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    padding: 15px;
+    min-width: 180px;
+    z-index: 200;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown {
+    display: flex;
+  }
+  .dropdown a {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    padding: 11px 12px;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    line-height: 18px;
+  }
+  .dropdown a:hover {
+    background: #E8F9FF;
+    color: #3EC2ED;
+  }
+  .dropdown a.active {
+    background: #E8F9FF;
+    color: #3EC2ED;
+  }
+  .dropdown a::after {
+    display: none;
   }
 
   /* HAMBURGER BUTTON */
@@ -603,7 +667,13 @@
   </div>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
+    <li class="nav-item">
+      <a href="about.html">About</a>
+      <div class="dropdown" aria-label="About sub pages">
+        <a href="code_of_conduct.html">Code of Conduct</a>
+        <a href="drug-policy.html">Drug Policy</a>
+      </div>
+    </li>
     <li><a href="enrollment.html">Enrollment</a></li>
     <li><a href="activities.html">Activities</a></li>
     <li><a href="resources.html">Resources</a></li>
@@ -621,6 +691,8 @@
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
   <a href="index.html" class="active">Home</a>
   <a href="about.html">About</a>
+  <a href="code_of_conduct.html">Code of Conduct</a>
+  <a href="drug-policy.html">Drug Policy</a>
   <a href="enrollment.html">Enrollment</a>
   <a href="activities.html">Activities</a>
   <a href="resources.html">Resources</a>

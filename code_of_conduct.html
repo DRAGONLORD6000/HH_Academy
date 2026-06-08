@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code of Conduct – HH Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Roboto', sans-serif; background: #fff; color: #414141; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 102px;
+    background: rgba(242,242,242,0.75);
+    backdrop-filter: blur(25px);
+    display: flex;
+    align-items: center;
+    padding: 0 134px;
+    justify-content: space-between;
+  }
+  .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+
+  /* NAV ITEM — wraps the link + dropdown together */
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links a,
+  .nav-item > a {
+    font-size: 18px; font-weight: 400; color: #171717;
+    position: relative; padding-bottom: 4px; display: inline-block;
+  }
+  .nav-links a::after,
+  .nav-item > a::after {
+    content: ''; position: absolute; bottom: -4px; left: 50%;
+    width: 0; height: 2px; background: #3EC2ED;
+    transform: translateX(-50%) scaleX(0);
+    transition: width .3s, transform .3s;
+  }
+  .nav-links a.active::after,
+  .nav-links a:hover::after,
+  .nav-item > a.active::after,
+  .nav-item > a:hover::after { width: 100%; transform: translateX(-50%) scaleX(1); }
+  .nav-links a:hover,
+  .nav-item > a:hover { color: #3EC2ED; }
+
+  /* DROPDOWN */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    padding: 15px;
+    min-width: 180px;
+    z-index: 200;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown {
+    display: flex;
+  }
+  .dropdown a {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    padding: 11px 12px;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    line-height: 18px;
+  }
+  .dropdown a:hover {
+    background: #E8F9FF;
+    color: #3EC2ED;
+  }
+  .dropdown a.active {
+    background: #E8F9FF;
+    color: #3EC2ED;
+  }
+  .dropdown a::after {
+    display: none;
+  }
+
+  /* hamburger */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center;
+    align-items: center; width: 44px; height: 44px;
+    background: none; border: none; cursor: pointer; gap: 6px; padding: 4px; z-index: 200;
+  }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #171717; border-radius: 2px; transition: transform .3s, opacity .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* mobile menu */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0;
+    background: rgba(255,255,255,0.97); z-index: 150;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 36px; opacity: 0; pointer-events: none; transition: opacity .3s;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a { font-size: 26px; font-weight: 600; color: #171717; position: relative; padding-bottom: 4px; transition: color .2s; }
+  .mobile-menu a::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: #3EC2ED; transform: translateX(-50%) scaleX(0); transition: width .3s, transform .3s; }
+  .mobile-menu a.active::after, .mobile-menu a:hover::after { width: 100%; transform: translateX(-50%) scaleX(1); }
+  .mobile-menu a.active, .mobile-menu a:hover { color: #3EC2ED; }
+  .mobile-menu-close { position: absolute; top: 30px; right: 30px; background: none; border: none; color: #171717; font-size: 32px; cursor: pointer; padding: 8px; transition: transform .2s; }
+  .mobile-menu-close:hover { transform: rotate(90deg); }
+
+  /* ── HERO ── */
+  .hero {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    padding: 75px 134px 60px; gap: 40px;
+  }
+  .hero-left { max-width: 540px; }
+  .hero-left h1 { font-size: 36px; font-weight: 900; color: #3EC2ED; line-height: 42px; margin-bottom: 12px; }
+  .hero-left .subtitle { font-size: 22px; font-weight: 400; color: #7A7A7A; margin-bottom: 16px; }
+  .hero-left p { font-size: 18px; font-weight: 500; color: #929292; line-height: 28px; }
+  .hero-image { 
+    position: relative;
+    width: 480px; 
+    height: 280px; 
+    border-radius: 20px; 
+    overflow: visible; 
+    flex-shrink: 0;
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #3EC2ED;
+    border-radius: 20px;
+    z-index: -1;
+    bottom: -20px;
+    right: -20px;
+  }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; position: relative; z-index: 1; }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+  /* placeholder crest when image missing */
+  .hero-crest { width: 120px; height: 120px; opacity: .15; }
+
+  /* ── SECTION WRAPPER ── */
+  .page-content { padding: 0 134px 80px; }
+
+  .btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
+  .btn {
+    width: 169px;
+    height: 56px;
+    background: #3EC2ED;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-top: 16px;
+  }
+  .btn:hover { background: #29b0da; }
+
+  /* section label */
+  .section-label { font-size: 22px; font-weight: 400; color: #7A7A7A; margin-bottom: 6px; }
+  .section-title { font-size: 36px; font-weight: 900; color: #3EC2ED; margin-bottom: 28px; line-height: 42px; }
+
+  /* ── INFO CARDS (mission / ethos / language) ── */
+  .info-cards { display: flex; gap: 20px; margin-bottom: 60px; flex-wrap: wrap; }
+  .info-card {
+    flex: 1; min-width: 240px;
+    background: #F2F2F2; border: 1px solid #E1E1E1; border-radius: 20px;
+    padding: 36px 32px;
+  }
+  .info-card h3 { font-size: 20px; font-weight: 700; color: #3EC2ED; margin-bottom: 10px; }
+  .info-card p { font-size: 16px; font-weight: 400; color: #929292; line-height: 24px; }
+
+  /* ── RIGHTS GRID ── */
+  .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 60px; }
+  .rights-card { background: #F2F2F2; border: 1px solid #E1E1E1; border-radius: 20px; padding: 32px 28px; }
+  .rights-card h3 { font-size: 20px; font-weight: 700; color: #3EC2ED; margin-bottom: 14px; }
+  .rights-card ul { list-style: none; padding: 0; }
+  .rights-card ul li { font-size: 16px; font-weight: 400; color: #929292; padding: 5px 0 5px 20px; position: relative; line-height: 22px; }
+  .rights-card ul li::before { content: '•'; position: absolute; left: 0; color: #3EC2ED; font-weight: 700; }
+
+  /* ── ACCORDION ── */
+  .accordion-group { margin-bottom: 60px; }
+  .accordion-item { border: 1px solid #E1E1E1; border-radius: 16px; margin-bottom: 12px; overflow: hidden; }
+  .accordion-header {
+    width: 100%; background: #F2F2F2; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 28px; text-align: left; transition: background .2s;
+  }
+  .accordion-header:hover { background: #eaf9fe; }
+  .accordion-header.open { background: #3EC2ED; }
+  .accordion-header h4 { font-size: 18px; font-weight: 700; color: #171717; }
+  .accordion-header.open h4 { color: #fff; }
+  .accordion-icon { font-size: 22px; font-weight: 300; color: #3EC2ED; transition: transform .3s; line-height: 1; flex-shrink: 0; }
+  .accordion-header.open .accordion-icon { color: #fff; transform: rotate(45deg); }
+  .accordion-body { display: none; padding: 24px 28px; background: #fff; }
+  .accordion-body.open { display: block; }
+  .accordion-body p { font-size: 16px; color: #414141; line-height: 26px; margin-bottom: 12px; }
+  .accordion-body ul { list-style: none; padding: 0; }
+  .accordion-body ul li { font-size: 16px; color: #414141; padding: 5px 0 5px 20px; position: relative; line-height: 24px; }
+  .accordion-body ul li::before { content: '•'; position: absolute; left: 0; color: #3EC2ED; font-weight: 700; }
+  .accordion-body .note { font-size: 15px; color: #929292; font-style: italic; margin-top: 12px; }
+
+  /* Covid rules pill */
+  .covid-tag { display: inline-block; background: #3EC2ED22; color: #3EC2ED; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 10px; border: 1px solid #3EC2ED55; }
+
+  /* sub-heading inside accordion */
+  .accordion-body .sub-h { font-size: 16px; font-weight: 700; color: #414141; margin: 16px 0 8px; }
+
+  /* ── OFFENCE TABLES ── */
+  .offence-section { margin-bottom: 60px; }
+  .offence-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tab-btn {
+    padding: 10px 22px; border-radius: 25px; border: 2px solid #E1E1E1;
+    background: #fff; font-size: 15px; font-weight: 600; color: #929292;
+    cursor: pointer; transition: all .2s;
+  }
+  .tab-btn:hover { border-color: #3EC2ED; color: #3EC2ED; }
+  .tab-btn.active { background: #3EC2ED; border-color: #3EC2ED; color: #fff; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .offence-table { width: 100%; border-collapse: collapse; border-radius: 16px; overflow: hidden; }
+  .offence-table thead tr { background: #3EC2ED; }
+  .offence-table thead th { padding: 16px 20px; font-size: 16px; font-weight: 600; color: #fff; text-align: left; }
+  .offence-table tbody tr { border-bottom: 1px solid #E1E1E1; }
+  .offence-table tbody tr:last-child { border-bottom: none; }
+  .offence-table tbody tr:nth-child(even) { background: #F9FDFF; }
+  .offence-table tbody td { padding: 14px 20px; font-size: 15px; color: #414141; line-height: 22px; vertical-align: top; }
+  .offence-table tbody td:first-child { font-weight: 500; width: 45%; }
+
+  /* ── SCHOOL TIMES BANNER ── */
+  .times-banner { background: #3EC2ED; border-radius: 20px; padding: 36px 40px; margin-bottom: 60px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-around; }
+  .time-item { text-align: center; color: #fff; }
+  .time-item .time-label { font-size: 14px; font-weight: 500; opacity: .85; margin-bottom: 6px; }
+  .time-item .time-value { font-size: 28px; font-weight: 900; }
+  .time-item .time-sub { font-size: 13px; opacity: .8; margin-top: 4px; }
+
+  /* ── UNIFORM GRID ── */
+  .uniform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 60px; }
+  .uniform-card { background: #F2F2F2; border: 1px solid #E1E1E1; border-radius: 20px; padding: 28px 28px; }
+  .uniform-card .uc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .uniform-card .uc-badge { width: 36px; height: 36px; border-radius: 50%; background: #3EC2ED; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+  .uniform-card h3 { font-size: 18px; font-weight: 700; color: #171717; }
+  .uniform-card .season-tag { font-size: 12px; font-weight: 600; color: #3EC2ED; background: #3EC2ED18; padding: 2px 10px; border-radius: 12px; display: inline-block; margin-bottom: 10px; }
+  .uniform-card ul { list-style: none; padding: 0; }
+  .uniform-card ul li { font-size: 15px; color: #929292; padding: 4px 0 4px 18px; position: relative; line-height: 21px; }
+  .uniform-card ul li::before { content: '•'; position: absolute; left: 0; color: #3EC2ED; font-weight: 700; }
+
+  /* ── CREDO SECTION ── */
+  .credo-section { background: #F2F2F2; border-radius: 24px; padding: 48px 56px; margin-bottom: 60px; text-align: center; }
+  .credo-section h2 { font-size: 30px; font-weight: 900; color: #3EC2ED; margin-bottom: 28px; }
+  .credo-items { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .credo-item { background: #fff; border-radius: 16px; padding: 20px 24px; max-width: 260px; font-size: 16px; font-weight: 500; color: #414141; line-height: 24px; border: 1px solid #E1E1E1; position: relative; }
+  .credo-item::before { content: '"'; font-size: 60px; color: #3EC2ED22; font-weight: 900; position: absolute; top: -6px; left: 14px; line-height: 1; }
+
+  /* ── COMMITMENT CARD ── */
+  .commitment-card { background: #3EC2ED; border-radius: 24px; padding: 48px 56px; margin-bottom: 60px; }
+  .commitment-card h2 { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 20px; }
+  .commitment-card ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .commitment-card ul li { font-size: 16px; color: #fff; padding-left: 24px; position: relative; line-height: 24px; opacity: .95; }
+  .commitment-card ul li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
+
+  /* ── FOOTER ── */
+  footer { background: #F2F2F2; height: 92px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  footer .copy { font-size: 15px; font-weight: 700; color: #1E1E1E; }
+  footer .footer-links { display: flex; gap: 24px; list-style: none; }
+  footer .footer-links li a { font-size: 15px; font-weight: 700; color: #1E1E1E; }
+  footer .footer-links li a:hover { color: #3EC2ED; }
+
+  /* ══════════════════════════
+     TABLET RESPONSIVE
+  ══════════════════════════ */
+  @media (max-width: 1100px) {
+    nav { padding: 0 40px; }
+    .hero { padding: 50px 40px 50px; }
+    .page-content { padding: 0 40px 60px; }
+  }
+
+  /* ══════════════════════════
+     MOBILE RESPONSIVE
+  ══════════════════════════ */
+  @media (max-width: 768px) {
+    nav { height: 70px; padding: 0 20px; }
+    .nav-logo img { width: 56px; height: 52px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+
+    .hero { flex-direction: column; padding: 30px 20px 40px; gap: 24px; }
+    .hero-left { max-width: 100%; }
+    .hero-left h1 { font-size: 26px; line-height: 32px; }
+    .hero-left .subtitle { font-size: 16px; }
+    .hero-left p { font-size: 15px; }
+    .hero-image { width: 100%; height: 200px; border-radius: 14px; overflow: visible; }
+    .hero-image::after { bottom: -12px; right: -12px; }
+
+    .page-content { padding: 0 20px 50px; }
+    .section-title { font-size: 26px; }
+    .section-label { font-size: 16px; }
+
+    .info-cards { flex-direction: column; }
+    .rights-grid { grid-template-columns: 1fr; }
+    .uniform-grid { grid-template-columns: 1fr; }
+    .commitment-card ul { grid-template-columns: 1fr; }
+    .commitment-card { padding: 32px 24px; }
+    .credo-section { padding: 32px 20px; }
+    .times-banner { padding: 28px 20px; gap: 16px; }
+    .time-item .time-value { font-size: 22px; }
+    .offence-table thead th, .offence-table tbody td { font-size: 14px; padding: 12px 14px; }
+
+    footer { height: auto; padding: 24px 20px; text-align: center; }
+    footer .copy { font-size: 13px; margin-bottom: 10px; }
+    footer .footer-links { flex-direction: column; gap: 8px; }
+    footer .footer-links li a { font-size: 12px; }
+  }
+
+  @media (max-width: 480px) {
+    .offence-table { display: block; overflow-x: auto; }
+    .credo-items { flex-direction: column; align-items: center; }
+    .credo-item { max-width: 100%; }
+    footer { padding: 20px 16px; }
+    footer .footer-links { gap: 6px; }
+    footer .footer-links li a { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">
+    <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo" onerror="this.style.display='none'">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-item">
+      <a href="about.html">About</a>
+      <div class="dropdown" aria-label="About sub pages">
+        <a href="code_of_conduct.html" class="active">Code of Conduct</a>
+        <a href="drug-policy.html">Drug Policy</a>
+      </div>
+    </li>
+    <li><a href="enrollment.html">Enrollment</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="code_of_conduct.html" class="active">Code of Conduct</a>
+  <a href="drug-policy.html">Drug Policy</a>
+  <a href="enrollment.html">Enrollment</a>
+  <a href="activities.html">Activities</a>
+  <a href="resources.html">Resources</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>CODE OF CONDUCT</h1>
+    <p class="subtitle">Discipline &amp; Dedication</p>
+    <p>Happy Home Academy is driven by sound moral principles, academic excellence and passionate participation. Our Code of Conduct promotes an atmosphere of co-operation, mutual respect and a culture of tolerance and peace. It applies to all learners wearing the HHA school uniform or officially representing the school.</p>
+    <a href="documents/HH Academy Code of Conduct.pdf" class="btn">Download PDF</a>
+  </div>
+  <div class="hero-image">
+    <img src="Images/h2.jpg" alt="HH Academy learners">
+  </div>
+</section>
+
+<div class="page-content">
+
+  <!-- ── FOUNDATION ── -->
+  <p class="section-label">Our Foundation</p>
+  <h2 class="section-title">Mission, Ethos &amp; Language</h2>
+  <div class="info-cards">
+    <div class="info-card">
+      <h3>Mission Statement</h3>
+      <p>Happy Home Academy is committed to providing facilities for a well-balanced education — concentrating on the development of mind, body and soul — enabling every child to develop their full potential and play a useful, fulfilling role in the community and larger society.</p>
+    </div>
+    <div class="info-card">
+      <h3>Our Ethos</h3>
+      <p>We are driven by sound moral principles, academic excellence and passionate participation. Our Code of Conduct recognises the need to promote co-operation, teaching, learning, mutual respect and the establishment of a culture of tolerance and peace.</p>
+    </div>
+    <div class="info-card">
+      <h3>Language Policy</h3>
+      <p>The medium of instruction at HH Academy is <strong>English</strong>. Afrikaans and isiXhosa are offered as first additional languages.</p>
+    </div>
+  </div>
+
+  <!-- ── RIGHTS & RESPONSIBILITIES ── -->
+  <p class="section-label">Rights &amp; Responsibilities</p>
+  <h2 class="section-title">Learners &amp; Parents</h2>
+  <div class="rights-grid">
+    <div class="rights-card">
+      <h3>Learner Rights</h3>
+      <ul>
+        <li>Equality</li>
+        <li>Dignity</li>
+        <li>Protection from all forms of discrimination</li>
+        <li>A safe environment conducive to learning</li>
+        <li>A holistic education</li>
+      </ul>
+    </div>
+    <div class="rights-card">
+      <h3>Learner Responsibilities</h3>
+      <ul>
+        <li>Have respect for yourself</li>
+        <li>Behave respectfully and responsibly towards staff and peers</li>
+        <li>Respect different cultures, languages and religions</li>
+        <li>Respect the property and safety of other learners and staff</li>
+        <li>Be proud of your school and wear the uniform with pride</li>
+        <li>Make optimum use of educational opportunities provided</li>
+        <li>Obey all school rules</li>
+      </ul>
+    </div>
+    <div class="rights-card">
+      <h3>Educators' Responsibilities</h3>
+      <ul>
+        <li>The Principal and staff act <em>in loco parentis</em> — they have the same rights as a parent to control and discipline learners during school hours, functions and excursions</li>
+        <li>The Principal and staff have full authority to ensure every learner abides by the Code of Conduct</li>
+      </ul>
+    </div>
+    <div class="rights-card">
+      <h3>Parent Responsibilities</h3>
+      <ul>
+        <li>Support the school and ensure learners observe all rules and regulations</li>
+        <li>Accept responsibility for any misbehaviour on your child's part</li>
+        <li>Honour financial responsibilities timeously</li>
+        <li>Take an active interest in schoolwork and ensure homework is completed</li>
+        <li>Ensure the learner arrives on time each school day</li>
+        <li>Attend meetings convened by the school</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── SCHOOL HOURS ── -->
+  <p class="section-label">School Hours</p>
+  <h2 class="section-title">Daily Schedule</h2>
+  <div class="times-banner">
+    <div class="time-item">
+      <div class="time-label">Foundation Phase</div>
+      <div class="time-value">13:00</div>
+      <div class="time-sub">Grades 1–3</div>
+    </div>
+    <div class="time-item">
+      <div class="time-label">Intermediate &amp; Senior</div>
+      <div class="time-value">14:00</div>
+      <div class="time-sub">Grades 4–7</div>
+    </div>
+    <div class="time-item">
+      <div class="time-label">High School</div>
+      <div class="time-value">14:45</div>
+      <div class="time-sub">Grades 8–12</div>
+    </div>
+    <div class="time-item">
+      <div class="time-label">School Closes</div>
+      <div class="time-value">15:30</div>
+      <div class="time-sub">All learners must be gone</div>
+    </div>
+  </div>
+
+  <!-- ── RULES ACCORDION ── -->
+  <p class="section-label">School Rules</p>
+  <h2 class="section-title">Policies &amp; Procedures</h2>
+  <div class="accordion-group">
+
+    <!-- Classroom Rules -->
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Classroom Rules</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p>These rules are <strong>non-negotiable</strong> and were developed in consultation with staff and the School Governing Body.</p>
+        <ul>
+          <li>Anti-social behaviour will not be tolerated</li>
+          <li>Cell phones or similar devices must be switched off and not visible during the school day</li>
+          <li>No talking out of turn</li>
+          <li>No abusive language</li>
+          <li>No vandalism or littering</li>
+          <li>No walking around without permission and a pass</li>
+          <li>No involvement in activities unrelated to the subject being taught without the teacher's consent</li>
+          <li>Be punctual for class</li>
+          <li>Homework tasks and missed work due to absence must be completed timeously</li>
+          <li>Homework must be completed at home, not before school</li>
+        </ul>
+        <div class="sub-h"><span class="covid-tag">COVID-19 Rules</span></div>
+        <ul>
+          <li>Learners must always have their masks on</li>
+          <li>Maintain 1.5m physical distance at all times</li>
+          <li>Sharing of items including stationery is prohibited</li>
+          <li>Physical contact (handshakes, hugging) is prohibited</li>
+        </ul>
+        <p class="note">Transgression of any of the above rules will have consequences.</p>
+      </div>
+    </div>
+
+    <!-- School Attendance -->
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>School Attendance</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <ul>
+          <li>The register teacher will keep an accurate attendance register and report irregular attendance to parents and HODs</li>
+          <li>Any absence must be covered by an absentee note from a parent</li>
+          <li>Absences longer than 3 days require a doctor's certificate</li>
+          <li>After 10 consecutive unexplained days absent, the learner's record may be cancelled and re-application is required (at the Principal's discretion)</li>
+          <li>After 20 unexplained days absent in total for the year, the learner will be deregistered</li>
+          <li>All learners must arrive before the official starting time; late arrivals are recorded in the entrance register</li>
+          <li>Absence from a formal examination must be notified by the parent and supported by a doctor's certificate</li>
+          <li>Absence due to COVID-19 symptoms: refer to the Covid-19 management policy</li>
+        </ul>
+        <div class="sub-h">Early Release</div>
+        <ul>
+          <li>No learner may leave during school hours without a parental letter; the learner must obtain a "permission to go home" note signed by the class teacher</li>
+          <li>If a learner falls ill, the class teacher signs a permission note and the administrator contacts the parent to arrange transport</li>
+          <li>A learner may NOT use a cell phone to contact a parent directly without the administrator's permission</li>
+        </ul>
+        <div class="sub-h">Religious or Cultural Practices</div>
+        <ul>
+          <li>Learners wishing to participate in religious or cultural ceremonies may do so once parents have given the Principal due notice</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Security & Property -->
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Security, Property &amp; Out-of-Bounds Areas</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p>Every learner is obligated to protect and carefully use all school facilities and equipment. Destruction or vandalism is a punishable offence. Parents or legal guardians of anyone who intentionally misuses or damages school property will replace or pay for the damaged property. CCTV cameras are installed for the protection and safety of all staff and learners.</p>
+        <div class="sub-h">Out-of-Bounds Areas</div>
+        <ul>
+          <li>The area behind the Director's office (unless doing sports)</li>
+          <li>The parking area at the lakeside</li>
+          <li>The area on the left side of the security room</li>
+          <li>The Lake</li>
+          <li>Home Affairs premises</li>
+        </ul>
+        <p class="note">Lost property found on premises will be taken to the administrator's office for collection.</p>
+      </div>
+    </div>
+
+    <!-- Cell Phones & Electronics -->
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Cell Phones, Tablets &amp; Electronic Equipment</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <ul>
+          <li>The school is not responsible for cell phones, tablets or electronic equipment lost or stolen at school or during school-related activities</li>
+          <li>If brought to school, cell phones must be switched off from the moment the learner enters the premises until the end-of-day bell, and stored at the administrator's office</li>
+          <li>1st confiscation: held for 1 week · 2nd confiscation (same term): held for 2 weeks · 3rd confiscation: held for a month</li>
+          <li>Learners may not use cell phones at school</li>
+          <li>Personal computer games, toys, iPods, laptops and similar devices may not be brought to school without prior arrangement with a teacher</li>
+        </ul>
+        <div class="sub-h">Cash Payments</div>
+        <ul>
+          <li>Any fees paid by a learner on behalf of a parent must be paid at the Bursar's Office before the school day starts</li>
+          <li>Learners are discouraged from bringing large sums of money to school</li>
+          <li>Parents are encouraged to pay school fees via Debit Order, EFT, Direct Deposit, or card at the Bursar's Office</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Appearance extras -->
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Appearance: Jewellery, Make-up, Nails &amp; Tattoos</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <ul>
+          <li><strong>Badges:</strong> Only badges received at HHA are permitted</li>
+          <li><strong>Jewellery &amp; Body Piercing:</strong> No jewellery of any kind is allowed — including studs, earrings, chains, rings, bracelets, tongue rings, lip studs or eyebrow studs of any material. Medic-Alert bracelets are the only exception</li>
+          <li><strong>Make-up:</strong> Not allowed at any time, including Civvies days. Learners arriving with make-up will be asked to remove it immediately</li>
+          <li><strong>Nails:</strong> Must be kept short, clean and neat. No nail varnish — learners found wearing nail polish will be sent to the administrator (nail polish remover available for R5.00)</li>
+          <li><strong>Tattoos:</strong> Must not be visible when wearing school uniform or sports uniform</li>
+          <li><strong>General:</strong> Only a plain white vest (not visible above the collar) may be worn under the shirt. No T-shirts under a summer shirt. On Civvies days, learners must wear decent clothes — no short dresses, skirts or bum shorts for girls</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- end accordion group -->
+
+  <!-- ── UNIFORM ── -->
+  <p class="section-label">Dress Code</p>
+  <h2 class="section-title">School Uniform</h2>
+  <p style="font-size:16px; color:#929292; margin-bottom:28px;">All school and sporting uniforms must be clearly marked with the learner's name. The correct uniform is always compulsory when representing or attending the school, except when announced otherwise.</p>
+  <div class="uniform-grid">
+
+    <!-- Boys Winter -->
+    <div class="uniform-card">
+      <div class="uc-head">
+        <div class="uc-badge">B</div>
+        <h3>Boys – Winter</h3>
+      </div>
+      <span class="season-tag">Winter</span>
+      <ul>
+        <li>School blazer</li>
+        <li>Grey trousers (no bellbottoms, stovepipes or skinny fit)</li>
+        <li>White long-sleeved starched shirt designed for a tie</li>
+        <li>HHA school tie (must not be defaced)</li>
+        <li>Plain grey socks (no white socks)</li>
+        <li>Black polishable leather lace-up shoes</li>
+        <li>Black belt — compulsory</li>
+        <li>White HHA pull-over or HHA jersey</li>
+        <li>Long-sleeved jerseys may be worn without a blazer</li>
+        <li>HHA fleece jackets for Foundation Phase (Grade R–3)</li>
+        <li>Optional: Navy blue scarf, gloves, white scarf with school badge</li>
+      </ul>
+    </div>
+
+    <!-- Boys Summer -->
+    <div class="uniform-card">
+      <div class="uc-head">
+        <div class="uc-badge">B</div>
+        <h3>Boys – Summer</h3>
+      </div>
+      <span class="season-tag">Summer</span>
+      <ul>
+        <li>As per winter, plus:</li>
+        <li>Regulation short-sleeved open-necked white shirt with school badge on pocket</li>
+        <li>Winter shirts may not be worn as summer shirts</li>
+        <li>Optional: Blazer, sleeveless pull-over jersey</li>
+      </ul>
+      <div class="sub-h" style="margin-top:14px; font-size:15px; color:#414141;">Boys Hair</div>
+      <ul>
+        <li>Neat and tidy; conservative — keep it short</li>
+        <li>Top, front, sides and back must be the same size</li>
+        <li>No colouring of hair</li>
+        <li>No fashionable fade/mohawk styles or Mandela cuts</li>
+        <li>Clean facial shave; no shaved slits into eyebrows</li>
+      </ul>
+    </div>
+
+    <!-- Girls Winter -->
+    <div class="uniform-card">
+      <div class="uc-head">
+        <div class="uc-badge">G</div>
+        <h3>Girls – Winter</h3>
+      </div>
+      <span class="season-tag">Winter</span>
+      <ul>
+        <li>School blazer</li>
+        <li>Mustard skirt — official school style and material (not shorter than 10 cm from the floor when kneeling)</li>
+        <li>White long-sleeved shirt</li>
+        <li>Regulation school tie</li>
+        <li>Navy blue knee-length socks with school colour band</li>
+        <li>Black polishable leather school shoes (low-heeled)</li>
+        <li>HHA pull-over or jersey with school colour band</li>
+        <li>Optional: Navy blue scarf, gloves, navy blue tights</li>
+      </ul>
+    </div>
+
+    <!-- Girls Summer -->
+    <div class="uniform-card">
+      <div class="uc-head">
+        <div class="uc-badge">G</div>
+        <h3>Girls – Summer</h3>
+      </div>
+      <span class="season-tag">Summer</span>
+      <ul>
+        <li>Mustard skirt as per winter (not shorter than 10 cm when kneeling)</li>
+        <li>Regulation short-sleeved open-necked white shirt with school badge</li>
+        <li>Winter shirts may not be worn as summer shirts</li>
+        <li>Plain white ankle-length socks — folded over, not rolled</li>
+        <li>Optional: Blazer and pull-over</li>
+      </ul>
+      <div class="sub-h" style="margin-top:14px; font-size:15px; color:#414141;">Girls Hair</div>
+      <ul>
+        <li>No style, extensions or colour that draws unnecessary attention</li>
+        <li>Braided hair: con-row only (natural colour, no thick/soft/single braids)</li>
+        <li>No artificial single dreadlocks; long hair must be plaited or tied back</li>
+        <li>Hair accessories: navy blue or black bands only (max 3 cm wide) or plain grips</li>
+        <li>Gel applied conservatively is permitted; no slits into eyebrows</li>
+      </ul>
+    </div>
+
+    <!-- Sports Uniform -->
+    <div class="uniform-card" style="grid-column: 1 / -1;">
+      <div class="uc-head">
+        <div class="uc-badge" style="background:#FFC107;">⚽</div>
+        <h3>Sports Uniform</h3>
+      </div>
+      <ul style="columns: 2; gap: 20px;">
+        <li>School golf shirt with badge worn with Navy shorts on sports days</li>
+        <li>The HHA tracksuit is the only permissible tracksuit</li>
+        <li>Tracksuits may be worn on Tuesdays and Thursdays only</li>
+        <li>Only a school golf shirt may be worn under the tracksuit top</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ── DISCIPLINE TABS ── -->
+  <p class="section-label">Discipline</p>
+  <h2 class="section-title">Offences &amp; Corrective Measures</h2>
+  <p style="font-size:16px; color:#929292; margin-bottom:24px;">Offences are categorised into four grades of severity. Select a grade to view its offences and the recommended corrective measures.</p>
+
+  <div class="offence-section">
+    <div class="offence-tabs" role="tablist">
+      <button class="tab-btn active" role="tab" data-tab="g1">Grade 1 — Minor</button>
+      <button class="tab-btn" role="tab" data-tab="g2">Grade 2 — Moderate</button>
+      <button class="tab-btn" role="tab" data-tab="g3">Grade 3 — Serious</button>
+      <button class="tab-btn" role="tab" data-tab="g4">Grade 4 — Severe</button>
+    </div>
+
+    <!-- Grade 1 -->
+    <div class="tab-panel active" id="g1">
+      <table class="offence-table">
+        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+        <tbody>
+          <tr><td>Littering / excessively noisy or unruly behaviour</td><td>Verbal reprimand, written punishment, or detention at break</td></tr>
+          <tr><td>Eating, drinking or chewing gum during class or assembly</td><td>Verbal reprimand; temporary confiscation until end of term</td></tr>
+          <tr><td>Misconduct during assembly</td><td>Verbal reprimand or written notification to parents</td></tr>
+          <tr><td>Entering out-of-bounds area without permission</td><td>Verbal reprimand; written punishment</td></tr>
+          <tr><td>Loitering in passages, tuck shop, toilets or change rooms</td><td>Verbal reprimand; detention at break</td></tr>
+          <tr><td>Misconduct or poor sportsmanship during extra-mural activities</td><td>Written notification to parents</td></tr>
+          <tr><td>Failure to submit absentee / exit notes, return library books, attend extramural practices, attend duty class</td><td>Verbal reprimand; mark deduction (where applicable)</td></tr>
+          <tr><td>Continual interference with another learner causing minor discomfort</td><td>Written punishment; break detention</td></tr>
+          <tr><td>Minor uniform infringements (incorrect jersey, wrong socks/belt, wearing jewellery)</td><td>Verbal reprimand; temporary confiscation</td></tr>
+          <tr><td>Disruptive behaviour in class / spitting in public</td><td>Verbal reprimand; written punishment; break detention</td></tr>
+          <tr><td>Failure to do classwork, submit homework, bring required materials, hand work in on time; copying classwork; defacing school property; late for class</td><td>Verbal reprimand; mark deduction; written punishment; removing graffiti at break</td></tr>
+          <tr><td>Use of offensive material to cover books or files</td><td>Confiscation; verbal reprimand</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Grade 2 -->
+    <div class="tab-panel" id="g2">
+      <table class="offence-table">
+        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+        <tbody>
+          <tr><td>Vandalism / damaging another person's possessions</td><td>Repair/replacement, warning letter and Principal's detention</td></tr>
+          <tr><td>Racism: remarks or insults</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
+          <tr><td>Forgery (altering official documents, medical certificates)</td><td>Warning letter and detention</td></tr>
+          <tr><td>Intimidation / bullying (verbal or physical threats)</td><td>Phone call to parents, warning letter with detention</td></tr>
+          <tr><td>Swearing, lying or obscene gestures</td><td>Warning letter and detention</td></tr>
+          <tr><td>Verbal or non-verbal abuse; disrespect or insolence</td><td>Phone call to parents, warning letter and detention</td></tr>
+          <tr><td>Insubordination (ignoring instructions, failure to report to exclusion room)</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
+          <tr><td>Fighting / common assault / attempted assault</td><td>Warning letter and suspension</td></tr>
+          <tr><td>Public disturbance and public indecency; gambling</td><td>1st: Special detention · 2nd: Special detention · 3rd: Informal disciplinary hearing, special detention and counselling</td></tr>
+          <tr><td>Failure to attend detention without prior excuse</td><td>Make up missed detention, warning letter and Principal's detention</td></tr>
+          <tr><td>Unacceptable hairstyles, bleaching or colouring; display of visible tattoos</td><td>After 3 warnings, suspension</td></tr>
+          <tr><td>Using cell phone during formal testing</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
+          <tr><td>Cheating / attempting to cheat in class tests or assignments</td><td>Nought for test and warning letter</td></tr>
+          <tr><td>Truancy — bunking a lesson</td><td>Principal's detention</td></tr>
+          <tr><td>Truancy — bunking a day or part of a day</td><td>Phone call to parents, warning letter and detention</td></tr>
+          <tr><td>Smoking / possession of cigarettes on or off school property</td><td>1st: Special detention · 2nd: Special detention · 3rd: Informal disciplinary hearing, special detention and counselling</td></tr>
+          <tr><td>Smoking — selling cigarettes on/off school property</td><td>1st: Informal disciplinary hearing, warning letter and special detention · 2nd: Formal hearing, warning letter and special detention</td></tr>
+          <tr><td>Vandalism / defacing / damaging school property</td><td>Phone call to parents, warning letter and detention</td></tr>
+          <tr><td>Intentionally removing mask; hugging/breaking social distance rules</td><td>Written warning, meeting with parents and suspension</td></tr>
+          <tr><td>Sticking a sharp object into a fellow learner</td><td>Warning letter and detention</td></tr>
+          <tr><td>Substance abuse / sniffing unauthorised substances</td><td>Informal hearing, warning letter and detention</td></tr>
+          <tr><td>Unreasonable repetition of a Grade 1 offence</td><td>Escalated corrective measures per Grade 2 procedure</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Grade 3 -->
+    <div class="tab-panel" id="g3">
+      <table class="offence-table">
+        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+        <tbody>
+          <tr><td>Possession of weapons that can cause physical injury (knives, etc.)</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Entering school under the influence of alcohol or drugs</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Possession / copying / distribution / display of pornographic material</td><td>Warning letter, community service and detention</td></tr>
+          <tr><td>Assault with intent to cause grievous bodily harm</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Truancy from school / leaving school without permission</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Cheating / attempted cheating in final Grade 12 examination</td><td>Implementation of official provincial procedures</td></tr>
+          <tr><td>Possession / distribution of test or examination material prior to the test</td><td>Disciplinary hearing, nought for test, warning letter, community service and detention</td></tr>
+          <tr><td>Ongoing disruptive behaviour frustrating the school educational programme</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Conspiracy to disrupt proper functioning of school through collective action</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Gangs — promoting formation of or associating with school gangs</td><td>Suspension, disciplinary hearing, warning letter and detention</td></tr>
+          <tr><td>Racist conduct defaming a teacher or learner</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Sexual harassment of a teacher or learner</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Threatening to assault or intimidating a teacher</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+          <tr><td>Verbal abuse</td><td>Suspension, disciplinary hearing, warning letter, community service and detention or expulsion</td></tr>
+          <tr><td>Bullying / intimidation</td><td>Warning letter, community service and detention</td></tr>
+          <tr><td>Coughing or sneezing at someone without a mask</td><td>Suspension from school and disciplinary hearing</td></tr>
+          <tr><td>Unreasonable repetition of a Grade 2 offence</td><td>Escalated corrective measures per Grade 3 procedure</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Grade 4 -->
+    <div class="tab-panel" id="g4">
+      <table class="offence-table">
+        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+        <tbody>
+          <tr><td>Use of weapons causing physical injury (knives, etc.)</td><td>Suspension, disciplinary hearing, community service and detention/expulsion</td></tr>
+          <tr><td>Possession and/or use of a firearm, ammunition or lethal weapon</td><td>Suspension, disciplinary hearing, appropriate punishment and detention/expulsion</td></tr>
+          <tr><td>Possession, using or dealing in drugs, alcohol or any intoxicating substance</td><td>Suspension, disciplinary hearing, warning letter, community service, detention and professional counselling/expulsion</td></tr>
+          <tr><td>Poisoning or attempting to poison another person</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+          <tr><td>Theft, robbery, breaking and entering</td><td>Disciplinary hearing, replacement of stolen articles, warning letter, community service and detention/expulsion</td></tr>
+          <tr><td>Malicious damage to property of the school, staff or learners</td><td>Disciplinary hearing, repair damage, warning letter, community service and detention/expulsion</td></tr>
+          <tr><td>Assault on a learner causing serious bodily harm</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+          <tr><td>Assault on a teacher</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+          <tr><td>Sexual assault / rape</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+          <tr><td>Hostage-taking</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+          <tr><td>Fraud (financial)</td><td>Suspension, disciplinary hearing, compensation, warning letter, community service and detention/expulsion</td></tr>
+          <tr><td>Forgery of any document or signature to the actual or potential prejudice of the school</td><td>Suspension, disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
+          <tr><td>Bribery / attempted bribery regarding test or examination material</td><td>Disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
+          <tr><td>Trading examination material for personal monetary gain</td><td>Disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
+          <tr><td>Sedition or inciting any form of illegal strike action on school premises</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+          <tr><td>Any offence punishable under common law</td><td>Suspension, disciplinary hearing, appropriate measures and possible expulsion</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── DISCIPLINARY PROCESS ── -->
+  <p class="section-label">Process</p>
+  <h2 class="section-title">Disciplinary Procedures &amp; Hearings</h2>
+  <div class="accordion-group">
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Corrective Measures Available</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p>The following measures are aimed at correcting behaviour <em>before</em> suspension and, in extreme circumstances, expulsion:</p>
+        <ul>
+          <li>Verbal warning / reprimand</li>
+          <li>Use of the de-merit diary system</li>
+          <li>Written warning / final written warning</li>
+          <li>Removal from classes to the exclusion zone</li>
+          <li>Written punishment; community service</li>
+          <li>Homework detention / supervised detention / de-merit detention</li>
+          <li>Referral for counselling</li>
+          <li>Compensation for damages (repair or replacement of lost or damaged items)</li>
+          <li>Temporary suspension of school-related privileges</li>
+          <li>Exclusion from school activities (academic dinner, sporting events, valedictory, prize-giving)</li>
+          <li>Withdrawal of recognition (award withdrawn, councillor badge rescinded)</li>
+          <li>Temporary suspension from class or school — pending a disciplinary hearing</li>
+          <li>Formal disciplinary hearing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Serious Misconduct — Suspension</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p>A learner will be guilty of serious misconduct leading to potential suspension if they intentionally and without just excuse:</p>
+        <ul>
+          <li>Seriously threaten, disrupt or frustrate teaching or learning in a class</li>
+          <li>Engage in a conspiracy to disrupt the proper functioning of the school through collective action</li>
+          <li>Insult the dignity of or defame any learner or person (including racist remarks)</li>
+          <li>Distribute or possess test or examination material that may enable unfair advantage</li>
+          <li>Cheat in a test, examination or any other form of assessment</li>
+          <li>Engage in any act of public indecency</li>
+          <li>Sexually harass another person</li>
+          <li>Possess or distribute pornographic material</li>
+          <li>Are under the influence of, or in possession of, alcohol or drugs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Serious Misconduct — Expulsion</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p>A learner faces expulsion if they:</p>
+        <ul>
+          <li>Are found guilty of the same or similar misconduct after a prior finding of guilt</li>
+          <li>Fail to comply with a suspension as a correctional measure</li>
+          <li>Forge any document or signature to the prejudice of the school</li>
+          <li>Trade in any test or examination question paper</li>
+          <li>Engage in theft or act dishonestly to the prejudice of another person</li>
+          <li>Possess, consume or deal in any illegal substance</li>
+          <li>Are in possession of a dangerous weapon</li>
+          <li>Assault or threaten to assault another person</li>
+          <li>Hold any person hostage</li>
+          <li>Murder any person</li>
+          <li>Rape any person or engage in any sexual activity that constitutes an offence</li>
+          <li>Maliciously damage property</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" aria-expanded="false">
+        <h4>Hearings Process</h4>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <p>The Principal and staff will make every effort to correct the situation before resorting to a full hearing. Full hearings include members of the Student Council and Governing Body.</p>
+        <ul>
+          <li>For serious or continuous misdemeanours, the learner will be required to attend a full hearing</li>
+          <li>For lesser misdemeanours, at the Principal and Discipline Officer's discretion, the parent(s) or guardian will be called to a meeting to discuss the misbehaviour</li>
+          <li>Any matters not specifically addressed in this Code will be dealt with by the Principal in line with the school's ethos and the laws of the country</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CREDO ── -->
+  <div class="credo-section">
+    <h2>Our Credo</h2>
+    <div class="credo-items">
+      <div class="credo-item">Happy learners flourish in a disciplined environment where the boundaries are clearly defined.</div>
+      <div class="credo-item">At HH Academy, we believe in the power of individuality.</div>
+      <div class="credo-item">We believe that everybody can be somebody.</div>
+      <div class="credo-item">We believe that where you are going is more important than where you came from.</div>
+    </div>
+  </div>
+
+  <!-- ── LEARNER COMMITMENT ── -->
+  <div class="commitment-card">
+    <h2>Learner Commitment</h2>
+    <ul>
+      <li>Abide by the Code of Conduct and Disciplinary System</li>
+      <li>Behave courteously and respectfully towards all learners, staff and visitors</li>
+      <li>Treat everyone with respect regardless of culture, religion, race, gender, age or sexual orientation</li>
+      <li>Take responsibility for my learning — attend regularly, punctually and complete all assessments on time</li>
+      <li>Cooperate with teachers and all school staff</li>
+      <li>Assist in making the school a safe place for all</li>
+      <li>Seek help if I need it</li>
+      <li>Let the school know if I feel my rights have been infringed or if I experience any difficulty</li>
+    </ul>
+  </div>
+
+</div><!-- end page-content -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Sitemap</a></li>
+  </ul>
+</footer>
+
+<script>
+  /* ── Hamburger / mobile menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ── Accordion ── */
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const body = header.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.accordion-header').forEach(h => {
+        h.classList.remove('open');
+        h.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked
+      if (!isOpen) {
+        body.classList.add('open');
+        header.classList.add('open');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ── Tabs ── */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

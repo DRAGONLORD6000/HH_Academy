@@ -25,7 +25,16 @@
   }
   .nav-logo img { width: 89px; height: 83px; object-fit: contain; }
   .nav-links { display: flex; align-items: center; gap: 32px; }
-  .nav-links a {
+
+  /* NAV ITEM — wraps the link + dropdown together */
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links a,
+  .nav-item > a {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -35,7 +44,8 @@
     position: relative;
     display: inline-block;
   }
-  .nav-links a::after {
+  .nav-links a::after,
+  .nav-item > a::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -46,11 +56,57 @@
     transform: translateX(-50%) scaleX(0);
     transition: width 0.3s ease, transform 0.3s ease;
   }
-  .nav-links a.active { color: #000; }
+  .nav-links a.active,
+  .nav-item > a.active { color: #000; }
   .nav-links a.active::after,
-  .nav-links a:hover::after {
+  .nav-links a:hover::after,
+  .nav-item > a.active::after,
+  .nav-item > a:hover::after {
     width: 100%;
     transform: translateX(-50%) scaleX(1);
+  }
+
+  /* DROPDOWN */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    padding: 15px;
+    min-width: 180px;
+    z-index: 200;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown {
+    display: flex;
+  }
+  .dropdown a {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    padding: 11px 12px;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    line-height: 18px;
+  }
+  .dropdown a:hover {
+    background: #E8F9FF;
+    color: #3EC2ED;
+  }
+  .dropdown a.active {
+    background: #E8F9FF;
+    color: #3EC2ED;
+  }
+  .dropdown a::after {
+    display: none;
   }
 
   /* HAMBURGER BUTTON */
@@ -407,7 +463,13 @@
   </div>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <div class="nav-item">
+      <a href="about.html">About</a>
+      <div class="dropdown" aria-label="About sub pages">
+        <a href="code_of_conduct.html">Code of Conduct</a>
+        <a href="drug-policy.html">Drug Policy</a>
+      </div>
+    </div>
     <a href="enrollment.html" class="active">Enrollment</a>
     <a href="activities.html">Activities</a>
     <a href="resources.html">Resources</a>
@@ -425,6 +487,8 @@
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
+  <a href="code_of_conduct.html">Code of Conduct</a>
+  <a href="drug-policy.html">Drug Policy</a>
   <a href="enrollment.html" class="active">Enrollment</a>
   <a href="activities.html">Activities</a>
   <a href="resources.html">Resources</a>
