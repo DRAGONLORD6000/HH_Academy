@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About – HH Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=block" rel="stylesheet">
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-
 /* ------------------
    About Page Styles
 --------------------- */
@@ -14,13 +13,39 @@
   box-sizing: border-box;
 }
 
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero,
+.school-section,
+.quality-section,
+.values-section,
+footer {
+  opacity: 0;
+  animation: slideUpFadeIn 0.8s ease-out forwards;
+}
+.hero { animation-delay: 0.1s; }
+.school-section { animation-delay: 0.2s; }
+.quality-section { animation-delay: 0.3s; }
+.values-section { animation-delay: 0.4s; }
+footer { animation-delay: 0.5s; }
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 102px;
 }
 
 body {
   margin: 0;
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   color: #222;
   background: #fff;
@@ -112,7 +137,6 @@ nav {
 }
 .dropdown a {
   display: block;
-  padding: 11px 12px;
   border-radius: 10px;
   font-size: 14px;
   line-height: 18px;
@@ -120,6 +144,7 @@ nav {
   white-space: nowrap;
 }
 .dropdown a::after { display: none; }
+.dropdown a { padding: 11px 12px; font-family: 'Roboto', sans-serif; } /* Changed font to Roboto */
 .dropdown::before {
   content: '';
   position: absolute;
@@ -205,7 +230,7 @@ nav {
   background: var(--cyan);
   color: #fff;
   border-radius: 25px;
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 1;
@@ -259,7 +284,7 @@ nav {
 }
 
 .hero-text h1 {
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 900;
@@ -288,7 +313,7 @@ nav {
   border-radius: 16px;
   width: 690px;
   min-height: 210px;
-  padding: 28px 210px 24px 48px;
+  padding: 32px 120px 32px 48px;
   margin-right: -176px;
   position: relative;
   z-index: 3;
@@ -337,7 +362,7 @@ nav {
 }
  
 .section-title {
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 900;
@@ -828,7 +853,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   }
 
   .hero-card p {
-    max-width: 34ch;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     font-size: 15px;
@@ -1162,8 +1187,8 @@ footer .footer-links a:hover { text-decoration: underline; }
       <h1>Built to Shaping The Future<br>of our Children</h1>
       <p class="hero-subtitle">About Us</p>
       <div class="hero-card">
-        <p>Welcome to Happy Home Academy, where academic excellence&nbsp;meets a vibrant community! With dedicated educators and a supportive environment, we empower students to thrive academically and personally.</p>
-        <a href="#school" class="btn">Let's Learn</a> 
+        <p>Welcome to Happy Home Academy, where academic excellence meets a vibrant community!With dedicated educators and a <br>supportive environment, we empower students to thrive academically and personally.</p>
+        <a href="#school" class="btn">Learn More</a> 
       </div>
     </div>
     <div class="hero-image-wrap">
@@ -1192,8 +1217,8 @@ footer .footer-links a:hover { text-decoration: underline; }
       <div class="school-card left-card">
         <p>This ensures that each student's potential is discovered and developed. Our educators are trained and encouraged how to teach with Christ in the Centre as departure point of every curriculum. The school adopts the National Curriculum (CAPS). Government ANA exams are also written by Grades 3, 6 and 9.</p>
         <div class="btn-group">
-          <a href="https://www.hhacademy.co.za/HH%20Academy%20Code%20of%20Conduct.pdf" class="btn">Code of Conduct</a>
-          <a href="drug-policy.html" class="btn">Drug Policy</a>
+          <a href="code_of_conduct.html" class="btn">Code of Conduct</a>
+          <a href="drug_policy.html" class="btn">Drug Policy</a>
         </div>
       </div>
       <div class="school-img-wrap right">
@@ -1205,7 +1230,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   </section>
 
   <!--- The Priority of a Quality Academic Education --->
-  <section class="quality-section">
+  <section class="quality-section" id="quality">
     <h2 class="section-title left">The Priority of a Quality<br>Academic Education</h2>
 
     <div class="quality-row">
@@ -1223,7 +1248,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   </section>
 
   <!--- OUR VALUES --->
-  <section class="values-section">
+  <section class="values-section" id="values">
     <div class="values-header">
       <h2 class="section-title center">Our Values</h2>
       <p class="values-sub">What makes us who we are</p>
@@ -1309,4 +1334,5 @@ footer .footer-links a:hover { text-decoration: underline; }
   </script>
 </body>
 </html>
+
 
