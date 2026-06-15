@@ -33,7 +33,6 @@
     display: flex;
     align-items: center;
     gap: 32px;
-    list-style: none;
   }
 
   /* NAV ITEM — wraps the link + dropdown together */
@@ -43,7 +42,7 @@
     align-items: center;
   }
 
-  .nav-links li a,
+  .nav-links > a,
   .nav-item > a {
     font-size: 18px;
     font-weight: 400;
@@ -53,7 +52,7 @@
     display: inline-block;
     transition: color 0.3s ease;
   }
-  .nav-links li a::after,
+  .nav-links > a::after,
   .nav-item > a::after {
     content: '';
     position: absolute;
@@ -64,32 +63,26 @@
     transform: translateX(-50%) scaleX(0);
     transition: width 0.3s ease, transform 0.3s ease;
   }
-  .nav-links li a.active::after,
-  .nav-links li a:hover::after,
+  .nav-links > a.active::after,
+  .nav-links > a:hover::after,
   .nav-item > a.active::after,
   .nav-item > a:hover::after {
     width: 100%;
     transform: translateX(-50%) scaleX(1);
   }
-  .nav-links a:hover,
+  .nav-links > a:hover,
   .nav-item > a:hover { color: #e0e0e0; }
   nav.scrolled {
     background: rgba(242,242,242,0.75);
     backdrop-filter: blur(25px);
   }
-  nav.scrolled .nav-links li a,
+  nav.scrolled .nav-links > a,
   nav.scrolled .nav-item > a {
     color: #171717;
   }
-  nav.scrolled .nav-links a:hover,
+  nav.scrolled .nav-links > a:hover,
   nav.scrolled .nav-item > a:hover {
     color: #3EC2ED;
-  }
-  .dropdown a {
-    color: #000 !important;
-  }
-  nav.scrolled .dropdown a {
-    color: #000 !important;
   }
 
   /* DROPDOWN */
@@ -670,20 +663,20 @@
   <div class="nav-logo">
     <img src="Images/HH_Academy_logo.png" alt="HH Academy Logo">
   </div>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li class="nav-item">
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <div class="nav-item">
       <a href="about.html">About</a>
       <div class="dropdown" aria-label="About sub pages">
         <a href="code_of_conduct.html">Code of Conduct</a>
         <a href="drug_policy.html">Drug Policy</a>
       </div>
-    </li>
-    <li><a href="enrollment.html">Enrollment</a></li>
-    <li><a href="activities.html">Activities</a></li>
-    <li><a href="resources.html">Resources</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+    </div>
+    <a href="enrollment.html">Enrollment</a>
+    <a href="activities.html">Activities</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span>
     <span></span>
