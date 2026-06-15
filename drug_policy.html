@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drug Policy - HH Academy</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=block" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { 
+    scroll-behavior: smooth; 
+    scroll-padding-top: 102px;
+  }
   body { font-family: 'Roboto', sans-serif; background: #fff; color: #171717; }
   a { color: inherit; text-decoration: none; }
   .visually-hidden {
@@ -81,6 +84,29 @@
     width: 100%;
     transform: translateX(-50%) scaleX(1);
   }
+
+  @keyframes slideUpFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero,
+  .policy-shell,
+  .policy-approach-section,
+  footer {
+    opacity: 0;
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+  }
+  .hero { animation-delay: 0.1s; }
+  .policy-shell { animation-delay: 0.2s; }
+  .policy-approach-section { animation-delay: 0.15s; }
+  footer { animation-delay: 0.3s; }
   .dropdown {
     position: absolute;
     top: calc(100% + 16px);
@@ -100,7 +126,7 @@
     display: block;
     padding: 11px 12px;
     border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 18px;
     color: var(--text);
@@ -340,7 +366,7 @@
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     line-height: 22px;
     color: var(--text);
@@ -384,7 +410,7 @@
     padding: 0 22px;
     color: var(--text);
     background: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -426,7 +452,7 @@
     display: block;
     padding: 10px 12px;
     border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 18px;
     color: var(--text);
@@ -467,7 +493,7 @@
   }
   .policy-body {
     padding: 26px 28px 30px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: var(--text);
   }
   .policy-body p {
@@ -541,7 +567,7 @@
     border-radius: 16px;
     padding: 24px;
     color: var(--muted);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
   }
   .no-results.show { display: block; }
@@ -586,7 +612,7 @@
     margin-bottom: 14px;
   }
   .approach-card p {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 26px;
     color: #7A7A7A;
@@ -934,10 +960,10 @@
   <div class="nav-links">
     <a href="index.html">Home</a>
     <div class="nav-item">
-      <a href="about.html" class="active">About</a>
+      <a href="about.html">About</a>
       <div class="dropdown" aria-label="About sub pages">
         <a href="code_of_conduct.html">Code of Conduct</a>
-        <a href="drug_policy.html">Drug Policy</a>
+        <a href="drug_policy.html" class="active">Drug Policy</a>
       </div>
     </div>
     <a href="enrollment.html">Enrollment</a>
@@ -953,9 +979,9 @@
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation">&times;</button>
   <a href="index.html">Home</a>
-  <a href="about.html" class="active">About</a>
-  <a href="https://www.hhacademy.co.za/HH%20Academy%20Code%20of%20Conduct.pdf">Code of Conduct</a>
-  <a href="drug-policy.html">Drug Policy</a>
+  <a href="about.html">About</a>
+  <a href="code_of_conduct.html">Code of Conduct</a>
+  <a href="drug_policy.html" class="active">Drug Policy</a>
   <a href="enrollment.html">Enrollment</a>
   <a href="activities.html">Activities</a>
   <a href="resources.html">Resources</a>
@@ -1271,7 +1297,7 @@
   activateSection('introduction');
   window.addEventListener('scroll', () => {
     backTop.classList.toggle('show', window.scrollY > 420);
-  }, { passive: true });
+    }, { passive: true });
 </script>
 </body>
 </html>
