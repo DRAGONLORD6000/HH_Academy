@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Activities - HH Academy</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=block" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -20,6 +20,29 @@
     --card: #F2F2F2;
     --line: #E1E1E1;
   }
+
+  @keyframes slideUpFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero,
+  .stats-section,
+  .activities-section,
+  footer {
+    opacity: 0;
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+  }
+  .hero { animation-delay: 0.1s; }
+  .stats-section { animation-delay: 0.2s; }
+  .activities-section { animation-delay: 0.3s; }
+  footer { animation-delay: 0.4s; }
 
   nav {
     position: sticky;
@@ -95,7 +118,7 @@
     display: block;
     padding: 11px 12px;
     border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
     font-size: 14px;
     line-height: 18px;
     color: var(--text);
@@ -360,10 +383,10 @@
     vertical-align: top;
   }
   .activity-table thead {
-    background: var(--cyan);
+    background: var(--cyan); /* Kept background */
   }
   .activity-table th {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
     font-size: 15px;
     font-weight: 600;
     color: #ffffff;
@@ -371,7 +394,7 @@
     letter-spacing: 0.06em;
   }
   .activity-table td {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 17px;
     font-weight: 400;
     color: #2D2D2D;
