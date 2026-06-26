@@ -229,6 +229,19 @@
   }
   .mobile-menu-close:hover { transform: rotate(90deg); }
 
+  /* FADE-IN ANIMATION */
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* HERO */
   .hero {
     position: relative;
@@ -353,48 +366,15 @@
     color: #929292;
     margin-bottom: 30px;
   }
-
-  /* Floating label form groups */
   .form-group {
     margin-bottom: 20px;
-    position: relative;
   }
   .form-group label {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    font-weight: 400;
-    color: #929292;
-    pointer-events: none;
-    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    background: transparent;
-    padding: 0 2px;
-  }
-  /* Textarea label starts at top */
-  .form-group.is-textarea label {
-    top: 18px;
-    transform: none;
-  }
-  /* Floated state — when input has content or is focused */
-  .form-group input:focus ~ label,
-  .form-group input:not(:placeholder-shown) ~ label,
-  .form-group textarea:focus ~ label,
-  .form-group textarea:not(:placeholder-shown) ~ label {
-    top: 0;
-    transform: translateY(-50%);
-    font-size: 12px;
-    color: #3EC2ED;
-    background: #F2F2F2;
-    padding: 0 4px;
-  }
-  .form-group.is-textarea input:focus ~ label,
-  .form-group.is-textarea input:not(:placeholder-shown) ~ label,
-  .form-group.is-textarea textarea:focus ~ label,
-  .form-group.is-textarea textarea:not(:placeholder-shown) ~ label {
-    top: 0;
-    transform: translateY(-50%);
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #414141;
+    margin-bottom: 6px;
   }
   .form-group input,
   .form-group textarea {
@@ -410,17 +390,12 @@
     transition: border-color 0.2s, box-shadow 0.2s;
     resize: none;
   }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder {
-    color: transparent;
-  }
   .form-group input:focus,
   .form-group textarea:focus {
     border-color: #3EC2ED;
     box-shadow: 0 0 0 3px rgba(62,194,237,0.12);
   }
   .form-group textarea { height: 140px; }
-
   .btn-primary {
     display: inline-block;
     background: #3EC2ED;
@@ -493,17 +468,6 @@
   }
   footer .footer-links li a:hover { color: #3EC2ED; }
 
-  /* ── FADE-UP ANIMATION ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* =====================
      TABLET RESPONSIVE
      ===================== */
@@ -516,6 +480,7 @@
     .contact-grid { gap: 40px; }
     .contact-form-wrap { padding: 0; }
     .map-wrap { padding: 0; }
+    /* Dropdown works via hover on tablet — no extra changes needed */
   }
 
   /* =====================
@@ -639,10 +604,10 @@
 
 <!-- CONTACT SECTION -->
 <section class="contact-section">
-  <p class="contact-intro fade-up">Contact us or visit our school</p>
+  <p class="contact-intro fade-in">Contact us or visit our school</p>
 
   <!-- INFO CARDS -->
-  <div class="info-cards fade-up">
+  <div class="info-cards fade-in">
     <div class="info-card">
       <div class="info-card-icon">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -679,32 +644,32 @@
   </div>
 
   <!-- FORM + MAP -->
-  <div class="contact-grid fade-up">
+  <div class="contact-grid">
     <!-- FORM -->
-    <div class="contact-form-wrap">
+    <div class="contact-form-wrap fade-in">
       <h2>Get in Touch</h2>
       <p class="form-sub">Write us a message and we'll get back to you as soon as possible.</p>
       <div class="form-group">
-        <input type="text" id="name" name="name" placeholder=" ">
         <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name">
       </div>
       <div class="form-group">
-        <input type="email" id="email" name="email" placeholder=" ">
         <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address">
       </div>
       <div class="form-group">
-        <input type="text" id="subject" name="subject" placeholder=" ">
         <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter subject">
       </div>
-      <div class="form-group is-textarea">
-        <textarea id="message" name="message" placeholder=" "></textarea>
+      <div class="form-group">
         <label for="message">Write Message</label>
+        <textarea id="message" name="message" placeholder="Type your message here..."></textarea>
       </div>
       <button type="button" class="btn-primary">Submit Form</button>
     </div>
 
     <!-- MAP -->
-    <div class="map-wrap">
+    <div class="map-wrap fade-in">
       <h2>Find Us</h2>
       <p class="map-sub">2 Gibaud Road, Holland Park, Gqeberha, 6001</p>
       <div class="map-container">
@@ -720,7 +685,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="fade-up">
+<footer>
   <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
   <ul class="footer-links">
     <li><a href="#">Privacy Policy</a></li>
@@ -762,8 +727,8 @@
     nav.classList.toggle('scrolled', window.scrollY > 0);
   });
 
-  // Scroll-triggered fade-up animations
-  const fadeEls = document.querySelectorAll('.fade-up');
+  // SCROLL FADE-IN
+  const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
