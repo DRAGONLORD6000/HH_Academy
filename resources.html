@@ -391,6 +391,17 @@
   }
   footer .footer-links li a:hover { color: #3EC2ED; }
 
+  /* ── FADE-UP ANIMATION ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ── MOBILE ── */
   /* TABLET RESPONSIVE */
   @media (max-width: 1100px) {
@@ -492,7 +503,7 @@
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero fade-up">
   <div class="hero-left">
     <h1>ACADEMICS</h1>
     <p class="subtitle">Subjects, Hours &amp; Assessment</p>
@@ -508,7 +519,7 @@
 </section>
 
 <!-- SUBJECTS & SCHOOL HOURS TABS -->
-<section class="subjects-section" id="subjects">
+<section class="subjects-section fade-up" id="subjects">
   <h2>Subjects Offered and School Hours</h2>
   <div class="tabs-layout">
     <div class="tab-buttons">
@@ -618,7 +629,7 @@
 </section>
 
 <!-- CONTINUOUS ASSESSMENT -->
-<section class="assessment-section">
+<section class="assessment-section fade-up">
   <h2>Continuous Assessment</h2>
   <p class="assessment-intro">
     All assessment is based upon the National Protocol for Assessment (National Curriculum Statement). Assessment takes place frequently throughout the term in the form of Homework, Projects, Tasks, Oral work, Essays, Class tests, and more. These marks add to a learner's final promotion marks. A student absent for any assessment without a legal reason will forfeit the mark. Late submission of assignments or non-compliance will result in a nil (0) for that assessment.
@@ -644,7 +655,7 @@
 </section>
 
 <!-- YELLOW BAND: QUALIFYING / REPORTS / EXTRA CLASSES -->
-<section class="band-section">
+<section class="band-section fade-up">
   <div class="band-cards">
     <div class="band-card">
       <h3>Qualifying for the Examination</h3>
@@ -662,7 +673,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="fade-up">
   <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
   <ul class="footer-links">
     <li><a href="#">Privacy Policy</a></li>
@@ -711,6 +722,19 @@
       document.body.style.overflow = '';
     });
   });
+
+  // Scroll-triggered fade-up animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  fadeEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>

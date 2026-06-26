@@ -369,6 +369,17 @@
   }
   footer .footer-links li a:hover { color: #3EC2ED; }
 
+  /* ── FADE-UP ANIMATION ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* =====================
      TABLET RESPONSIVE
      ===================== */
@@ -499,7 +510,7 @@
 </div>
 
 <!-- HERO SECTION -->
-<section class="hero">
+<section class="hero fade-up">
   <div class="hero-left">
     <h1>SCHOOL FEES AND REQUIRED DOCUMENTS</h1>
     <p class="subtitle">Enrollment and Fees</p>
@@ -515,7 +526,7 @@
 </section>
 
 <!-- FEES TABLE -->
-<section class="fees-section">
+<section class="fees-section fade-up">
   <div class="table-wrapper">
     <div class="table-inner">
       <div class="table-header">
@@ -565,7 +576,7 @@
 </section>
 
 <!-- DOCUMENTS SECTION -->
-<section class="documents-section">
+<section class="documents-section fade-up">
   <h2>Documents for Eligibility</h2>
   <ul>
     <li>A copy of the learner's latest report</li>
@@ -578,7 +589,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="fade-up">
   <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
   <ul class="footer-links">
     <li><a href="#">Privacy Policy</a></li>
@@ -616,6 +627,19 @@
       document.body.style.overflow = '';
     });
   });
+
+  // Scroll-triggered fade-up animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  fadeEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>

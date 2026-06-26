@@ -293,6 +293,17 @@
   footer .footer-links li a { font-size: 15px; font-weight: 700; color: #1E1E1E; }
   footer .footer-links li a:hover { color: #3EC2ED; }
 
+  /* ── FADE-UP ANIMATION ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ══════════════════════════
      TABLET RESPONSIVE
   ══════════════════════════ */
@@ -390,7 +401,7 @@
 </div>
 
 <!-- ── HERO ── -->
-<section class="hero">
+<section class="hero fade-up">
   <div class="hero-left">
     <h1>CODE OF CONDUCT</h1>
     <p class="subtitle">Discipline &amp; Dedication</p>
@@ -405,540 +416,554 @@
 <div class="page-content">
 
   <!-- ── FOUNDATION ── -->
-  <p class="section-label">Our Foundation</p>
-  <h2 class="section-title">Mission, Ethos &amp; Language</h2>
-  <div class="info-cards">
-    <div class="info-card">
-      <h3>Mission Statement</h3>
-      <p>Happy Home Academy is committed to providing facilities for a well-balanced education — concentrating on the development of mind, body and soul — enabling every child to develop their full potential and play a useful, fulfilling role in the community and larger society.</p>
-    </div>
-    <div class="info-card">
-      <h3>Our Ethos</h3>
-      <p>We are driven by sound moral principles, academic excellence and passionate participation. Our Code of Conduct recognises the need to promote co-operation, teaching, learning, mutual respect and the establishment of a culture of tolerance and peace.</p>
-    </div>
-    <div class="info-card">
-      <h3>Language Policy</h3>
-      <p>The medium of instruction at HH Academy is <strong>English</strong>. Afrikaans and isiXhosa are offered as first additional languages.</p>
+  <div class="fade-up">
+    <p class="section-label">Our Foundation</p>
+    <h2 class="section-title">Mission, Ethos &amp; Language</h2>
+    <div class="info-cards">
+      <div class="info-card">
+        <h3>Mission Statement</h3>
+        <p>Happy Home Academy is committed to providing facilities for a well-balanced education — concentrating on the development of mind, body and soul — enabling every child to develop their full potential and play a useful, fulfilling role in the community and larger society.</p>
+      </div>
+      <div class="info-card">
+        <h3>Our Ethos</h3>
+        <p>We are driven by sound moral principles, academic excellence and passionate participation. Our Code of Conduct recognises the need to promote co-operation, teaching, learning, mutual respect and the establishment of a culture of tolerance and peace.</p>
+      </div>
+      <div class="info-card">
+        <h3>Language Policy</h3>
+        <p>The medium of instruction at HH Academy is <strong>English</strong>. Afrikaans and isiXhosa are offered as first additional languages.</p>
+      </div>
     </div>
   </div>
 
   <!-- ── RIGHTS & RESPONSIBILITIES ── -->
-  <p class="section-label">Rights &amp; Responsibilities</p>
-  <h2 class="section-title">Learners &amp; Parents</h2>
-  <div class="rights-grid">
-    <div class="rights-card">
-      <h3>Learner Rights</h3>
-      <ul>
-        <li>Equality</li>
-        <li>Dignity</li>
-        <li>Protection from all forms of discrimination</li>
-        <li>A safe environment conducive to learning</li>
-        <li>A holistic education</li>
-      </ul>
-    </div>
-    <div class="rights-card">
-      <h3>Learner Responsibilities</h3>
-      <ul>
-        <li>Have respect for yourself</li>
-        <li>Behave respectfully and responsibly towards staff and peers</li>
-        <li>Respect different cultures, languages and religions</li>
-        <li>Respect the property and safety of other learners and staff</li>
-        <li>Be proud of your school and wear the uniform with pride</li>
-        <li>Make optimum use of educational opportunities provided</li>
-        <li>Obey all school rules</li>
-      </ul>
-    </div>
-    <div class="rights-card">
-      <h3>Educators' Responsibilities</h3>
-      <ul>
-        <li>The Principal and staff act <em>in loco parentis</em> — they have the same rights as a parent to control and discipline learners during school hours, functions and excursions</li>
-        <li>The Principal and staff have full authority to ensure every learner abides by the Code of Conduct</li>
-      </ul>
-    </div>
-    <div class="rights-card">
-      <h3>Parent Responsibilities</h3>
-      <ul>
-        <li>Support the school and ensure learners observe all rules and regulations</li>
-        <li>Accept responsibility for any misbehaviour on your child's part</li>
-        <li>Honour financial responsibilities timeously</li>
-        <li>Take an active interest in schoolwork and ensure homework is completed</li>
-        <li>Ensure the learner arrives on time each school day</li>
-        <li>Attend meetings convened by the school</li>
-      </ul>
+  <div class="fade-up">
+    <p class="section-label">Rights &amp; Responsibilities</p>
+    <h2 class="section-title">Learners &amp; Parents</h2>
+    <div class="rights-grid">
+      <div class="rights-card">
+        <h3>Learner Rights</h3>
+        <ul>
+          <li>Equality</li>
+          <li>Dignity</li>
+          <li>Protection from all forms of discrimination</li>
+          <li>A safe environment conducive to learning</li>
+          <li>A holistic education</li>
+        </ul>
+      </div>
+      <div class="rights-card">
+        <h3>Learner Responsibilities</h3>
+        <ul>
+          <li>Have respect for yourself</li>
+          <li>Behave respectfully and responsibly towards staff and peers</li>
+          <li>Respect different cultures, languages and religions</li>
+          <li>Respect the property and safety of other learners and staff</li>
+          <li>Be proud of your school and wear the uniform with pride</li>
+          <li>Make optimum use of educational opportunities provided</li>
+          <li>Obey all school rules</li>
+        </ul>
+      </div>
+      <div class="rights-card">
+        <h3>Educators' Responsibilities</h3>
+        <ul>
+          <li>The Principal and staff act <em>in loco parentis</em> — they have the same rights as a parent to control and discipline learners during school hours, functions and excursions</li>
+          <li>The Principal and staff have full authority to ensure every learner abides by the Code of Conduct</li>
+        </ul>
+      </div>
+      <div class="rights-card">
+        <h3>Parent Responsibilities</h3>
+        <ul>
+          <li>Support the school and ensure learners observe all rules and regulations</li>
+          <li>Accept responsibility for any misbehaviour on your child's part</li>
+          <li>Honour financial responsibilities timeously</li>
+          <li>Take an active interest in schoolwork and ensure homework is completed</li>
+          <li>Ensure the learner arrives on time each school day</li>
+          <li>Attend meetings convened by the school</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <!-- ── SCHOOL HOURS ── -->
-  <p class="section-label">School Hours</p>
-  <h2 class="section-title">Daily Schedule</h2>
-  <div class="times-banner">
-    <div class="time-item">
-      <div class="time-label">Foundation Phase</div>
-      <div class="time-value">13:00</div>
-      <div class="time-sub">Grades 1–3</div>
-    </div>
-    <div class="time-item">
-      <div class="time-label">Intermediate &amp; Senior</div>
-      <div class="time-value">14:00</div>
-      <div class="time-sub">Grades 4–7</div>
-    </div>
-    <div class="time-item">
-      <div class="time-label">High School</div>
-      <div class="time-value">14:45</div>
-      <div class="time-sub">Grades 8–12</div>
-    </div>
-    <div class="time-item">
-      <div class="time-label">School Closes</div>
-      <div class="time-value">15:30</div>
-      <div class="time-sub">All learners must be gone</div>
+  <div class="fade-up">
+    <p class="section-label">School Hours</p>
+    <h2 class="section-title">Daily Schedule</h2>
+    <div class="times-banner">
+      <div class="time-item">
+        <div class="time-label">Foundation Phase</div>
+        <div class="time-value">13:00</div>
+        <div class="time-sub">Grades 1–3</div>
+      </div>
+      <div class="time-item">
+        <div class="time-label">Intermediate &amp; Senior</div>
+        <div class="time-value">14:00</div>
+        <div class="time-sub">Grades 4–7</div>
+      </div>
+      <div class="time-item">
+        <div class="time-label">High School</div>
+        <div class="time-value">14:45</div>
+        <div class="time-sub">Grades 8–12</div>
+      </div>
+      <div class="time-item">
+        <div class="time-label">School Closes</div>
+        <div class="time-value">15:30</div>
+        <div class="time-sub">All learners must be gone</div>
+      </div>
     </div>
   </div>
 
   <!-- ── RULES ACCORDION ── -->
-  <p class="section-label">School Rules</p>
-  <h2 class="section-title">Policies &amp; Procedures</h2>
-  <div class="accordion-group">
+  <div class="fade-up">
+    <p class="section-label">School Rules</p>
+    <h2 class="section-title">Policies &amp; Procedures</h2>
+    <div class="accordion-group">
 
-    <!-- Classroom Rules -->
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Classroom Rules</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>These rules are <strong>non-negotiable</strong> and were developed in consultation with staff and the School Governing Body.</p>
-        <ul>
-          <li>Anti-social behaviour will not be tolerated</li>
-          <li>Cell phones or similar devices must be switched off and not visible during the school day</li>
-          <li>No talking out of turn</li>
-          <li>No abusive language</li>
-          <li>No vandalism or littering</li>
-          <li>No walking around without permission and a pass</li>
-          <li>No involvement in activities unrelated to the subject being taught without the teacher's consent</li>
-          <li>Be punctual for class</li>
-          <li>Homework tasks and missed work due to absence must be completed timeously</li>
-          <li>Homework must be completed at home, not before school</li>
-        </ul>
-        <div class="sub-h"><span class="covid-tag">COVID-19 Rules</span></div>
-        <ul>
-          <li>Learners must always have their masks on</li>
-          <li>Maintain 1.5m physical distance at all times</li>
-          <li>Sharing of items including stationery is prohibited</li>
-          <li>Physical contact (handshakes, hugging) is prohibited</li>
-        </ul>
-        <p class="note">Transgression of any of the above rules will have consequences.</p>
+      <!-- Classroom Rules -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Classroom Rules</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>These rules are <strong>non-negotiable</strong> and were developed in consultation with staff and the School Governing Body.</p>
+          <ul>
+            <li>Anti-social behaviour will not be tolerated</li>
+            <li>Cell phones or similar devices must be switched off and not visible during the school day</li>
+            <li>No talking out of turn</li>
+            <li>No abusive language</li>
+            <li>No vandalism or littering</li>
+            <li>No walking around without permission and a pass</li>
+            <li>No involvement in activities unrelated to the subject being taught without the teacher's consent</li>
+            <li>Be punctual for class</li>
+            <li>Homework tasks and missed work due to absence must be completed timeously</li>
+            <li>Homework must be completed at home, not before school</li>
+          </ul>
+          <div class="sub-h"><span class="covid-tag">COVID-19 Rules</span></div>
+          <ul>
+            <li>Learners must always have their masks on</li>
+            <li>Maintain 1.5m physical distance at all times</li>
+            <li>Sharing of items including stationery is prohibited</li>
+            <li>Physical contact (handshakes, hugging) is prohibited</li>
+          </ul>
+          <p class="note">Transgression of any of the above rules will have consequences.</p>
+        </div>
       </div>
-    </div>
 
-    <!-- School Attendance -->
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>School Attendance</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <ul>
-          <li>The register teacher will keep an accurate attendance register and report irregular attendance to parents and HODs</li>
-          <li>Any absence must be covered by an absentee note from a parent</li>
-          <li>Absences longer than 3 days require a doctor's certificate</li>
-          <li>After 10 consecutive unexplained days absent, the learner's record may be cancelled and re-application is required (at the Principal's discretion)</li>
-          <li>After 20 unexplained days absent in total for the year, the learner will be deregistered</li>
-          <li>All learners must arrive before the official starting time; late arrivals are recorded in the entrance register</li>
-          <li>Absence from a formal examination must be notified by the parent and supported by a doctor's certificate</li>
-          <li>Absence due to COVID-19 symptoms: refer to the Covid-19 management policy</li>
-        </ul>
-        <div class="sub-h">Early Release</div>
-        <ul>
-          <li>No learner may leave during school hours without a parental letter; the learner must obtain a "permission to go home" note signed by the class teacher</li>
-          <li>If a learner falls ill, the class teacher signs a permission note and the administrator contacts the parent to arrange transport</li>
-          <li>A learner may NOT use a cell phone to contact a parent directly without the administrator's permission</li>
-        </ul>
-        <div class="sub-h">Religious or Cultural Practices</div>
-        <ul>
-          <li>Learners wishing to participate in religious or cultural ceremonies may do so once parents have given the Principal due notice</li>
-        </ul>
+      <!-- School Attendance -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>School Attendance</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li>The register teacher will keep an accurate attendance register and report irregular attendance to parents and HODs</li>
+            <li>Any absence must be covered by an absentee note from a parent</li>
+            <li>Absences longer than 3 days require a doctor's certificate</li>
+            <li>After 10 consecutive unexplained days absent, the learner's record may be cancelled and re-application is required (at the Principal's discretion)</li>
+            <li>After 20 unexplained days absent in total for the year, the learner will be deregistered</li>
+            <li>All learners must arrive before the official starting time; late arrivals are recorded in the entrance register</li>
+            <li>Absence from a formal examination must be notified by the parent and supported by a doctor's certificate</li>
+            <li>Absence due to COVID-19 symptoms: refer to the Covid-19 management policy</li>
+          </ul>
+          <div class="sub-h">Early Release</div>
+          <ul>
+            <li>No learner may leave during school hours without a parental letter; the learner must obtain a "permission to go home" note signed by the class teacher</li>
+            <li>If a learner falls ill, the class teacher signs a permission note and the administrator contacts the parent to arrange transport</li>
+            <li>A learner may NOT use a cell phone to contact a parent directly without the administrator's permission</li>
+          </ul>
+          <div class="sub-h">Religious or Cultural Practices</div>
+          <ul>
+            <li>Learners wishing to participate in religious or cultural ceremonies may do so once parents have given the Principal due notice</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <!-- Security & Property -->
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Security, Property &amp; Out-of-Bounds Areas</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>Every learner is obligated to protect and carefully use all school facilities and equipment. Destruction or vandalism is a punishable offence. Parents or legal guardians of anyone who intentionally misuses or damages school property will replace or pay for the damaged property. CCTV cameras are installed for the protection and safety of all staff and learners.</p>
-        <div class="sub-h">Out-of-Bounds Areas</div>
-        <ul>
-          <li>The area behind the Director's office (unless doing sports)</li>
-          <li>The parking area at the lakeside</li>
-          <li>The area on the left side of the security room</li>
-          <li>The Lake</li>
-          <li>Home Affairs premises</li>
-        </ul>
-        <p class="note">Lost property found on premises will be taken to the administrator's office for collection.</p>
+      <!-- Security & Property -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Security, Property &amp; Out-of-Bounds Areas</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Every learner is obligated to protect and carefully use all school facilities and equipment. Destruction or vandalism is a punishable offence. Parents or legal guardians of anyone who intentionally misuses or damages school property will replace or pay for the damaged property. CCTV cameras are installed for the protection and safety of all staff and learners.</p>
+          <div class="sub-h">Out-of-Bounds Areas</div>
+          <ul>
+            <li>The area behind the Director's office (unless doing sports)</li>
+            <li>The parking area at the lakeside</li>
+            <li>The area on the left side of the security room</li>
+            <li>The Lake</li>
+            <li>Home Affairs premises</li>
+          </ul>
+          <p class="note">Lost property found on premises will be taken to the administrator's office for collection.</p>
+        </div>
       </div>
-    </div>
 
-    <!-- Cell Phones & Electronics -->
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Cell Phones, Tablets &amp; Electronic Equipment</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <ul>
-          <li>The school is not responsible for cell phones, tablets or electronic equipment lost or stolen at school or during school-related activities</li>
-          <li>If brought to school, cell phones must be switched off from the moment the learner enters the premises until the end-of-day bell, and stored at the administrator's office</li>
-          <li>1st confiscation: held for 1 week · 2nd confiscation (same term): held for 2 weeks · 3rd confiscation: held for a month</li>
-          <li>Learners may not use cell phones at school</li>
-          <li>Personal computer games, toys, iPods, laptops and similar devices may not be brought to school without prior arrangement with a teacher</li>
-        </ul>
-        <div class="sub-h">Cash Payments</div>
-        <ul>
-          <li>Any fees paid by a learner on behalf of a parent must be paid at the Bursar's Office before the school day starts</li>
-          <li>Learners are discouraged from bringing large sums of money to school</li>
-          <li>Parents are encouraged to pay school fees via Debit Order, EFT, Direct Deposit, or card at the Bursar's Office</li>
-        </ul>
+      <!-- Cell Phones & Electronics -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Cell Phones, Tablets &amp; Electronic Equipment</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li>The school is not responsible for cell phones, tablets or electronic equipment lost or stolen at school or during school-related activities</li>
+            <li>If brought to school, cell phones must be switched off from the moment the learner enters the premises until the end-of-day bell, and stored at the administrator's office</li>
+            <li>1st confiscation: held for 1 week · 2nd confiscation (same term): held for 2 weeks · 3rd confiscation: held for a month</li>
+            <li>Learners may not use cell phones at school</li>
+            <li>Personal computer games, toys, iPods, laptops and similar devices may not be brought to school without prior arrangement with a teacher</li>
+          </ul>
+          <div class="sub-h">Cash Payments</div>
+          <ul>
+            <li>Any fees paid by a learner on behalf of a parent must be paid at the Bursar's Office before the school day starts</li>
+            <li>Learners are discouraged from bringing large sums of money to school</li>
+            <li>Parents are encouraged to pay school fees via Debit Order, EFT, Direct Deposit, or card at the Bursar's Office</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <!-- Appearance extras -->
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Appearance: Jewellery, Make-up, Nails &amp; Tattoos</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <ul>
-          <li><strong>Badges:</strong> Only badges received at HHA are permitted</li>
-          <li><strong>Jewellery &amp; Body Piercing:</strong> No jewellery of any kind is allowed — including studs, earrings, chains, rings, bracelets, tongue rings, lip studs or eyebrow studs of any material. Medic-Alert bracelets are the only exception</li>
-          <li><strong>Make-up:</strong> Not allowed at any time, including Civvies days. Learners arriving with make-up will be asked to remove it immediately</li>
-          <li><strong>Nails:</strong> Must be kept short, clean and neat. No nail varnish — learners found wearing nail polish will be sent to the administrator (nail polish remover available for R5.00)</li>
-          <li><strong>Tattoos:</strong> Must not be visible when wearing school uniform or sports uniform</li>
-          <li><strong>General:</strong> Only a plain white vest (not visible above the collar) may be worn under the shirt. No T-shirts under a summer shirt. On Civvies days, learners must wear decent clothes — no short dresses, skirts or bum shorts for girls</li>
-        </ul>
+      <!-- Appearance extras -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Appearance: Jewellery, Make-up, Nails &amp; Tattoos</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Badges:</strong> Only badges received at HHA are permitted</li>
+            <li><strong>Jewellery &amp; Body Piercing:</strong> No jewellery of any kind is allowed — including studs, earrings, chains, rings, bracelets, tongue rings, lip studs or eyebrow studs of any material. Medic-Alert bracelets are the only exception</li>
+            <li><strong>Make-up:</strong> Not allowed at any time, including Civvies days. Learners arriving with make-up will be asked to remove it immediately</li>
+            <li><strong>Nails:</strong> Must be kept short, clean and neat. No nail varnish — learners found wearing nail polish will be sent to the administrator (nail polish remover available for R5.00)</li>
+            <li><strong>Tattoos:</strong> Must not be visible when wearing school uniform or sports uniform</li>
+            <li><strong>General:</strong> Only a plain white vest (not visible above the collar) may be worn under the shirt. No T-shirts under a summer shirt. On Civvies days, learners must wear decent clothes — no short dresses, skirts or bum shorts for girls</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-  </div><!-- end accordion group -->
+    </div><!-- end accordion group -->
+  </div>
 
   <!-- ── UNIFORM ── -->
-  <p class="section-label">Dress Code</p>
-  <h2 class="section-title">School Uniform</h2>
-  <p style="font-size:16px; color:#929292; margin-bottom:28px;">All school and sporting uniforms must be clearly marked with the learner's name. The correct uniform is always compulsory when representing or attending the school, except when announced otherwise.</p>
-  <div class="uniform-grid">
+  <div class="fade-up">
+    <p class="section-label">Dress Code</p>
+    <h2 class="section-title">School Uniform</h2>
+    <p style="font-size:16px; color:#929292; margin-bottom:28px;">All school and sporting uniforms must be clearly marked with the learner's name. The correct uniform is always compulsory when representing or attending the school, except when announced otherwise.</p>
+    <div class="uniform-grid">
 
-    <!-- Boys Winter -->
-    <div class="uniform-card">
-      <div class="uc-head">
-        <div class="uc-badge">B</div>
-        <h3>Boys – Winter</h3>
+      <!-- Boys Winter -->
+      <div class="uniform-card">
+        <div class="uc-head">
+          <div class="uc-badge">B</div>
+          <h3>Boys – Winter</h3>
+        </div>
+        <span class="season-tag">Winter</span>
+        <ul>
+          <li>School blazer</li>
+          <li>Grey trousers (no bellbottoms, stovepipes or skinny fit)</li>
+          <li>White long-sleeved starched shirt designed for a tie</li>
+          <li>HHA school tie (must not be defaced)</li>
+          <li>Plain grey socks (no white socks)</li>
+          <li>Black polishable leather lace-up shoes</li>
+          <li>Black belt — compulsory</li>
+          <li>White HHA pull-over or HHA jersey</li>
+          <li>Long-sleeved jerseys may be worn without a blazer</li>
+          <li>HHA fleece jackets for Foundation Phase (Grade R–3)</li>
+          <li>Optional: Navy blue scarf, gloves, white scarf with school badge</li>
+        </ul>
       </div>
-      <span class="season-tag">Winter</span>
-      <ul>
-        <li>School blazer</li>
-        <li>Grey trousers (no bellbottoms, stovepipes or skinny fit)</li>
-        <li>White long-sleeved starched shirt designed for a tie</li>
-        <li>HHA school tie (must not be defaced)</li>
-        <li>Plain grey socks (no white socks)</li>
-        <li>Black polishable leather lace-up shoes</li>
-        <li>Black belt — compulsory</li>
-        <li>White HHA pull-over or HHA jersey</li>
-        <li>Long-sleeved jerseys may be worn without a blazer</li>
-        <li>HHA fleece jackets for Foundation Phase (Grade R–3)</li>
-        <li>Optional: Navy blue scarf, gloves, white scarf with school badge</li>
-      </ul>
-    </div>
 
-    <!-- Boys Summer -->
-    <div class="uniform-card">
-      <div class="uc-head">
-        <div class="uc-badge">B</div>
-        <h3>Boys – Summer</h3>
+      <!-- Boys Summer -->
+      <div class="uniform-card">
+        <div class="uc-head">
+          <div class="uc-badge">B</div>
+          <h3>Boys – Summer</h3>
+        </div>
+        <span class="season-tag">Summer</span>
+        <ul>
+          <li>As per winter, plus:</li>
+          <li>Regulation short-sleeved open-necked white shirt with school badge on pocket</li>
+          <li>Winter shirts may not be worn as summer shirts</li>
+          <li>Optional: Blazer, sleeveless pull-over jersey</li>
+        </ul>
+        <div class="sub-h" style="margin-top:14px; font-size:15px; color:#414141;">Boys Hair</div>
+        <ul>
+          <li>Neat and tidy; conservative — keep it short</li>
+          <li>Top, front, sides and back must be the same size</li>
+          <li>No colouring of hair</li>
+          <li>No fashionable fade/mohawk styles or Mandela cuts</li>
+          <li>Clean facial shave; no shaved slits into eyebrows</li>
+        </ul>
       </div>
-      <span class="season-tag">Summer</span>
-      <ul>
-        <li>As per winter, plus:</li>
-        <li>Regulation short-sleeved open-necked white shirt with school badge on pocket</li>
-        <li>Winter shirts may not be worn as summer shirts</li>
-        <li>Optional: Blazer, sleeveless pull-over jersey</li>
-      </ul>
-      <div class="sub-h" style="margin-top:14px; font-size:15px; color:#414141;">Boys Hair</div>
-      <ul>
-        <li>Neat and tidy; conservative — keep it short</li>
-        <li>Top, front, sides and back must be the same size</li>
-        <li>No colouring of hair</li>
-        <li>No fashionable fade/mohawk styles or Mandela cuts</li>
-        <li>Clean facial shave; no shaved slits into eyebrows</li>
-      </ul>
-    </div>
 
-    <!-- Girls Winter -->
-    <div class="uniform-card">
-      <div class="uc-head">
-        <div class="uc-badge">G</div>
-        <h3>Girls – Winter</h3>
+      <!-- Girls Winter -->
+      <div class="uniform-card">
+        <div class="uc-head">
+          <div class="uc-badge">G</div>
+          <h3>Girls – Winter</h3>
+        </div>
+        <span class="season-tag">Winter</span>
+        <ul>
+          <li>School blazer</li>
+          <li>Mustard skirt — official school style and material (not shorter than 10 cm from the floor when kneeling)</li>
+          <li>White long-sleeved shirt</li>
+          <li>Regulation school tie</li>
+          <li>Navy blue knee-length socks with school colour band</li>
+          <li>Black polishable leather school shoes (low-heeled)</li>
+          <li>HHA pull-over or jersey with school colour band</li>
+          <li>Optional: Navy blue scarf, gloves, navy blue tights</li>
+        </ul>
       </div>
-      <span class="season-tag">Winter</span>
-      <ul>
-        <li>School blazer</li>
-        <li>Mustard skirt — official school style and material (not shorter than 10 cm from the floor when kneeling)</li>
-        <li>White long-sleeved shirt</li>
-        <li>Regulation school tie</li>
-        <li>Navy blue knee-length socks with school colour band</li>
-        <li>Black polishable leather school shoes (low-heeled)</li>
-        <li>HHA pull-over or jersey with school colour band</li>
-        <li>Optional: Navy blue scarf, gloves, navy blue tights</li>
-      </ul>
-    </div>
 
-    <!-- Girls Summer -->
-    <div class="uniform-card">
-      <div class="uc-head">
-        <div class="uc-badge">G</div>
-        <h3>Girls – Summer</h3>
+      <!-- Girls Summer -->
+      <div class="uniform-card">
+        <div class="uc-head">
+          <div class="uc-badge">G</div>
+          <h3>Girls – Summer</h3>
+        </div>
+        <span class="season-tag">Summer</span>
+        <ul>
+          <li>Mustard skirt as per winter (not shorter than 10 cm when kneeling)</li>
+          <li>Regulation short-sleeved open-necked white shirt with school badge</li>
+          <li>Winter shirts may not be worn as summer shirts</li>
+          <li>Plain white ankle-length socks — folded over, not rolled</li>
+          <li>Optional: Blazer and pull-over</li>
+        </ul>
+        <div class="sub-h" style="margin-top:14px; font-size:15px; color:#414141;">Girls Hair</div>
+        <ul>
+          <li>No style, extensions or colour that draws unnecessary attention</li>
+          <li>Braided hair: con-row only (natural colour, no thick/soft/single braids)</li>
+          <li>No artificial single dreadlocks; long hair must be plaited or tied back</li>
+          <li>Hair accessories: navy blue or black bands only (max 3 cm wide) or plain grips</li>
+          <li>Gel applied conservatively is permitted; no slits into eyebrows</li>
+        </ul>
       </div>
-      <span class="season-tag">Summer</span>
-      <ul>
-        <li>Mustard skirt as per winter (not shorter than 10 cm when kneeling)</li>
-        <li>Regulation short-sleeved open-necked white shirt with school badge</li>
-        <li>Winter shirts may not be worn as summer shirts</li>
-        <li>Plain white ankle-length socks — folded over, not rolled</li>
-        <li>Optional: Blazer and pull-over</li>
-      </ul>
-      <div class="sub-h" style="margin-top:14px; font-size:15px; color:#414141;">Girls Hair</div>
-      <ul>
-        <li>No style, extensions or colour that draws unnecessary attention</li>
-        <li>Braided hair: con-row only (natural colour, no thick/soft/single braids)</li>
-        <li>No artificial single dreadlocks; long hair must be plaited or tied back</li>
-        <li>Hair accessories: navy blue or black bands only (max 3 cm wide) or plain grips</li>
-        <li>Gel applied conservatively is permitted; no slits into eyebrows</li>
-      </ul>
-    </div>
 
-    <!-- Sports Uniform -->
-    <div class="uniform-card" style="grid-column: 1 / -1;">
-      <div class="uc-head">
-        <div class="uc-badge" style="background:#FFC107;">⚽</div>
-        <h3>Sports Uniform</h3>
+      <!-- Sports Uniform -->
+      <div class="uniform-card" style="grid-column: 1 / -1;">
+        <div class="uc-head">
+          <div class="uc-badge" style="background:#FFC107;">⚽</div>
+          <h3>Sports Uniform</h3>
+        </div>
+        <ul style="columns: 2; gap: 20px;">
+          <li>School golf shirt with badge worn with Navy shorts on sports days</li>
+          <li>The HHA tracksuit is the only permissible tracksuit</li>
+          <li>Tracksuits may be worn on Tuesdays and Thursdays only</li>
+          <li>Only a school golf shirt may be worn under the tracksuit top</li>
+        </ul>
       </div>
-      <ul style="columns: 2; gap: 20px;">
-        <li>School golf shirt with badge worn with Navy shorts on sports days</li>
-        <li>The HHA tracksuit is the only permissible tracksuit</li>
-        <li>Tracksuits may be worn on Tuesdays and Thursdays only</li>
-        <li>Only a school golf shirt may be worn under the tracksuit top</li>
-      </ul>
-    </div>
 
+    </div>
   </div>
 
   <!-- ── DISCIPLINE TABS ── -->
-  <p class="section-label">Discipline</p>
-  <h2 class="section-title">Offences &amp; Corrective Measures</h2>
-  <p style="font-size:16px; color:#929292; margin-bottom:24px;">Offences are categorised into four grades of severity. Select a grade to view its offences and the recommended corrective measures.</p>
+  <div class="fade-up">
+    <p class="section-label">Discipline</p>
+    <h2 class="section-title">Offences &amp; Corrective Measures</h2>
+    <p style="font-size:16px; color:#929292; margin-bottom:24px;">Offences are categorised into four grades of severity. Select a grade to view its offences and the recommended corrective measures.</p>
 
-  <div class="offence-section">
-    <div class="offence-tabs" role="tablist">
-      <button class="tab-btn active" role="tab" data-tab="g1">Grade 1 — Minor</button>
-      <button class="tab-btn" role="tab" data-tab="g2">Grade 2 — Moderate</button>
-      <button class="tab-btn" role="tab" data-tab="g3">Grade 3 — Serious</button>
-      <button class="tab-btn" role="tab" data-tab="g4">Grade 4 — Severe</button>
-    </div>
+    <div class="offence-section">
+      <div class="offence-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" data-tab="g1">Grade 1 — Minor</button>
+        <button class="tab-btn" role="tab" data-tab="g2">Grade 2 — Moderate</button>
+        <button class="tab-btn" role="tab" data-tab="g3">Grade 3 — Serious</button>
+        <button class="tab-btn" role="tab" data-tab="g4">Grade 4 — Severe</button>
+      </div>
 
-    <!-- Grade 1 -->
-    <div class="tab-panel active" id="g1">
-      <table class="offence-table">
-        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
-        <tbody>
-          <tr><td>Littering / excessively noisy or unruly behaviour</td><td>Verbal reprimand, written punishment, or detention at break</td></tr>
-          <tr><td>Eating, drinking or chewing gum during class or assembly</td><td>Verbal reprimand; temporary confiscation until end of term</td></tr>
-          <tr><td>Misconduct during assembly</td><td>Verbal reprimand or written notification to parents</td></tr>
-          <tr><td>Entering out-of-bounds area without permission</td><td>Verbal reprimand; written punishment</td></tr>
-          <tr><td>Loitering in passages, tuck shop, toilets or change rooms</td><td>Verbal reprimand; detention at break</td></tr>
-          <tr><td>Misconduct or poor sportsmanship during extra-mural activities</td><td>Written notification to parents</td></tr>
-          <tr><td>Failure to submit absentee / exit notes, return library books, attend extramural practices, attend duty class</td><td>Verbal reprimand; mark deduction (where applicable)</td></tr>
-          <tr><td>Continual interference with another learner causing minor discomfort</td><td>Written punishment; break detention</td></tr>
-          <tr><td>Minor uniform infringements (incorrect jersey, wrong socks/belt, wearing jewellery)</td><td>Verbal reprimand; temporary confiscation</td></tr>
-          <tr><td>Disruptive behaviour in class / spitting in public</td><td>Verbal reprimand; written punishment; break detention</td></tr>
-          <tr><td>Failure to do classwork, submit homework, bring required materials, hand work in on time; copying classwork; defacing school property; late for class</td><td>Verbal reprimand; mark deduction; written punishment; removing graffiti at break</td></tr>
-          <tr><td>Use of offensive material to cover books or files</td><td>Confiscation; verbal reprimand</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- Grade 1 -->
+      <div class="tab-panel active" id="g1">
+        <table class="offence-table">
+          <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Littering / excessively noisy or unruly behaviour</td><td>Verbal reprimand, written punishment, or detention at break</td></tr>
+            <tr><td>Eating, drinking or chewing gum during class or assembly</td><td>Verbal reprimand; temporary confiscation until end of term</td></tr>
+            <tr><td>Misconduct during assembly</td><td>Verbal reprimand or written notification to parents</td></tr>
+            <tr><td>Entering out-of-bounds area without permission</td><td>Verbal reprimand; written punishment</td></tr>
+            <tr><td>Loitering in passages, tuck shop, toilets or change rooms</td><td>Verbal reprimand; detention at break</td></tr>
+            <tr><td>Misconduct or poor sportsmanship during extra-mural activities</td><td>Written notification to parents</td></tr>
+            <tr><td>Failure to submit absentee / exit notes, return library books, attend extramural practices, attend duty class</td><td>Verbal reprimand; mark deduction (where applicable)</td></tr>
+            <tr><td>Continual interference with another learner causing minor discomfort</td><td>Written punishment; break detention</td></tr>
+            <tr><td>Minor uniform infringements (incorrect jersey, wrong socks/belt, wearing jewellery)</td><td>Verbal reprimand; temporary confiscation</td></tr>
+            <tr><td>Disruptive behaviour in class / spitting in public</td><td>Verbal reprimand; written punishment; break detention</td></tr>
+            <tr><td>Failure to do classwork, submit homework, bring required materials, hand work in on time; copying classwork; defacing school property; late for class</td><td>Verbal reprimand; mark deduction; written punishment; removing graffiti at break</td></tr>
+            <tr><td>Use of offensive material to cover books or files</td><td>Confiscation; verbal reprimand</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Grade 2 -->
-    <div class="tab-panel" id="g2">
-      <table class="offence-table">
-        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
-        <tbody>
-          <tr><td>Vandalism / damaging another person's possessions</td><td>Repair/replacement, warning letter and Principal's detention</td></tr>
-          <tr><td>Racism: remarks or insults</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
-          <tr><td>Forgery (altering official documents, medical certificates)</td><td>Warning letter and detention</td></tr>
-          <tr><td>Intimidation / bullying (verbal or physical threats)</td><td>Phone call to parents, warning letter with detention</td></tr>
-          <tr><td>Swearing, lying or obscene gestures</td><td>Warning letter and detention</td></tr>
-          <tr><td>Verbal or non-verbal abuse; disrespect or insolence</td><td>Phone call to parents, warning letter and detention</td></tr>
-          <tr><td>Insubordination (ignoring instructions, failure to report to exclusion room)</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
-          <tr><td>Fighting / common assault / attempted assault</td><td>Warning letter and suspension</td></tr>
-          <tr><td>Public disturbance and public indecency; gambling</td><td>1st: Special detention · 2nd: Special detention · 3rd: Informal disciplinary hearing, special detention and counselling</td></tr>
-          <tr><td>Failure to attend detention without prior excuse</td><td>Make up missed detention, warning letter and Principal's detention</td></tr>
-          <tr><td>Unacceptable hairstyles, bleaching or colouring; display of visible tattoos</td><td>After 3 warnings, suspension</td></tr>
-          <tr><td>Using cell phone during formal testing</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
-          <tr><td>Cheating / attempting to cheat in class tests or assignments</td><td>Nought for test and warning letter</td></tr>
-          <tr><td>Truancy — bunking a lesson</td><td>Principal's detention</td></tr>
-          <tr><td>Truancy — bunking a day or part of a day</td><td>Phone call to parents, warning letter and detention</td></tr>
-          <tr><td>Smoking / possession of cigarettes on or off school property</td><td>1st: Special detention · 2nd: Special detention · 3rd: Informal disciplinary hearing, special detention and counselling</td></tr>
-          <tr><td>Smoking — selling cigarettes on/off school property</td><td>1st: Informal disciplinary hearing, warning letter and special detention · 2nd: Formal hearing, warning letter and special detention</td></tr>
-          <tr><td>Vandalism / defacing / damaging school property</td><td>Phone call to parents, warning letter and detention</td></tr>
-          <tr><td>Intentionally removing mask; hugging/breaking social distance rules</td><td>Written warning, meeting with parents and suspension</td></tr>
-          <tr><td>Sticking a sharp object into a fellow learner</td><td>Warning letter and detention</td></tr>
-          <tr><td>Substance abuse / sniffing unauthorised substances</td><td>Informal hearing, warning letter and detention</td></tr>
-          <tr><td>Unreasonable repetition of a Grade 1 offence</td><td>Escalated corrective measures per Grade 2 procedure</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- Grade 2 -->
+      <div class="tab-panel" id="g2">
+        <table class="offence-table">
+          <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Vandalism / damaging another person's possessions</td><td>Repair/replacement, warning letter and Principal's detention</td></tr>
+            <tr><td>Racism: remarks or insults</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
+            <tr><td>Forgery (altering official documents, medical certificates)</td><td>Warning letter and detention</td></tr>
+            <tr><td>Intimidation / bullying (verbal or physical threats)</td><td>Phone call to parents, warning letter with detention</td></tr>
+            <tr><td>Swearing, lying or obscene gestures</td><td>Warning letter and detention</td></tr>
+            <tr><td>Verbal or non-verbal abuse; disrespect or insolence</td><td>Phone call to parents, warning letter and detention</td></tr>
+            <tr><td>Insubordination (ignoring instructions, failure to report to exclusion room)</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
+            <tr><td>Fighting / common assault / attempted assault</td><td>Warning letter and suspension</td></tr>
+            <tr><td>Public disturbance and public indecency; gambling</td><td>1st: Special detention · 2nd: Special detention · 3rd: Informal disciplinary hearing, special detention and counselling</td></tr>
+            <tr><td>Failure to attend detention without prior excuse</td><td>Make up missed detention, warning letter and Principal's detention</td></tr>
+            <tr><td>Unacceptable hairstyles, bleaching or colouring; display of visible tattoos</td><td>After 3 warnings, suspension</td></tr>
+            <tr><td>Using cell phone during formal testing</td><td>Suspension from class, warning letter and Principal's detention</td></tr>
+            <tr><td>Cheating / attempting to cheat in class tests or assignments</td><td>Nought for test and warning letter</td></tr>
+            <tr><td>Truancy — bunking a lesson</td><td>Principal's detention</td></tr>
+            <tr><td>Truancy — bunking a day or part of a day</td><td>Phone call to parents, warning letter and detention</td></tr>
+            <tr><td>Smoking / possession of cigarettes on or off school property</td><td>1st: Special detention · 2nd: Special detention · 3rd: Informal disciplinary hearing, special detention and counselling</td></tr>
+            <tr><td>Smoking — selling cigarettes on/off school property</td><td>1st: Informal disciplinary hearing, warning letter and special detention · 2nd: Formal hearing, warning letter and special detention</td></tr>
+            <tr><td>Vandalism / defacing / damaging school property</td><td>Phone call to parents, warning letter and detention</td></tr>
+            <tr><td>Intentionally removing mask; hugging/breaking social distance rules</td><td>Written warning, meeting with parents and suspension</td></tr>
+            <tr><td>Sticking a sharp object into a fellow learner</td><td>Warning letter and detention</td></tr>
+            <tr><td>Substance abuse / sniffing unauthorised substances</td><td>Informal hearing, warning letter and detention</td></tr>
+            <tr><td>Unreasonable repetition of a Grade 1 offence</td><td>Escalated corrective measures per Grade 2 procedure</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Grade 3 -->
-    <div class="tab-panel" id="g3">
-      <table class="offence-table">
-        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
-        <tbody>
-          <tr><td>Possession of weapons that can cause physical injury (knives, etc.)</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Entering school under the influence of alcohol or drugs</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Possession / copying / distribution / display of pornographic material</td><td>Warning letter, community service and detention</td></tr>
-          <tr><td>Assault with intent to cause grievous bodily harm</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Truancy from school / leaving school without permission</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Cheating / attempted cheating in final Grade 12 examination</td><td>Implementation of official provincial procedures</td></tr>
-          <tr><td>Possession / distribution of test or examination material prior to the test</td><td>Disciplinary hearing, nought for test, warning letter, community service and detention</td></tr>
-          <tr><td>Ongoing disruptive behaviour frustrating the school educational programme</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Conspiracy to disrupt proper functioning of school through collective action</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Gangs — promoting formation of or associating with school gangs</td><td>Suspension, disciplinary hearing, warning letter and detention</td></tr>
-          <tr><td>Racist conduct defaming a teacher or learner</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Sexual harassment of a teacher or learner</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Threatening to assault or intimidating a teacher</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
-          <tr><td>Verbal abuse</td><td>Suspension, disciplinary hearing, warning letter, community service and detention or expulsion</td></tr>
-          <tr><td>Bullying / intimidation</td><td>Warning letter, community service and detention</td></tr>
-          <tr><td>Coughing or sneezing at someone without a mask</td><td>Suspension from school and disciplinary hearing</td></tr>
-          <tr><td>Unreasonable repetition of a Grade 2 offence</td><td>Escalated corrective measures per Grade 3 procedure</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- Grade 3 -->
+      <div class="tab-panel" id="g3">
+        <table class="offence-table">
+          <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Possession of weapons that can cause physical injury (knives, etc.)</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Entering school under the influence of alcohol or drugs</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Possession / copying / distribution / display of pornographic material</td><td>Warning letter, community service and detention</td></tr>
+            <tr><td>Assault with intent to cause grievous bodily harm</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Truancy from school / leaving school without permission</td><td>Disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Cheating / attempted cheating in final Grade 12 examination</td><td>Implementation of official provincial procedures</td></tr>
+            <tr><td>Possession / distribution of test or examination material prior to the test</td><td>Disciplinary hearing, nought for test, warning letter, community service and detention</td></tr>
+            <tr><td>Ongoing disruptive behaviour frustrating the school educational programme</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Conspiracy to disrupt proper functioning of school through collective action</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Gangs — promoting formation of or associating with school gangs</td><td>Suspension, disciplinary hearing, warning letter and detention</td></tr>
+            <tr><td>Racist conduct defaming a teacher or learner</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Sexual harassment of a teacher or learner</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Threatening to assault or intimidating a teacher</td><td>Suspension, disciplinary hearing, warning letter, community service and detention</td></tr>
+            <tr><td>Verbal abuse</td><td>Suspension, disciplinary hearing, warning letter, community service and detention or expulsion</td></tr>
+            <tr><td>Bullying / intimidation</td><td>Warning letter, community service and detention</td></tr>
+            <tr><td>Coughing or sneezing at someone without a mask</td><td>Suspension from school and disciplinary hearing</td></tr>
+            <tr><td>Unreasonable repetition of a Grade 2 offence</td><td>Escalated corrective measures per Grade 3 procedure</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Grade 4 -->
-    <div class="tab-panel" id="g4">
-      <table class="offence-table">
-        <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
-        <tbody>
-          <tr><td>Use of weapons causing physical injury (knives, etc.)</td><td>Suspension, disciplinary hearing, community service and detention/expulsion</td></tr>
-          <tr><td>Possession and/or use of a firearm, ammunition or lethal weapon</td><td>Suspension, disciplinary hearing, appropriate punishment and detention/expulsion</td></tr>
-          <tr><td>Possession, using or dealing in drugs, alcohol or any intoxicating substance</td><td>Suspension, disciplinary hearing, warning letter, community service, detention and professional counselling/expulsion</td></tr>
-          <tr><td>Poisoning or attempting to poison another person</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
-          <tr><td>Theft, robbery, breaking and entering</td><td>Disciplinary hearing, replacement of stolen articles, warning letter, community service and detention/expulsion</td></tr>
-          <tr><td>Malicious damage to property of the school, staff or learners</td><td>Disciplinary hearing, repair damage, warning letter, community service and detention/expulsion</td></tr>
-          <tr><td>Assault on a learner causing serious bodily harm</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
-          <tr><td>Assault on a teacher</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
-          <tr><td>Sexual assault / rape</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
-          <tr><td>Hostage-taking</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
-          <tr><td>Fraud (financial)</td><td>Suspension, disciplinary hearing, compensation, warning letter, community service and detention/expulsion</td></tr>
-          <tr><td>Forgery of any document or signature to the actual or potential prejudice of the school</td><td>Suspension, disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
-          <tr><td>Bribery / attempted bribery regarding test or examination material</td><td>Disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
-          <tr><td>Trading examination material for personal monetary gain</td><td>Disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
-          <tr><td>Sedition or inciting any form of illegal strike action on school premises</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
-          <tr><td>Any offence punishable under common law</td><td>Suspension, disciplinary hearing, appropriate measures and possible expulsion</td></tr>
-        </tbody>
-      </table>
+      <!-- Grade 4 -->
+      <div class="tab-panel" id="g4">
+        <table class="offence-table">
+          <thead><tr><th>Offence</th><th>Corrective Measures</th></tr></thead>
+          <tbody>
+            <tr><td>Use of weapons causing physical injury (knives, etc.)</td><td>Suspension, disciplinary hearing, community service and detention/expulsion</td></tr>
+            <tr><td>Possession and/or use of a firearm, ammunition or lethal weapon</td><td>Suspension, disciplinary hearing, appropriate punishment and detention/expulsion</td></tr>
+            <tr><td>Possession, using or dealing in drugs, alcohol or any intoxicating substance</td><td>Suspension, disciplinary hearing, warning letter, community service, detention and professional counselling/expulsion</td></tr>
+            <tr><td>Poisoning or attempting to poison another person</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+            <tr><td>Theft, robbery, breaking and entering</td><td>Disciplinary hearing, replacement of stolen articles, warning letter, community service and detention/expulsion</td></tr>
+            <tr><td>Malicious damage to property of the school, staff or learners</td><td>Disciplinary hearing, repair damage, warning letter, community service and detention/expulsion</td></tr>
+            <tr><td>Assault on a learner causing serious bodily harm</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+            <tr><td>Assault on a teacher</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+            <tr><td>Sexual assault / rape</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+            <tr><td>Hostage-taking</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+            <tr><td>Fraud (financial)</td><td>Suspension, disciplinary hearing, compensation, warning letter, community service and detention/expulsion</td></tr>
+            <tr><td>Forgery of any document or signature to the actual or potential prejudice of the school</td><td>Suspension, disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
+            <tr><td>Bribery / attempted bribery regarding test or examination material</td><td>Disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
+            <tr><td>Trading examination material for personal monetary gain</td><td>Disciplinary hearing, warning letter, community service and detention/expulsion</td></tr>
+            <tr><td>Sedition or inciting any form of illegal strike action on school premises</td><td>Suspension, disciplinary hearing and expulsion</td></tr>
+            <tr><td>Any offence punishable under common law</td><td>Suspension, disciplinary hearing, appropriate measures and possible expulsion</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
   <!-- ── DISCIPLINARY PROCESS ── -->
-  <p class="section-label">Process</p>
-  <h2 class="section-title">Disciplinary Procedures &amp; Hearings</h2>
-  <div class="accordion-group">
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Corrective Measures Available</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>The following measures are aimed at correcting behaviour <em>before</em> suspension and, in extreme circumstances, expulsion:</p>
-        <ul>
-          <li>Verbal warning / reprimand</li>
-          <li>Use of the de-merit diary system</li>
-          <li>Written warning / final written warning</li>
-          <li>Removal from classes to the exclusion zone</li>
-          <li>Written punishment; community service</li>
-          <li>Homework detention / supervised detention / de-merit detention</li>
-          <li>Referral for counselling</li>
-          <li>Compensation for damages (repair or replacement of lost or damaged items)</li>
-          <li>Temporary suspension of school-related privileges</li>
-          <li>Exclusion from school activities (academic dinner, sporting events, valedictory, prize-giving)</li>
-          <li>Withdrawal of recognition (award withdrawn, councillor badge rescinded)</li>
-          <li>Temporary suspension from class or school — pending a disciplinary hearing</li>
-          <li>Formal disciplinary hearing</li>
-        </ul>
+  <div class="fade-up">
+    <p class="section-label">Process</p>
+    <h2 class="section-title">Disciplinary Procedures &amp; Hearings</h2>
+    <div class="accordion-group">
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Corrective Measures Available</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>The following measures are aimed at correcting behaviour <em>before</em> suspension and, in extreme circumstances, expulsion:</p>
+          <ul>
+            <li>Verbal warning / reprimand</li>
+            <li>Use of the de-merit diary system</li>
+            <li>Written warning / final written warning</li>
+            <li>Removal from classes to the exclusion zone</li>
+            <li>Written punishment; community service</li>
+            <li>Homework detention / supervised detention / de-merit detention</li>
+            <li>Referral for counselling</li>
+            <li>Compensation for damages (repair or replacement of lost or damaged items)</li>
+            <li>Temporary suspension of school-related privileges</li>
+            <li>Exclusion from school activities (academic dinner, sporting events, valedictory, prize-giving)</li>
+            <li>Withdrawal of recognition (award withdrawn, councillor badge rescinded)</li>
+            <li>Temporary suspension from class or school — pending a disciplinary hearing</li>
+            <li>Formal disciplinary hearing</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Serious Misconduct — Suspension</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>A learner will be guilty of serious misconduct leading to potential suspension if they intentionally and without just excuse:</p>
-        <ul>
-          <li>Seriously threaten, disrupt or frustrate teaching or learning in a class</li>
-          <li>Engage in a conspiracy to disrupt the proper functioning of the school through collective action</li>
-          <li>Insult the dignity of or defame any learner or person (including racist remarks)</li>
-          <li>Distribute or possess test or examination material that may enable unfair advantage</li>
-          <li>Cheat in a test, examination or any other form of assessment</li>
-          <li>Engage in any act of public indecency</li>
-          <li>Sexually harass another person</li>
-          <li>Possess or distribute pornographic material</li>
-          <li>Are under the influence of, or in possession of, alcohol or drugs</li>
-        </ul>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Serious Misconduct — Suspension</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>A learner will be guilty of serious misconduct leading to potential suspension if they intentionally and without just excuse:</p>
+          <ul>
+            <li>Seriously threaten, disrupt or frustrate teaching or learning in a class</li>
+            <li>Engage in a conspiracy to disrupt the proper functioning of the school through collective action</li>
+            <li>Insult the dignity of or defame any learner or person (including racist remarks)</li>
+            <li>Distribute or possess test or examination material that may enable unfair advantage</li>
+            <li>Cheat in a test, examination or any other form of assessment</li>
+            <li>Engage in any act of public indecency</li>
+            <li>Sexually harass another person</li>
+            <li>Possess or distribute pornographic material</li>
+            <li>Are under the influence of, or in possession of, alcohol or drugs</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Serious Misconduct — Expulsion</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>A learner faces expulsion if they:</p>
-        <ul>
-          <li>Are found guilty of the same or similar misconduct after a prior finding of guilt</li>
-          <li>Fail to comply with a suspension as a correctional measure</li>
-          <li>Forge any document or signature to the prejudice of the school</li>
-          <li>Trade in any test or examination question paper</li>
-          <li>Engage in theft or act dishonestly to the prejudice of another person</li>
-          <li>Possess, consume or deal in any illegal substance</li>
-          <li>Are in possession of a dangerous weapon</li>
-          <li>Assault or threaten to assault another person</li>
-          <li>Hold any person hostage</li>
-          <li>Murder any person</li>
-          <li>Rape any person or engage in any sexual activity that constitutes an offence</li>
-          <li>Maliciously damage property</li>
-        </ul>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Serious Misconduct — Expulsion</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>A learner faces expulsion if they:</p>
+          <ul>
+            <li>Are found guilty of the same or similar misconduct after a prior finding of guilt</li>
+            <li>Fail to comply with a suspension as a correctional measure</li>
+            <li>Forge any document or signature to the prejudice of the school</li>
+            <li>Trade in any test or examination question paper</li>
+            <li>Engage in theft or act dishonestly to the prejudice of another person</li>
+            <li>Possess, consume or deal in any illegal substance</li>
+            <li>Are in possession of a dangerous weapon</li>
+            <li>Assault or threaten to assault another person</li>
+            <li>Hold any person hostage</li>
+            <li>Murder any person</li>
+            <li>Rape any person or engage in any sexual activity that constitutes an offence</li>
+            <li>Maliciously damage property</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion-header" aria-expanded="false">
-        <h4>Hearings Process</h4>
-        <span class="accordion-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>The Principal and staff will make every effort to correct the situation before resorting to a full hearing. Full hearings include members of the Student Council and Governing Body.</p>
-        <ul>
-          <li>For serious or continuous misdemeanours, the learner will be required to attend a full hearing</li>
-          <li>For lesser misdemeanours, at the Principal and Discipline Officer's discretion, the parent(s) or guardian will be called to a meeting to discuss the misbehaviour</li>
-          <li>Any matters not specifically addressed in this Code will be dealt with by the Principal in line with the school's ethos and the laws of the country</li>
-        </ul>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <h4>Hearings Process</h4>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>The Principal and staff will make every effort to correct the situation before resorting to a full hearing. Full hearings include members of the Student Council and Governing Body.</p>
+          <ul>
+            <li>For serious or continuous misdemeanours, the learner will be required to attend a full hearing</li>
+            <li>For lesser misdemeanours, at the Principal and Discipline Officer's discretion, the parent(s) or guardian will be called to a meeting to discuss the misbehaviour</li>
+            <li>Any matters not specifically addressed in this Code will be dealt with by the Principal in line with the school's ethos and the laws of the country</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ── CREDO ── -->
-  <div class="credo-section">
+  <div class="credo-section fade-up">
     <h2>Our Credo</h2>
     <div class="credo-items">
       <div class="credo-item">Happy learners flourish in a disciplined environment where the boundaries are clearly defined.</div>
@@ -949,7 +974,7 @@
   </div>
 
   <!-- ── LEARNER COMMITMENT ── -->
-  <div class="commitment-card">
+  <div class="commitment-card fade-up">
     <h2>Learner Commitment</h2>
     <ul>
       <li>Abide by the Code of Conduct and Disciplinary System</li>
@@ -966,7 +991,7 @@
 </div><!-- end page-content -->
 
 <!-- ── FOOTER ── -->
-<footer>
+<footer class="fade-up">
   <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
   <ul class="footer-links">
     <li><a href="#">Privacy Policy</a></li>
@@ -1034,6 +1059,19 @@
       document.getElementById(target).classList.add('active');
     });
   });
+
+  /* ── Scroll-triggered fade-up animations ── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  fadeEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>

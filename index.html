@@ -523,6 +523,19 @@
   footer .footer-links li a:hover { color: #3EC2ED; }
 
   /* =====================
+     FADE-UP ANIMATION
+     ===================== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* =====================
      TABLET RESPONSIVE
      ===================== */
   @media (max-width: 1100px) {
@@ -710,7 +723,7 @@
 </section>
 
 <!-- SHAPING TOMORROW -->
-<section class="section-about">
+<section class="section-about fade-up">
   <div class="about-text">
     <h2>Shaping Tomorrow's Learners</h2>
     <p>At the heart of our school lies a clear mission that inspire learning and empower every student to thrive both inside and beyond the classroom.</p>
@@ -721,7 +734,7 @@
 </section>
 
 <!-- MISSION / VISION -->
-<div class="mission-vision">
+<div class="mission-vision fade-up">
   <div class="mv-card">
     <img class="mv-icon" src="Images/HH_Academy_Image_Our_Mission.png" alt="Mission icon" onerror="this.style.display='none'">
     <h3>Our Mission</h3>
@@ -735,7 +748,7 @@
 </div>
 
 <!-- APPLY SECTION -->
-<section class="section-apply" id="section-apply">
+<section class="section-apply fade-up" id="section-apply">
   <div class="apply-image">
     <img src="Images/HH_Academy_Image_3.png" alt="Students in uniform">
   </div>
@@ -748,7 +761,7 @@
 </section>
 
 <!-- KPI SECTION -->
-<section class="section-kpi">
+<section class="section-kpi fade-up">
   <p class="sub-label">School Statistics</p>
   <h2>Key Performance Indicators</h2>
   <p class="kpi-desc">A snapshot of our school's recent performance and enrollment figures. Updated for 2024 to highlight achievement, growth, and student success.</p>
@@ -791,7 +804,7 @@
 </section>
 
 <!-- CURRICULUM SECTION -->
-<section class="section-curriculum">
+<section class="section-curriculum fade-up">
   <p class="sub-label">Curriculum Standards</p>
   <h2>Learning That Builds Futures</h2>
   <div class="curriculum-logos">
@@ -800,7 +813,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="fade-up">
   <p class="copy">Copyright &copy; 2026 Happy Home Academy . All rights reserved.</p>
   <ul class="footer-links">
     <li><a href="#">Privacy Policy</a></li>
@@ -862,6 +875,19 @@
       nav.classList.remove('scrolled');
     }
   });
+
+  // Scroll-triggered fade-up animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  fadeEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
