@@ -11,6 +11,17 @@
   body { font-family: 'Roboto', sans-serif; background: #ffffff; color: #171717; }
   a { text-decoration: none; color: inherit; }
 
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   :root {
     --cyan: #3EC2ED;
     --cyan-dark: #2db0db;
@@ -20,29 +31,6 @@
     --card: #F2F2F2;
     --line: #E1E1E1;
   }
-
-  @keyframes slideUpFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero,
-  .stats-section,
-  .activities-section,
-  footer {
-    opacity: 0;
-    animation: slideUpFadeIn 0.8s ease-out forwards;
-  }
-  .hero { animation-delay: 0.1s; }
-  .stats-section { animation-delay: 0.2s; }
-  .activities-section { animation-delay: 0.3s; }
-  footer { animation-delay: 0.4s; }
 
   nav {
     position: sticky;
@@ -698,7 +686,7 @@
   <a href="contact.html">Contact</a>
 </div>
 
-<section class="hero">
+<section class="hero fade-up">
   <div class="hero-copy">
     <h1>Extra Curriculum Activities</h1>
     <p>The school offers a balanced programme of sport, creative opportunities, and leadership experiences so learners can grow in skill, character, teamwork, and responsibility beyond the classroom.</p>
@@ -711,7 +699,7 @@
   </div>
 </section>
 
-<section class="stats-section">
+<section class="stats-section fade-up">
   <div class="stats-grid">
     <article class="stat-card">
       <span class="stat-number">7</span>
@@ -731,14 +719,14 @@
   </div>
 </section>
 
-<section class="activities-section" id="activity-list">
+<section class="activities-section fade-up" id="activity-list">
   <div class="section-header">
     <p class="kicker">Extra Curriculum Activities</p>
     <h2>Extra Curriculum Activities</h2>
     <p>The school offers the following Extra-Curriculum Activities:</p>
   </div>
 
-  <div class="table-shell">
+  <div class="table-shell fade-up">
     <table class="activity-table">
       <thead>
         <tr>
@@ -965,7 +953,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="fade-up">
   <span class="copyright">Copyright &copy; 2026 Happy Home Academy. All rights reserved.</span>
   <div class="footer-links">
     <a href="#">Privacy Policy</a>
@@ -975,6 +963,19 @@
 </footer>
 
 <script>
+  const fadeUpElements = document.querySelectorAll('.fade-up');
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        currentObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  fadeUpElements.forEach(element => observer.observe(element));
+
   // Hamburger / mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -1003,4 +1004,3 @@
 </script>
 </body>
 </html>
-
