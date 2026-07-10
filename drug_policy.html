@@ -11,6 +11,17 @@
     scroll-behavior: smooth; 
     scroll-padding-top: 102px;
   }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   body { font-family: 'Roboto', sans-serif; background: #fff; color: #171717; }
   a { color: inherit; text-decoration: none; }
   .visually-hidden {
@@ -85,28 +96,6 @@
     transform: translateX(-50%) scaleX(1);
   }
 
-  @keyframes slideUpFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero,
-  .policy-shell,
-  .policy-approach-section,
-  footer {
-    opacity: 0;
-    animation: slideUpFadeIn 0.8s ease-out forwards;
-  }
-  .hero { animation-delay: 0.1s; }
-  .policy-shell { animation-delay: 0.2s; }
-  .policy-approach-section { animation-delay: 0.15s; }
-  footer { animation-delay: 0.3s; }
   .dropdown {
     position: absolute;
     top: calc(100% + 16px);
@@ -988,7 +977,7 @@
   <a href="contact.html">Contact</a>
 </div>
 
-<section class="hero">
+<section class="hero fade-up">
   <div class="hero-copy">
     <p class="eyebrow">School Policy</p>
     <h1>Happy Home Academy Drugs Policy</h1>
@@ -1005,7 +994,7 @@
   </div>
 </section>
 
-<section class="policy-approach-section">
+<section class="policy-approach-section fade-up">
   <p class="approach-eyebrow">Happy Home Academy's</p>
   <h2>Policy Approach</h2>
   <div class="approach-cards">
@@ -1024,7 +1013,7 @@
   </div>
 </section>
 
-<main class="policy-shell" id="policy-content">
+<main class="policy-shell fade-up" id="policy-content">
   <section class="tools" aria-label="Policy tools">
     <div class="search-box">
       <label for="policySearch" class="visually-hidden">Search the drug policy</label>
@@ -1046,7 +1035,7 @@
     </aside>
 
     <section class="policy-content" aria-label="Drug policy sections">
-      <article class="policy-card active" id="introduction" data-search-text="introduction alcohol cigarettes performance enhancing drugs prescription drugs inhalants illicit drugs adolescents south africa responsibility school environment outside school hours informed personal choice wellbeing learning prevention expectations intervention">
+      <article class="policy-card active fade-up" id="introduction" data-search-text="introduction alcohol cigarettes performance enhancing drugs prescription drugs inhalants illicit drugs adolescents south africa responsibility school environment outside school hours informed personal choice wellbeing learning prevention expectations intervention">
         <header class="policy-heading">
           <h2>Introduction</h2>
         </header>
@@ -1174,7 +1163,7 @@
 
 <button class="back-top" id="backTop" type="button" aria-label="Back to top">^</button>
 
-<footer>
+<footer class="fade-up">
   <span class="copyright">Copyright &copy; 2026 Happy Home Academy. All rights reserved.</span>
   <div class="footer-links">
     <a href="#">Privacy Policy</a>
@@ -1184,6 +1173,19 @@
 </footer>
 
 <script>
+  const fadeUpElements = document.querySelectorAll('.fade-up');
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        currentObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  fadeUpElements.forEach(element => observer.observe(element));
+
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileMenuClose = document.getElementById('mobileMenuClose');
