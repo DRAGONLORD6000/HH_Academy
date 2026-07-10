@@ -13,30 +13,16 @@
   box-sizing: border-box;
 }
 
-@keyframes slideUpFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.hero,
-.school-section,
-.quality-section,
-.values-section,
-footer {
-  opacity: 0;
-  animation: slideUpFadeIn 0.8s ease-out forwards;
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-.hero { animation-delay: 0.1s; }
-.school-section { animation-delay: 0.2s; }
-.quality-section { animation-delay: 0.3s; }
-.values-section { animation-delay: 0.4s; }
-footer { animation-delay: 0.5s; }
 
 html {
   scroll-behavior: smooth;
@@ -1182,7 +1168,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   </div>
 
   <!--- HERO SECTION --->
-  <section class="hero">
+  <section class="hero fade-up">
     <div class="hero-text">
       <h1>Built to Shaping The Future<br>of our Children</h1>
       <p class="hero-subtitle">About Us</p>
@@ -1199,10 +1185,10 @@ footer .footer-links a:hover { text-decoration: underline; }
   </section>
 
   <!--- THE SCHOOL --->
-  <section class="school-section" id="school">
+  <section class="school-section fade-up" id="school">
     <h2 class="section-title right">The School</h2>
 
-    <div class="school-row top">
+    <div class="school-row top fade-up">
       <div class="school-img-wrap left">
         <div class="img-frame">
           <img src="Images/image 4.png" alt="Students outside" loading="lazy" />
@@ -1213,7 +1199,7 @@ footer .footer-links a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <div class="school-row bottom">
+    <div class="school-row bottom fade-up">
       <div class="school-card left-card">
         <p>This ensures that each student's potential is discovered and developed. Our educators are trained and encouraged how to teach with Christ in the Centre as departure point of every curriculum. The school adopts the National Curriculum (CAPS). Government ANA exams are also written by Grades 3, 6 and 9.</p>
         <div class="btn-group">
@@ -1230,10 +1216,10 @@ footer .footer-links a:hover { text-decoration: underline; }
   </section>
 
   <!--- The Priority of a Quality Academic Education --->
-  <section class="quality-section" id="quality">
+  <section class="quality-section fade-up" id="quality">
     <h2 class="section-title left">The Priority of a Quality<br>Academic Education</h2>
 
-    <div class="quality-row">
+    <div class="quality-row fade-up">
       <div class="quality-card">
         <p>We employ well-qualified, motivated, and passionate staff who balance youthful energy with extensive experience. Class sizes are limited to 15 learners in the Senior Phase and 25 learners in the FET Phase. Examinations are written under the National Department of Education, with future alignment to the Independent Examinations Board. This ensures a high-quality qualification that is internationally recognized and globally marketable.</p>
         <br />
@@ -1248,7 +1234,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   </section>
 
   <!--- OUR VALUES --->
-  <section class="values-section" id="values">
+  <section class="values-section fade-up" id="values">
     <div class="values-header">
       <h2 class="section-title center">Our Values</h2>
       <p class="values-sub">What makes us who we are</p>
@@ -1296,7 +1282,7 @@ footer .footer-links a:hover { text-decoration: underline; }
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer class="fade-up">
     <span class="copyright">© Happy Home Academy - Sydnam. All Rights Reserved.</span>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
@@ -1306,6 +1292,19 @@ footer .footer-links a:hover { text-decoration: underline; }
   </footer>
 
   <script>
+    const fadeUpElements = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    fadeUpElements.forEach(element => observer.observe(element));
+
     // Hamburger / mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1334,4 +1333,3 @@ footer .footer-links a:hover { text-decoration: underline; }
   </script>
 </body>
 </html>
-
